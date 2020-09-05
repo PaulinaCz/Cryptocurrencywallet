@@ -7,15 +7,15 @@ Paweł / Łukasz / Paulina / Adrian
 
 Spring + MySQL + Thyme-leaf (Bootstrap)
 
-Główne funkcje systemu
-Strona główna
-Strona Lista Krypto-walut
-Historia Transakcji
-Logowanie i Rejestracja Portfela
-Pobieranie informacji z API
-SELL - BUY
-* SEND - RECEIVE MONEY * 
-Płatność (PayPall, Visa Maestro Cards?)
+* Główne funkcje systemu
+* Strona główna
+* Strona Lista Krypto-walut
+* Historia Transakcji
+* Logowanie i Rejestracja Portfela
+* Pobieranie informacji z API
+* SELL - BUY
+* jesli wystarczy czasu - SEND - RECEIVE MONEY * 
+* Płatność (PayPall, Visa Maestro Cards?)
 
 
 
