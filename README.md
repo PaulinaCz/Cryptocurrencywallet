@@ -8,15 +8,16 @@ Paweł / Łukasz / Paulina / Adrian
 Spring + MySQL + Thyme-leaf (Bootstrap)
 
 <h2> Główne funkcje systemu</h2>
-* Strona główna
-* Strona Lista Krypto-walut
-* Historia Transakcji
-* Logowanie i Rejestracja Portfela
-* Pobieranie informacji z API
-* SELL - BUY
-* jesli wystarczy czasu - SEND - RECEIVE MONEY * 
-* Płatność (PayPall, Visa Maestro Cards?)
-
+<li>
+  <ul>Strona główna</ul>
+  <ul>Strona Lista Krypto-walut</ul>
+  <ul>Historia Transakcji</ul>
+<ul>Logowanie i Rejestracja Portfela</ul>
+<ul>Pobieranie informacji z API</ul>
+<ul>SELL - BUY</ul>
+<ul>jesli wystarczy czasu - SEND - RECEIVE MONEY </ul>
+<ul>Płatność (PayPall, Visa Maestro Cards?)</ul>
+</li>
 
 
 Getting started with blockchain for Java developers
