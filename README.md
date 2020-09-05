@@ -12,11 +12,11 @@ Spring + MySQL + Thyme-leaf (Bootstrap)
   <ul>Strona główna</ul>
   <ul>Strona Lista Krypto-walut</ul>
   <ul>Historia Transakcji</ul>
-<ul>Logowanie i Rejestracja Portfela</ul>
-<ul>Pobieranie informacji z API</ul>
-<ul>SELL - BUY</ul>
-<ul>jesli wystarczy czasu - SEND - RECEIVE MONEY </ul>
-<ul>Płatność (PayPall, Visa Maestro Cards?)</ul>
+  <ul>Logowanie i Rejestracja Portfela</ul>
+  <ul>Pobieranie informacji z API</ul>
+  <ul>SELL - BUY</ul>
+  <ul>jesli wystarczy czasu - SEND - RECEIVE MONEY </ul>
+  <ul>Płatność (PayPall, Visa Maestro Cards?)</ul>
 </li>
 
 
