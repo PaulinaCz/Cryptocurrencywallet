@@ -21,12 +21,12 @@ Spring + MySQL + Thyme-leaf (Bootstrap)
 </ul>
 
 
-Getting started with blockchain for Java developers
+<h3><i>Getting started with blockchain for Java developers</i></h3>
 https://opensource.com/article/19/4/blockchain-java-developers
 
 https://medium.com/programmers-blockchain/creating-your-first-blockchain-with-java-part-2-transactions-2cdac335e0ce
 
 
-API
+<i>API</i>
 
 https://p.nomics.com/cryptocurrency-bitcoin-api
