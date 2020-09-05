@@ -7,7 +7,7 @@ Paweł / Łukasz / Paulina / Adrian
 
 Spring + MySQL + Thyme-leaf (Bootstrap)
 
-* Główne funkcje systemu
+<h2> Główne funkcje systemu</h2>
 * Strona główna
 * Strona Lista Krypto-walut
 * Historia Transakcji
