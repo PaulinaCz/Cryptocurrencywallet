@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Registration</title>
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+          crossorigin="anonymous">
+</head>
+<body>
+<!-- Navigation bar -->
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed"
+                    data-toggle="collapsed" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icone-bar"></span>
+                <span class="icone-bar"></span>
+                <span class="icone-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#" th:href="@{/}">Registration and Login Model</a>
+        </div>
+    </div>
+</nav>
+<!-- HTML registration form -->
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+            <!-- success message  -->
+            <div th:if="${parm.success}">
+                <div class="alert alert-info">
+                    You've successfully to our awesome app
+                </div>
+            </div>
+            <h1> Registration</h1>
+        </div>
+    </div>
+</div>
+
+
+</body>
+</html>
