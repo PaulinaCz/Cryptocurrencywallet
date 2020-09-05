@@ -30,18 +30,18 @@ public class User {
     private String password;
 
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JoinTable(name = "users_roles",
+    @JoinTable(name = "users_wallets",
             joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"),
-            inverseJoinColumns = @JoinColumn(name = "role_id", referencedColumnName = "id"))
-    private Collection<Role> roles;
+            inverseJoinColumns = @JoinColumn(name = "wallet_id", referencedColumnName = "id"))
+    private Collection<Wallet> wallets;
 
-    public User(String firstName, String surname, String email, String password, Collection<Role> roles) {
+    public User(String firstName, String surname, String email, String password, Collection<Wallet> wallets) {
         super();
         this.firstName = firstName;
         this.surname = surname;
         this.email = email;
         this.password = password;
-        this.roles = roles;
+        this.wallets = wallets;
     }
 
 

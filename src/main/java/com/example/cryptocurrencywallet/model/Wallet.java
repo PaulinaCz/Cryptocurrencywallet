@@ -12,15 +12,18 @@ import javax.persistence.*;
 @Setter
 
 @Entity
-@Table(name = "role")
-public class Role {
+@Table(name = "wallet")
+public class Wallet {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
 
-    public Role(String name) {
+    // hash code zamiast name ???
+
+
+    public Wallet(String name) {
         this.name = name;
     }
 

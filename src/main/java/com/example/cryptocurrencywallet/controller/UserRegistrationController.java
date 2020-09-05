@@ -3,7 +3,6 @@ package com.example.cryptocurrencywallet.controller;
 import com.example.cryptocurrencywallet.dto.UserRegistrationDTO;
 import com.example.cryptocurrencywallet.servic.UserService;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -23,6 +22,7 @@ public class UserRegistrationController {
     public UserRegistrationDTO userRegistrationDTO(){
         return new UserRegistrationDTO ();
     }
+
     @GetMapping
     public String showRegistrationForm(){
         return "registration";
