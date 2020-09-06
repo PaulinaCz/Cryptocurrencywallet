@@ -1,13 +1,15 @@
 package com.example.cryptocurrencywallet.servic;
 
 import com.example.cryptocurrencywallet.dto.UserRegistrationDTO;
-import com.example.cryptocurrencywallet.model.Wallet;
+import com.example.cryptocurrencywallet.model.Role;
 import com.example.cryptocurrencywallet.model.User;
 import com.example.cryptocurrencywallet.repository.UserRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.Arrays;
@@ -19,6 +21,9 @@ public class UserServiceImpl implements UserService {
 
     private final UserRepository userRepository;
 
+    @Autowired
+    private BCryptPasswordEncoder passwordEncoder;
+
     public UserServiceImpl(UserRepository userRepository) {
         this.userRepository = userRepository;
     }
@@ -28,7 +33,7 @@ public class UserServiceImpl implements UserService {
         User user = new User (registrationDTO.getFirst_name (),
                 registrationDTO.getSurname (),
                 registrationDTO.getEmail (),
-                registrationDTO.getPassword (), Arrays.asList (new Wallet ("USERS_WALLETS")));
+                passwordEncoder.encode (registrationDTO.getPassword ()), Arrays.asList (new Role ("ROLE_USER")));
 
         return userRepository.save (user);
     }
@@ -40,10 +45,10 @@ public class UserServiceImpl implements UserService {
             throw new UsernameNotFoundException ("Invalid username or password");
         }
 
-        return new org.springframework.security.core.userdetails.User (user.getEmail (), user.getPassword (), null);
+        return new org.springframework.security.core.userdetails.User (user.getEmail (), user.getPassword (), mapRolesToAuthorities (user.getRoles ()));
     }
 
-    private Collection<? extends GrantedAuthority> mapWalletsToAuthorities(Collection<Wallet> wallets) {
-        return wallets.stream ().map (wallet -> new SimpleGrantedAuthority (wallet.getName ())).collect (Collectors.toList ());
+    private Collection<? extends GrantedAuthority> mapRolesToAuthorities(Collection<Role> roles) {
+        return roles.stream ().map (role -> new SimpleGrantedAuthority (role.getName ())).collect (Collectors.toList ());
     }
 }

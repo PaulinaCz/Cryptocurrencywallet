@@ -12,8 +12,8 @@ import javax.persistence.*;
 @Setter
 
 @Entity
-@Table(name = "wallet")
-public class Wallet {
+@Table(name = "Role")
+public class Role {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,7 +23,7 @@ public class Wallet {
     // hash code zamiast name ???
 
 
-    public Wallet(String name) {
+    public Role(String name) {
         this.name = name;
     }
 
