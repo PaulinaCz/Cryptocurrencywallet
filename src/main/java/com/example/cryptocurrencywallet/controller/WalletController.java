@@ -1,7 +1,7 @@
 package com.example.cryptocurrencywallet.controller;
 
 import com.example.cryptocurrencywallet.dto.WalletDTO;
-import com.example.cryptocurrencywallet.model.Wallet;
+import com.example.cryptocurrencywallet.model.User;
 import com.example.cryptocurrencywallet.servic.WalletService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -23,9 +23,15 @@ public class WalletController {
     }
 
     @GetMapping("/{walletId}")
-    public ResponseEntity<WalletDTO> getWalletById(@PathVariable UUID walletId){
+    public ResponseEntity<WalletDTO> getWalletById(@PathVariable("walletId") UUID walletId){
         Optional<WalletDTO> walletById = walletService.getWalletById(walletId);
         return walletById.map(walletDTO -> new ResponseEntity<>(walletDTO, HttpStatus.OK))
+                .orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
+    }
+
+    public ResponseEntity<WalletDTO> getWalletByUserId(@RequestParam("userId") Long userId ){
+        Optional<WalletDTO> walletByUserId = walletService.getWalletByUserId(userId);
+        return walletByUserId.map(walletDTO -> new ResponseEntity<>(walletDTO, HttpStatus.OK))
                 .orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
 

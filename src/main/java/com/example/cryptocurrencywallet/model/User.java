@@ -29,19 +29,26 @@ public class User {
 
     private String password;
 
+    @OneToOne
+    @JoinColumn(name = "wallet_id", referencedColumnName = "wallet_id")
+    private Wallet wallet;
+
+
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinTable(name = "users_roles",
             joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "idUser"),
             inverseJoinColumns = @JoinColumn(name = "roles_id", referencedColumnName = "id"))
     private Collection<Role> roles;
 
-    public User(String firstName, String surname, String email, String password, Collection<Role> roles) {
+
+    public User(String firstName, String surname, String email, String password, Collection<Role> roles, Wallet wallet) {
         super();
         this.firstName = firstName;
         this.surname = surname;
         this.email = email;
         this.password = password;
         this.roles = roles;
+        this.wallet = wallet;
     }
 
 

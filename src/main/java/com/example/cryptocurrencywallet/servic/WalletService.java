@@ -34,4 +34,8 @@ public class WalletService {
         walletRepository.save(wallet);
     }
 
+    public Optional<WalletDTO> getWalletByUserId(Long userId) {
+        Optional<Wallet> wallet = walletRepository.findByUserId(userId);
+        return mapper.walletDTO(wallet);
+    }
 }

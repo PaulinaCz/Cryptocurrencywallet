@@ -3,13 +3,12 @@ package com.example.cryptocurrencywallet.servic;
 import com.example.cryptocurrencywallet.dto.UserRegistrationDTO;
 import com.example.cryptocurrencywallet.model.Role;
 import com.example.cryptocurrencywallet.model.User;
+import com.example.cryptocurrencywallet.model.Wallet;
 import com.example.cryptocurrencywallet.repository.UserRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -34,7 +33,8 @@ public class UserServiceImpl implements UserService {
         User user = new User (registrationDTO.getFirst_name (),
                 registrationDTO.getSurname (),
                 registrationDTO.getEmail (),
-                passwordEncoder.encode (registrationDTO.getPassword ()), Arrays.asList (new Role ("ROLE_USER")));
+                passwordEncoder.encode (registrationDTO.getPassword ()), Arrays.asList (new Role ("ROLE_USER")),
+                new Wallet());
 
         return userRepository.save (user);
     }
