@@ -1,7 +1,6 @@
 package com.example.cryptocurrencywallet.controller;
 
 import com.example.cryptocurrencywallet.dto.WalletDTO;
-import com.example.cryptocurrencywallet.model.User;
 import com.example.cryptocurrencywallet.servic.WalletService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -29,15 +28,10 @@ public class WalletController {
                 .orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
 
-    public ResponseEntity<WalletDTO> getWalletByUserId(@RequestParam("userId") Long userId ){
-        Optional<WalletDTO> walletByUserId = walletService.getWalletByUserId(userId);
-        return walletByUserId.map(walletDTO -> new ResponseEntity<>(walletDTO, HttpStatus.OK))
-                .orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
-    }
 
-    @PostMapping
-    public ResponseEntity<WalletDTO> createWallet(@RequestBody WalletDTO walletDTO){
-        walletService.createWallet(walletDTO);
+    @PostMapping("/add")
+    public ResponseEntity<WalletDTO> createWallet(@RequestBody String email){
+        walletService.createWallet(email);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 }

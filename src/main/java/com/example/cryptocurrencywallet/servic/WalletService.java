@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -29,13 +30,26 @@ public class WalletService {
 
     }
 
-    public void createWallet(WalletDTO walletDTO){
-        Wallet wallet = new Wallet(walletDTO.accountNumber, BigDecimal.valueOf(5000));
+    public Wallet createWallet(String email) {
+        Wallet wallet = new Wallet();
+        wallet.setAccountNumber(generateAccountNumber(email));
+        wallet.setBalance(defaultBalance());
         walletRepository.save(wallet);
+
+        return wallet;
     }
 
-    public Optional<WalletDTO> getWalletByUserId(Long userId) {
-        Optional<Wallet> wallet = walletRepository.findByUserId(userId);
-        return mapper.walletDTO(wallet);
+    private BigDecimal defaultBalance() {
+        return BigDecimal.valueOf(500);
     }
+
+    private String generateAccountNumber(String email) {
+
+        return StringUtil.applySha256(
+                "walletcurrencycrypto" +
+                        email +
+                        LocalDateTime.now().toString()
+        );
+    }
+
 }
