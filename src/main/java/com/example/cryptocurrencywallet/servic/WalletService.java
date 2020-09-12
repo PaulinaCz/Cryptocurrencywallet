@@ -43,6 +43,8 @@ public class WalletService {
         return BigDecimal.valueOf(500);
     }
 
+
+    //TODO check if accountNumber is unique
     private String generateAccountNumber(String email) {
 
         return StringUtil.applySha256(
