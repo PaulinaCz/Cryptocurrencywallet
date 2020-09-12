@@ -5,18 +5,19 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Collection;
 
 @NoArgsConstructor
 @Getter
 @Setter
-
 @Entity
-@Table(name = "user", uniqueConstraints = @UniqueConstraint (columnNames = "email"))
-public class User {
+@Table(name = "user")
+public class User implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "user_id")
     private Long idUser;
 
     @Column(name = "first_name")
@@ -29,19 +30,26 @@ public class User {
 
     private String password;
 
+    @OneToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "wallet_id", nullable = false)
+    private Wallet wallet;
+
+
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinTable(name = "users_roles",
-            joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"),
+            joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "roles_id", referencedColumnName = "id"))
     private Collection<Role> roles;
 
-    public User(String firstName, String surname, String email, String password, Collection<Role> roles) {
+
+    public User(String firstName, String surname, String email, String password, Collection<Role> roles, Wallet wallet) {
         super();
         this.firstName = firstName;
         this.surname = surname;
         this.email = email;
         this.password = password;
         this.roles = roles;
+        this.wallet = wallet;
     }
 
 
