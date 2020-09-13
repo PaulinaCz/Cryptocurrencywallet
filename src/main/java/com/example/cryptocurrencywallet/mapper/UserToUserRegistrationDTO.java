@@ -17,8 +17,8 @@ public class UserToUserRegistrationDTO {
         }else{
             User user = optionalUser.get();
             UserRegistrationDTO userRegistrationDTO = new UserRegistrationDTO();
-            userRegistrationDTO.setFirst_name(user.getFirstName());
-            userRegistrationDTO.setSurname(user.getSurname());
+            userRegistrationDTO.setFirstName (user.getFirstName());
+            userRegistrationDTO.setLastName (user.getSurname());
             userRegistrationDTO.setEmail(user.getEmail());
             userRegistrationDTO.setPassword(user.getPassword());
 

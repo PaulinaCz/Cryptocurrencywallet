@@ -41,9 +41,14 @@ public class UserServiceImpl implements UserService {
 
 
     @Override
+    public Optional<User> findByEmail(String email) {
+        return userRepository.findByEmail (email);
+    }
+
+    @Override
     public User save(UserRegistrationDTO registrationDTO) {
-        User user = new User (registrationDTO.getFirst_name(),
-                registrationDTO.getSurname(),
+        User user = new User (registrationDTO.getFirstName (),
+                registrationDTO.getLastName (),
                 registrationDTO.getEmail(),
                 passwordEncoder.encode(registrationDTO.getPassword()),
                 Arrays.asList (new Role ("ROLE_USER")),

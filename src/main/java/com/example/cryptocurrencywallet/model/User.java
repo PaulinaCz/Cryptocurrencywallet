@@ -1,14 +1,12 @@
 package com.example.cryptocurrencywallet.model;
 
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Collection;
 
-@NoArgsConstructor
 @Getter
 @Setter
 @Entity
@@ -41,6 +39,14 @@ public class User implements Serializable {
             inverseJoinColumns = @JoinColumn(name = "roles_id", referencedColumnName = "id"))
     private Collection<Role> roles;
 
+    public User() {}
+
+    public User(String firstName, String lastName, String email, String password) {
+        this.firstName = firstName;
+        this.surname = surname;
+        this.email = email;
+        this.password = password;
+    }
 
     public User(String firstName, String surname, String email, String password, Collection<Role> roles, Wallet wallet) {
         super();
@@ -50,6 +56,17 @@ public class User implements Serializable {
         this.password = password;
         this.roles = roles;
         this.wallet = wallet;
+    }
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + idUser +
+                ", firstName='" + firstName + '\'' +
+                ", surename='" + surname + '\'' +
+                ", email='" + email + '\'' +
+                ", password='" + "*********" + '\'' +
+                ", roles=" + roles +
+                '}';
     }
 
 
