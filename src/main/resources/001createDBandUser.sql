@@ -12,7 +12,7 @@ CREATE TABLE `user` (
                         `id` bigint(20) NOT NULL,
                         `email` varchar(255) DEFAULT NULL,
                         `first_name` varchar(255) DEFAULT NULL,
-                        `last_name` varchar(255) DEFAULT NULL,
+                        `surename` varchar(255) DEFAULT NULL,
                         `password` varchar(255) DEFAULT NULL,
                         PRIMARY KEY (`id`),
                         UNIQUE KEY `UKob8kqyqqgmefl0aco34akdtpe` (`email`)
