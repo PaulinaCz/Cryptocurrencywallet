@@ -1,4 +1,4 @@
-package com.example.cryptocurrencywallet.transaction;
+package com.example.cryptocurrencywallet.transactions;
 
 import com.example.cryptocurrencywallet.model.User;
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -16,8 +16,9 @@ import java.util.Date;
 @NoArgsConstructor
 public class Transaction {
 
-    @Id@GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "transaction_id")
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "transaction_id") //no data for transaction_id YET!
 
     private long id;
 
@@ -28,7 +29,7 @@ public class Transaction {
 
     private double amount;
 
-    private double amountGPB;
+    private double amountGBP;
 
     private boolean isClosed;
 
@@ -56,11 +57,22 @@ public class Transaction {
     private double profit;
 
     @Override
-    public String toString(){
+    public String toString() {
         return "Transaction{" +
-                "id"+ id+
-                ", instrument='"+instrument+'\''+
-                ",tradeDateTime="+tradeDateTime+
+                "id" + id +
+                ", instrument='" + instrument + '\'' +
+                ", tradeDateTime=" + tradeDateTime +
+                ", amount=" + amount +
+                ", amountGBP=" + amountGBP +
+                ", isClosed="+ isClosed+
+                ", closedDateTime=" + closedDateTime +
+                ", price=" + price +
+                ", closedPrice=" + closedPrice +
+                ", buySell="+ buySell+
+                ", isExecuted=" + isExecuted +
+                ", executionFailReason=" + executionFailReason + '\'' +
+                ", profit=" + profit +
+                '}';
 
     }
 

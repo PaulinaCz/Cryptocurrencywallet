@@ -1,4 +1,4 @@
-package com.example.cryptocurrencywallet.transaction;
+package com.example.cryptocurrencywallet.transactions;
 
 import lombok.Getter;
 
