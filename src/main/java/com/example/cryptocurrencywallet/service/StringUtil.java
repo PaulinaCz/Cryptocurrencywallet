@@ -1,4 +1,4 @@
-package com.example.cryptocurrencywallet.servic;
+package com.example.cryptocurrencywallet.service;
 
 
 import java.nio.charset.StandardCharsets;

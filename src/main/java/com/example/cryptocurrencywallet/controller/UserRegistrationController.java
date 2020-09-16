@@ -1,8 +1,7 @@
 package com.example.cryptocurrencywallet.controller;
 
 import com.example.cryptocurrencywallet.dto.UserRegistrationDTO;
-import com.example.cryptocurrencywallet.servic.UserService;
-import org.springframework.stereotype.Controller;
+import com.example.cryptocurrencywallet.service.UserService;
 import org.springframework.web.bind.annotation.*;
 
 @RestController

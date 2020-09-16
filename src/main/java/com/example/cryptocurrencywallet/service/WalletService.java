@@ -1,4 +1,4 @@
-package com.example.cryptocurrencywallet.servic;
+package com.example.cryptocurrencywallet.service;
 
 import com.example.cryptocurrencywallet.dto.WalletDTO;
 import com.example.cryptocurrencywallet.mapper.WalletToWalletDTOMapper;

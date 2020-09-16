@@ -1,7 +1,7 @@
 package com.example.cryptocurrencywallet.controller;
 
 import com.example.cryptocurrencywallet.dto.WalletDTO;
-import com.example.cryptocurrencywallet.servic.WalletService;
+import com.example.cryptocurrencywallet.service.WalletService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
