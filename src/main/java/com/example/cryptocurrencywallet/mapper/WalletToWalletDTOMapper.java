@@ -17,8 +17,8 @@ public class WalletToWalletDTOMapper {
         else{
             Wallet wallet = optionalWallet.get();
             WalletDTO walletDTO = new WalletDTO();
-            walletDTO.balance = wallet.getBalance();
-            walletDTO.accountNumber = wallet.getAccountNumber();
+           // walletDTO.balance = walletDTO.getBalance();
+           // walletDTO.accountNumber = walletDTO.getAccountNumber();
 
             return Optional.of(walletDTO);
         }

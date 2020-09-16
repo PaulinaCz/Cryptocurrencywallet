@@ -17,10 +17,10 @@ public class UserToUserRegistrationDTO {
         }else{
             User user = optionalUser.get();
             UserRegistrationDTO userRegistrationDTO = new UserRegistrationDTO();
-            userRegistrationDTO.setFirstName (user.getFirstName());
-            userRegistrationDTO.setLastName (user.getSurname());
-            userRegistrationDTO.setEmail(user.getEmail());
-            userRegistrationDTO.setPassword(user.getPassword());
+            userRegistrationDTO.setFirstName (userRegistrationDTO.getFirstName());
+            userRegistrationDTO.setLastName (userRegistrationDTO.getLastName());
+            userRegistrationDTO.setEmail(userRegistrationDTO.getEmail());
+            userRegistrationDTO.setPassword(userRegistrationDTO.getPassword());
 
             return Optional.of(userRegistrationDTO);
         }

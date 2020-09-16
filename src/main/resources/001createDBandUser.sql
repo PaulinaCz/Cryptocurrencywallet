@@ -1,7 +1,3 @@
-CREATE DATABASE IF NOT EXISTS cryptocurrenctapp;
-CREATE USER IF NOT EXISTS 'cryptocurrenctapp' IDENTIFIED BY 'cryptocurrenctapp';
-GRANT ALL PRIVILEGES ON cryptocurrenctapp.* TO 'cryptocurrenctapp';
-
 CREATE TABLE `role` (
                         `id` bigint(20) NOT NULL,
                         `name` varchar(255) DEFAULT NULL,
