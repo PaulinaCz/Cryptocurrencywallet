@@ -27,5 +27,4 @@ private String rank;
 private String maxSupply;
 @SerializedName("circulating_supply")
 private String circulatingSupply;
-
 }

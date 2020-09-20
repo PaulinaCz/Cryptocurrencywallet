@@ -1,13 +1,11 @@
 package com.example.cryptocurrencywallet.model;
 
-import com.example.cryptocurrencywallet.retriveCoin.model.CryptoCurrency;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
-import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.List;
 import java.util.UUID;
@@ -26,6 +24,7 @@ public class Wallet{
             name = "UUID",
             strategy = "org.hibernate.id.UUIDGenerator"
     )
+
     private UUID walletId;
 
     @Column(name = "balance")
@@ -38,17 +37,15 @@ public class Wallet{
     /*
     *
     * */
-    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name = "wallet_id")
     private List<Coin> myCoins;
 
- /*   @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name = "wallet_id")
     private List<TransactionHistory> transactionHistories;
-*/
+
     public Wallet(BigDecimal balance) {
-//        this.walletId = UUID.randomUUID();
         this.balance = balance;
-//        this.myCoins = myCoins;
     }
 }
