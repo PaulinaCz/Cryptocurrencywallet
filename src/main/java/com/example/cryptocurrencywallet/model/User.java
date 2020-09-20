@@ -29,11 +29,10 @@ public class User {
     private String email;
     private String password;
     private boolean active;
-/*
-    @OneToOne(fetch = FetchType.LAZY, optional = false)
+
+    @OneToOne(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
     @JoinColumn(name = "wallet_id", nullable = false)
     private Wallet wallet;
-*/
 
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinTable(name = "users_roles",
@@ -42,12 +41,13 @@ public class User {
     private Set<Role> roles;
 
     /*      MAPPING FOR UserRegistrationDto     */
-    public User(String firstName, String lastName, String email, String password, Set<Role> roles) {
+    public User(String firstName, String lastName, String email, String password, Set<Role> roles, Wallet wallet) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.password = password;
         this.roles = roles;
+        this.wallet = wallet;
     }
 
     /*      MAPPING FOR MyUserDetails     */
@@ -59,6 +59,7 @@ public class User {
         this.id = user.getId();
         this.password = user.getPassword();
     }
+
 
 
 }

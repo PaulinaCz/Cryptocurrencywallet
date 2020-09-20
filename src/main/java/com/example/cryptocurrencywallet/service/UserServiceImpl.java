@@ -7,6 +7,7 @@ import com.example.cryptocurrencywallet.model.MyUserDetails;
 import com.example.cryptocurrencywallet.model.Role;
 import com.example.cryptocurrencywallet.model.User;
 //import com.example.cryptocurrencywallet.model.Wallet;
+import com.example.cryptocurrencywallet.model.Wallet;
 import com.example.cryptocurrencywallet.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
@@ -17,6 +18,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Optional;
@@ -60,6 +62,7 @@ public class UserServiceImpl implements UserService {
                 userRegistrationDTO.getEmail(),
                 passwordEncoder.encode(userRegistrationDTO.getPassword()),
                 Set.of(new Role("ROLE_ADMIN"))
+                ,new Wallet(new BigDecimal(10000))
         );
 
         return userRepository.save(user);
