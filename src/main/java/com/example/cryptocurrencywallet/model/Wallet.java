@@ -11,6 +11,7 @@ import java.math.BigDecimal;
 import java.util.Collection;
 import java.util.UUID;
 
+/*
 @Entity
 @Getter
 @Setter
@@ -47,3 +48,4 @@ public class Wallet implements Serializable {
         this.myCurrencies = myCurrencies;
     }
 }
+*/
