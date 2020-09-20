@@ -48,7 +48,8 @@
 </nav>
 
 <!--        CURRENCY VALUE      -->
-<div id="main-content" class="container" th:attr="data-decisionTime=${decisionTime}">
+<!--<div id="main-content" class="container" th:attr="data-decisionTime=${decisionTime}">-->
+<div id="main-content" class="container">
     <div class="row">
         <div class="col-md-12">
             <table id="conversation" class="table table-striped text-center">
@@ -57,13 +58,21 @@
                 <tr>
                     <th scope="col">Rank</th>
                     <th scope="col">Name</th>
-                    <th scope="col">Market Cap</th>
                     <th scope="col">Price</th>
+                    <th scope="col">Market Cap</th>
                     <th scope="col">Volume (24h)</th>
                     <th scope="col">Circulating Supply</th>
                 </tr>
                 </thead>
                 <tbody id="quotationRow">
+                <tr th:each="rate : ${cryptoCoinDetails}" class="active">
+                    <td th:text="${rate.rank}">"</td>
+                    <td th:text="${rate.name}">"</td>
+                    <td th:text="${rate.price}">"</td>
+                    <td th:text="${rate.marketCap}">"</td>
+                    <td th:text="${rate._1d.volume}">"</td>
+                    <td th:text="${rate.circulatingSupply}">"</td>
+                </tr>
                 </tbody>
             </table>
         </div>

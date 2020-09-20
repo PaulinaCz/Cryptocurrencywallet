@@ -23,7 +23,7 @@ public class AppHttpRequests {
                 .GET()
                 .header("accept", "application/json")
                 .uri(URI.create(String.format(POSTS_API_URL + KEY + "&ids=%s", name)))
-                .timeout(Duration.ofSeconds(10)) // HttpTimeoutException
+                .timeout(Duration.ofSeconds(30)) // HttpTimeoutException
                 .build();
 
         HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());

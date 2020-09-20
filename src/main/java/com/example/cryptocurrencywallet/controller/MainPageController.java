@@ -18,13 +18,10 @@ public class MainPageController {
     public String login() {
         return "login";
     }
-//    @GetMapping("/user")
-//    public String home() {
-//        return "index";
-//    }
-//
+
     @RequestMapping("/user")
     public String mainUserView(Model model) {
+        model.addAttribute("cryptoCoinDetails", cryptoCoinDetails.getListOfCryptoCurrencies("BTC,ETH,USDT,XRP,BCH,DOT,LINK,BNB,CRO,LTC"));
         return "mainUserPage";
     }
 

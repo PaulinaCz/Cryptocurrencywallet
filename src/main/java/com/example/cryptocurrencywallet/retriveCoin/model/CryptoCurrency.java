@@ -11,7 +11,6 @@ import java.math.BigDecimal;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-
 public class CryptoCurrency {
 
 private String id;
@@ -27,4 +26,8 @@ private String rank;
 private String maxSupply;
 @SerializedName("circulating_supply")
 private String circulatingSupply;
+@SerializedName("market_cap")
+private String marketCap;
+@SerializedName("1d")
+private _1d _1d;
 }
