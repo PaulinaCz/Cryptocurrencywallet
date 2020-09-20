@@ -1,6 +1,5 @@
 package com.example.cryptocurrencywallet.config;
 
-import com.example.cryptocurrencywallet.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -17,7 +16,9 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     @Autowired
-    private UserService userService;
+    private MyUserDetailsService myUserDetailsService;
+    @Autowired
+    private CustomLoginSuccessHandler successHandler;
 
     @Bean
     public BCryptPasswordEncoder passwordEncoder() {
@@ -32,7 +33,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Bean
     public DaoAuthenticationProvider authenticationProvider() {
         DaoAuthenticationProvider auth = new DaoAuthenticationProvider();
-        auth.setUserDetailsService(userService);
+        auth.setUserDetailsService(myUserDetailsService);
         auth.setPasswordEncoder(passwordEncoder());
         return auth;
     }
@@ -42,7 +43,40 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         auth.authenticationProvider(authenticationProvider());
     }
 
+    /*
+     * TODO: Check User role and User Permission from Spring Security
+     *  Create valid enum for ApplicationUserRole and ApplicationUserPermission
+     *  Combine these enums with Spring Security -->>> AmigosCode project
+     * */
+
     @Override
+    protected void configure(HttpSecurity httpSecurity) throws Exception {
+        httpSecurity
+                .authorizeRequests ().antMatchers (
+                "/registration**","/js/**","/css/**","/img/**")
+                .permitAll ()
+                .antMatchers("/user/**").hasAnyAuthority("ROLE_USER")
+                .antMatchers("/admin/**").hasAnyAuthority("ROLE_ADMIN")
+                .anyRequest ().authenticated ()
+                .and ()
+                // form login
+                .formLogin ()
+                .loginPage ("/login")
+//                .loginProcessingUrl("/login")
+                .successHandler(successHandler)
+//                .successHandler(myAuthenticationSuccessHandler())
+                .permitAll ()
+                .and ()
+                // form logout
+                .logout ()
+                .invalidateHttpSession (true)
+                .clearAuthentication (true)
+                .logoutRequestMatcher (new AntPathRequestMatcher ("/logout"))
+                .logoutSuccessUrl ("/login?logout")
+                .permitAll ();
+    }
+
+/*    @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests().antMatchers(
@@ -63,5 +97,5 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
                 .logoutSuccessUrl("/login?logout") // << -- Access to custom logout page
                 .permitAll();
-    }
+    }*/
 }

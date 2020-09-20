@@ -13,15 +13,13 @@ public class MainPageController {
     public String login() {
         return "login";
     }
+//    @GetMapping("/user")
+//    public String home() {
+//        return "index";
+//    }
+//
     @GetMapping("/user")
-    public String home() {
-        return "index";
-    }
-/*    @GetMapping("/user")
     public String mainUserView(Model model) {
-        ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("mainUserPage");
-        return modelAndView;
         return "mainUserPage";
     }
 
@@ -29,5 +27,5 @@ public class MainPageController {
     public String mainAdminView(Model model) {
         return "mainAdminPage";
 
-    }*/
+    }
 }

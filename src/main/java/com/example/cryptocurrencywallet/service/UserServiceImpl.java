@@ -59,19 +59,19 @@ public class UserServiceImpl implements UserService {
                 userRegistrationDTO.getLastName(),
                 userRegistrationDTO.getEmail(),
                 passwordEncoder.encode(userRegistrationDTO.getPassword()),
-                Set.of(new Role("ROLE_USER"))
+                Set.of(new Role("ROLE_ADMIN"))
         );
 
         return userRepository.save(user);
     }
 
-    @Override
+/*    @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         return userRepository
                 .findByEmail(username)
                 .map(MyUserDetails::new)
                 .orElseThrow(() -> new UsernameNotFoundException("not found: " + username));
-    }
+    }*/
 }
 
 /*    public Optional<UserRegistrationDTO> getByEmail(String email) throws UsernameNotFoundException {
