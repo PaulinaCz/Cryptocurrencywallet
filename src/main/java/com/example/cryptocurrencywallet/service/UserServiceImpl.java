@@ -61,10 +61,9 @@ public class UserServiceImpl implements UserService {
                 userRegistrationDTO.getLastName(),
                 userRegistrationDTO.getEmail(),
                 passwordEncoder.encode(userRegistrationDTO.getPassword()),
-                Set.of(new Role("ROLE_ADMIN"))
+                Set.of(new Role("ROLE_USER"))
                 ,new Wallet(new BigDecimal(10000))
         );
-
         return userRepository.save(user);
     }
 

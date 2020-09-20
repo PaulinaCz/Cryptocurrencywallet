@@ -17,12 +17,12 @@ public class AppHttpRequests {
     private static final String POSTS_API_URL = "https://api.nomics.com/v1/currencies/ticker?key=";
     private static final String KEY = "0e3cdb66fd5f50dd96f21ece8c02468d";
 
-    static List<CryptoCurrency> requestCoin(String name) throws IOException, InterruptedException {
+    public static List<CryptoCurrency> requestCoin(String name) throws IOException, InterruptedException {
         var client = HttpClient.newHttpClient();
         HttpRequest request = HttpRequest.newBuilder()
                 .GET()
                 .header("accept", "application/json")
-                .uri(URI.create(String.format(POSTS_API_URL + KEY + "&ids=%s",name)))
+                .uri(URI.create(String.format(POSTS_API_URL + KEY + "&ids=%s", name)))
                 .timeout(Duration.ofSeconds(10)) // HttpTimeoutException
                 .build();
 
@@ -31,7 +31,8 @@ public class AppHttpRequests {
         // parse JSON into object
 
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
-        List<CryptoCurrency> temp = gson.fromJson(response.body(), new TypeToken<List<CryptoCurrency>>(){}.getType());
+        List<CryptoCurrency> temp = gson.fromJson(response.body(), new TypeToken<List<CryptoCurrency>>() {
+        }.getType());
 
         temp.forEach(System.out::println);
 
@@ -41,10 +42,10 @@ public class AppHttpRequests {
 
     public static void main(String[] args) {
 
-        try{
+        try {
             List<CryptoCurrency> coin = requestCoin("BTC,ETH,XRP");
             coin.forEach(System.out::println);
-        } catch (Exception exc){
+        } catch (Exception exc) {
             exc.printStackTrace();
         }
 
