@@ -1,3 +1,4 @@
+/*
 var timeToConfirmTransaction;
 var floatTimeToConfirmTransaction;
 var date = new Date();
@@ -212,4 +213,14 @@ function checkNewMessages() {
         }
     })
 
-}
+}*/
+
+document.getElementById('custom-mod-button').addEventListener('click',
+    function () {
+        document.querySelector('.bg-modal').style.display = 'flex';
+    });
+
+document.querySelector('.close').addEventListener('click',
+    function () {
+        document.querySelector('.bg-modal').style.display = 'none';
+    });
