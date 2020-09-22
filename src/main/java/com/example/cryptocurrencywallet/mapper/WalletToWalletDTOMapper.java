@@ -1,11 +1,12 @@
 package com.example.cryptocurrencywallet.mapper;
 
 import com.example.cryptocurrencywallet.dto.WalletDTO;
-import com.example.cryptocurrencywallet.model.Wallet;
+//import com.example.cryptocurrencywallet.model.Wallet;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 
+/*
 @Service
 public class WalletToWalletDTOMapper {
 
@@ -26,3 +27,4 @@ public class WalletToWalletDTOMapper {
     }
 
 }
+*/

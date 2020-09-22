@@ -10,7 +10,6 @@ import javax.persistence.*;
 @NoArgsConstructor
 @Getter
 @Setter
-
 @Entity
 @Table(name = "roles")
 public class Role {
@@ -19,9 +18,6 @@ public class Role {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
-
-    // hash code zamiast name ???
-
 
     public Role(String name) {
         this.name = name;

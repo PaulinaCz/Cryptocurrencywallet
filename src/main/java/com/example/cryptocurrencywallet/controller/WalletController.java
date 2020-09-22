@@ -1,7 +1,7 @@
 package com.example.cryptocurrencywallet.controller;
 
 import com.example.cryptocurrencywallet.dto.WalletDTO;
-import com.example.cryptocurrencywallet.service.WalletService;
+//import com.example.cryptocurrencywallet.service.WalletService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Optional;
 import java.util.UUID;
 
+/*
 @RestController
 @RequestMapping("/wallet")
 public class WalletController {
@@ -35,3 +36,4 @@ public class WalletController {
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 }
+*/

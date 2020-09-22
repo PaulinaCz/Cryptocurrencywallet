@@ -1,7 +1,5 @@
 package com.example.cryptocurrencywallet.transactions;
 
-import com.example.cryptocurrencywallet.model.User;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -45,14 +43,14 @@ public class Transaction {
 
     private String executionFailReason;
 
-    @JsonIgnore
+/*    @JsonIgnore
     @ManyToOne(cascade = {CascadeType.PERSIST,
             CascadeType.MERGE,
             CascadeType.DETACH,
             CascadeType.REFRESH},
             fetch = FetchType.LAZY)
 
-    private User user;
+    private User user;*/
 
     private double profit;
 
