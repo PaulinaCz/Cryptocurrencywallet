@@ -28,7 +28,7 @@ public class Wallet{
     private UUID walletId;
 
     @Column(name = "balance")
-    private BigDecimal balance;
+    private BigDecimal balanceUSD;
 
     @OneToOne(mappedBy = "wallet", fetch = FetchType.LAZY,
             cascade = CascadeType.ALL)
@@ -45,7 +45,7 @@ public class Wallet{
     @JoinColumn(name = "wallet_id")
     private List<TransactionHistory> transactionHistories;
 
-    public Wallet(BigDecimal balance) {
-        this.balance = balance;
+    public Wallet(BigDecimal balanceUSD) {
+        this.balanceUSD = balanceUSD;
     }
 }

@@ -1,8 +1,13 @@
 package com.example.cryptocurrencywallet.controller;
 
+import com.example.cryptocurrencywallet.model.User;
+import com.example.cryptocurrencywallet.repository.UserRepository;
 import com.example.cryptocurrencywallet.retriveCoin.model.CryptoCurrency;
 import com.example.cryptocurrencywallet.service.CryptoCoinDetails;
+import com.example.cryptocurrencywallet.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,6 +22,9 @@ public class MainPageController {
     @Autowired
     private CryptoCoinDetails cryptoCoinDetails;
 
+    @Autowired
+    private UserService userService;
+
     @GetMapping("/login")
     public String login() {
         return "login";
@@ -27,6 +35,7 @@ public class MainPageController {
         List<CryptoCurrency> listOfCrypto = cryptoCoinDetails.getListOfCryptoCurrencies("BTC,ETH,USDT,XRP,BCH,DOT,LINK,BNB,CRO,LTC");
 
         model.addAttribute("cryptoCoinDetails", listOfCrypto);
+        model.addAttribute("user", userService.getLoggedUser());
         return "mainUserPage";
     }
 
@@ -35,4 +44,8 @@ public class MainPageController {
         return "mainAdminPage";
 
     }
+
+private get
 }
+
+
