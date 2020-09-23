@@ -8,4 +8,6 @@ import org.springframework.stereotype.Service;
 @Service
 public interface UserService {
     User save(UserRegistrationDTO registrationDTO);
+
+    User getLoggedUser();
 }

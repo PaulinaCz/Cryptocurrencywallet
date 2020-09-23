@@ -230,13 +230,7 @@
                                         <option selected disabled>Select Currency</option>
                                         <option th:each="coin : ${cryptoCoinDetails}" th:value="${coin.rank}" th:text="${coin.name}"></option>
                                     </select>
-                                    <select name="account" class="form-control">
-                                        <option selected disabled>Deposit to:</option>
-                                        <option>Product 1</option>
-                                        <option>Product 2</option>
-                                        <option>Product 3</option>
-                                        <option>Product 4</option>
-                                    </select></div>
+                                    <input type="text"
                             </form>
                         </div>
                     </div>
