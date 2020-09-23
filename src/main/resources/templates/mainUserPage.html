@@ -7,6 +7,7 @@
           integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous"/>
     <!-- CSS -->
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="modal.css">
     <!-- jQuery library -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <!-- Popper JS -->
@@ -14,7 +15,6 @@
 
     <!-- Latest compiled JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
 </head>
 <body>
 
@@ -55,10 +55,14 @@
                             <li class="nav-item active"><a class="nav-link"  th:text="'Balance: ' + ${#numbers.formatDecimal(loggedUserBalance, 1, 'WHITESPACE',2, 'COMMA')} + ' PLN'">Balance: [nominal]</a></li>
                             <li class="nav-item active"><a class="nav-link"  th:text="'Blocked: ' + ${#numbers.formatDecimal(loggedUserBlockedAmount, 1, 'WHITESPACE', 2, 'COMMA')} + ' PLN'">Blocked: [nominal]</a></li>
                             <li class="nav-item active"><a class="nav-link"  th:text="'Hello ' + ${loggedUser}+'!'">Welcome: [username]</a></li>
+
+                                   class="btn btn-outline-light my-2 my-sm-0"
                         </ul>-->
             <div class="col ">
                 <a th:href="@{'/logout'}" class="btn btn-outline-light my-2 my-sm-0">Log out</a>
-                <a href="#" class="btn btn-outline-light my-2 my-sm-0" id="custom-mod-button">Trade</a>
+                <button type="button" data-toggle="modal" data-target="#myModal" class="btn btn-outline-light py-2 px-4">
+                    Trade
+                </button>
             </div>
         </form>
     </div>
@@ -108,20 +112,246 @@
 </div>
 
 <!--        MODAL POPUP FOR BUY/SELL        -->
-<div class="bg-modal">
-    <div class="modal-content">
-
-        <div class="close">+</div>
-        <img src="https://s3.us-east-2.amazonaws.com/nomics-api/static/images/currencies/btc.svg" width="100px" height="100px">
-
-    <form action = "">
-        <input type="text" placeholder="coin">
-        <input type="text" placeholder="amount">
-        <a href="#" class="button-modal">Submit</a>
-    </form>
+<!--<div class="bg-modal" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"-->
+<!--aria-hidden="true">-->
+<!--<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+     aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">BUY</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <div class="modal-body">
+                    <form action="">
+                        <input type="text" placeholder="coin">
+                        <input type="text" placeholder="amount">
+                        <a href="#" class="button-modal">BUY</a>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
     </div>
 
+</div>-->
+<!--        MODAL POPUP FOR BUY/SELL        -->
+<!--<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+     aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="tabs" id="tab01">
+                    <h6 class="text-muted">BUY</h6>
+                </div>
+                <div class="tabs active" id="tab02">
+                    <h6 class="font-weight-bold">SELL</h6>
+                </div>
+                &lt;!&ndash;                <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>&ndash;&gt;
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body text-center">
+                <form action="post">
+                    <input type="text" placeholder="coin">
+                    <input type="text" placeholder="amount">
+                    <a href="#" class="btn btn-secondary mx-auto">BUY</a>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>-->
+
+<!--<div class="container">
+    <div class='multitab-section'>
+        <ul class='multitab-widget multitab-widget-content-tabs-id'>
+            <li class='multitab-tab'><a href='#multicolumn-widget-id1'>Popular</a></li>
+            <li class='multitab-tab'><a href='#multicolumn-widget-id2'>Tags</a></li>
+            <li class='multitab-tab'><a href='#multicolumn-widget-id3'>Archive</a></li>
+        </ul>
+        <div class='multitab-widget-content multitab-widget-content-widget-id' id='multicolumn-widget-id1'>
+      <span class='sidebar' id='sidebartab1' preferred='yes'>
+        <p>Isi konten widget tab 1
+            </br>
+            </br>
+            Bisa sobat isi dengan widget apa saja, misal widget popular post, label, arsip, dll.</br>
+      </span>
+        </div>
+        <div class='multitab-widget-content multitab-widget-content-widget-id' id='multicolumn-widget-id2'>
+      <span class='sidebar' id='sidebartab2' preferred='yes'>
+        <p>Isi konten widget tab 2
+            </br>
+            </br>
+            Bisa sobat isi dengan widget apa saja, misal widget popular post, label, arsip, dll.</br>
+      </span>
+        </div>
+        <div class='-content multitab-widget-content-widget-id' id='multicolumn-widget-id3'>
+      <span class='sidebar' id='sidebartab3' preferred='yes'>
+        <p>Isi konten widget tab 3
+            </br>
+            </br>
+            Bisa sobat isi dengan widget apa saja, misal widget popular post, label, arsip, dll.</br>
+      </span>
+        </div>
+    </div>
+</div>-->
+
+
+<!-- Modal-->
+<div id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true"
+     class="modal fade text-left">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header justify-content-center">
+                <div class="row">
+                    <div class="tabs" id="tab01">
+                        <h6 class="text-muted">BUY</h6>
+                    </div>
+                    <div class="tabs active" id="tab02">
+                        <h6 class="font-weight-bold">SELL</h6>
+                    </div>
+                </div>
+            </div>
+            <div class="line"></div>
+            <div class="modal-body p-0">
+                <fieldset id="tab011">
+                    <div class="bg-light">
+                        <div class="">
+                            <h5 class="text-center mb-4 mt-0 pt-4">BUY</h5>
+                        </div>
+                        <div class="">
+                            <form  action="" class="form-inline justify-content-center">
+                                <div class="form-group pb-5 px-3">
+                                    <select name="account" class="form-control">
+                                        <option selected disabled>Select Currency</option>
+                                        <option th:each="coin : ${cryptoCoinDetails}" th:value="${coin.rank}" th:text="${coin.name}"></option>
+                                    </select>
+                                    <select name="account" class="form-control">
+                                        <option selected disabled>Deposit to:</option>
+                                        <option>Product 1</option>
+                                        <option>Product 2</option>
+                                        <option>Product 3</option>
+                                        <option>Product 4</option>
+                                    </select></div>
+                            </form>
+                        </div>
+                    </div>
+                </fieldset>
+                <fieldset class="show" id="tab021">
+                    <div class="bg-light">
+                        <div class="">
+                            <h5 class="text-center mb-4 mt-0 pt-4">SELL</h5>
+                        </div>
+                        <div class="">
+                            <form action="" class="form-inline justify-content-center">
+                                <div class="form-group pb-5 px-3">
+                                    <select name="account" class="form-control">
+                                        <option selected disabled>Select Currency</option>
+                                        <option>Product 1</option>
+                                        <option>Product 2</option>
+                                        <option>Product 3</option>
+                                        <option>Product 4</option>
+                                    </select>
+                                    <select name="account" class="form-control">
+                                        <option selected disabled>Deposit to:</option>
+                                        <option>Product 1</option>
+                                        <option>Product 2</option>
+                                        <option>Product 3</option>
+                                        <option>Product 4</option>
+                                    </select></div>
+                            </form>
+                        </div>
+                    </div>
+                </fieldset>
+                <fieldset id="tab031">
+                    <div class="bg-light">
+                        <h5 class="text-center mb-4 mt-0 pt-4">Communities</h5>
+                        <form>
+                            <div class="form-group pb-5 px-3 row justify-content-center">
+                                <button type="button" class="btn btn-primary">New Community +</button>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="px-3">
+                        <div class="border border-1 box">
+                            <h5>Community 1</h5>
+                            <p class="text-muted mb-1">Members : <strong>27</strong></p>
+                        </div>
+                        <div class="border border-1 box">
+                            <h5>Community 2</h5>
+                            <p class="text-muted mb-1">Members : <strong>16</strong></p>
+                        </div>
+                    </div>
+                </fieldset>
+                <fieldset id="tab041">
+                    <div class="bg-light">
+                        <h5 class="text-center mb-4 mt-0 pt-4">Education</h5>
+                        <form>
+                            <div class="form-group pb-2 px-3"><input type="text"
+                                                                     placeholder="Enter College Name"
+                                                                     class="form-control"></div>
+                            <div class="form-group row pb-2 px-3">
+                                <div class="col-6"><input type="text" placeholder="Percentage"
+                                                          class="form-control"></div>
+                                <div class="col-6"><input type="text" placeholder="Grade" class="form-control">
+                                </div>
+                            </div>
+                            <div class="form-group px-3 pb-2"><label class="form-control-label">
+                                <h6>What are you good at ?</h6>
+                            </label>
+                                <div class="custom-control custom-checkbox"><input class="custom-control-input"
+                                                                                   id="option1" type="checkbox"
+                                                                                   value=""> <label
+                                        class="custom-control-label" for="option1">Web Development</label></div>
+                                <div class="custom-control custom-checkbox"><input class="custom-control-input"
+                                                                                   id="option2" type="checkbox"
+                                                                                   value=""> <label
+                                        class="custom-control-label" for="option2">Data Structures &
+                                    Algorithms</label></div>
+                                <div class="custom-control custom-checkbox"><input class="custom-control-input"
+                                                                                   id="option3" type="checkbox"
+                                                                                   value=""> <label
+                                        class="custom-control-label" for="option3">Android Development</label>
+                                </div>
+                                <div class="custom-control custom-checkbox"><input class="custom-control-input"
+                                                                                   id="option4" type="checkbox"
+                                                                                   value=""> <label
+                                        class="custom-control-label" for="option4">Blockchain</label></div>
+                                <div class="custom-control custom-checkbox"><input class="custom-control-input"
+                                                                                   id="option5" type="checkbox"
+                                                                                   value=""> <label
+                                        class="custom-control-label" for="option5">Machine Learning
+                                    Algorithms</label></div>
+                            </div>
+                            <div class="form-group pb-5 row justify-content-center">
+                                <button type="button" class="btn btn-primary px-3">Submit</button>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="px-3">
+                        <h6 class="pt-3 pb-3 mb-4 border-bottom"><span class="fa fa-rocket"></span> Trending
+                            Technologies</h6>
+                        <h6 class="text-primary pb-2"><a href="#">Augmented Reality and Virtual Reality</a></h6>
+                        <h6 class="text-primary pb-2"><a href="#">Angular and React</a></h6>
+                        <h6 class="text-primary pb-2"><a href="#">Big Data and Hadoop</a></h6>
+                        <h6 class="text-primary pb-4"><a href="#">Internet of Things (IoT)</a></h6>
+                    </div>
+                </fieldset>
+            </div>
+            <div class="line"></div>
+            <div class="modal-footer d-flex flex-column justify-content-center border-0">
+                <p class="text-muted">Can't find what you're looking for?</p>
+                <button type="button" class="btn btn-primary">Contact Support Team</button>
+            </div>
+        </div>
+    </div>
 </div>
+
+
 <script src="app.js"></script>
 </body>
 </html>
