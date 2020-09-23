@@ -30,3 +30,7 @@ $(document).ready(function(){
         });
     });
 });
+
+document.getElementById("homeButton").onclick = function () {
+location.href = "/logout";
+};

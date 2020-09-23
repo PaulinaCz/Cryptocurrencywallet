@@ -59,7 +59,7 @@
                                    class="btn btn-outline-light my-2 my-sm-0"
                         </ul>-->
             <div class="col ">
-                <a th:href="@{'/logout'}" class="btn btn-outline-light my-2 my-sm-0">Log out</a>
+                <button type="button" id="homeButton" class="btn btn-outline-light py-2 px-4">Log out</button>
                 <button type="button" data-toggle="modal" data-target="#myModal" class="btn btn-outline-light py-2 px-4">
                     Trade
                 </button>
@@ -228,9 +228,10 @@
                                 <div class="form-group pb-5 px-3">
                                     <select name="account" class="form-control">
                                         <option selected disabled>Select Currency</option>
-                                        <option th:each="coin : ${cryptoCoinDetails}" th:value="${coin.rank}" th:text="${coin.name}"></option>
+<!--                                        <option th:each="coin : ${cryptoCoinDetails}" th:value="${coin.rank}" th:text="${coin.name}"></option>-->
+                                        <option th:each="coin : ${cryptoCoinDetails}"  th:value="${coin.name}" th:text="${coin.name}"></option>
                                     </select>
-                                    <input type="text"
+                                    <input type="number" id="amount-to-trade"/>
                             </form>
                         </div>
                     </div>
