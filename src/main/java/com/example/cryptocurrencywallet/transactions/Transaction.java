@@ -43,15 +43,6 @@ public class Transaction {
 
     private String executionFailReason;
 
-/*    @JsonIgnore
-    @ManyToOne(cascade = {CascadeType.PERSIST,
-            CascadeType.MERGE,
-            CascadeType.DETACH,
-            CascadeType.REFRESH},
-            fetch = FetchType.LAZY)
-
-    private User user;*/
-
     private double profit;
 
     @Override
