@@ -59,8 +59,9 @@
                                    class="btn btn-outline-light my-2 my-sm-0"
                         </ul>-->
             <div class="col ">
-                <a th:href="@{'/logout'}" class="btn btn-outline-light my-2 my-sm-0">Log out</a>
-                <button type="button" data-toggle="modal" data-target="#myModal" class="btn btn-outline-light py-2 px-4">
+                <button type="button" id="homeButton" class="btn btn-outline-light py-2 px-4">Log out</button>
+                <button type="button" data-toggle="modal" data-target="#myModal"
+                        class="btn btn-outline-light py-2 px-4">
                     Trade
                 </button>
             </div>
@@ -198,6 +199,7 @@
       </span>
         </div>
     </div>
+    pb-5 px-3   <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< form-inline justify-content-center
 </div>-->
 
 
@@ -224,15 +226,28 @@
                             <h5 class="text-center mb-4 mt-0 pt-4">BUY</h5>
                         </div>
                         <div class="">
-                            <form  action="" class="form-inline justify-content-center">
-                                <div class="form-group pb-5 px-3">
-                                    <select name="account" class="form-control">
-                                        <option selected disabled>Select Currency</option>
-                                        <option th:each="coin : ${cryptoCoinDetails}" th:value="${coin.rank}" th:text="${coin.name}"></option>
-                                    </select>
-                                    <input type="text"
+                            <form action="post" class="justify-content-center">
+                                <div class="form-group row justify-content-center ">
+                                    <div class="col-7">
+                                        <select name="account" class="form-control" id="buyForm">
+                                            <option selected disabled>Select Currency</option>
+                                            <option th:each="coin : ${cryptoCoinDetails}" th:value="${coin.price}"
+                                                    th:text="${coin.name}" id="coin-price"></option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group row justify-content-center">
+                                    <div class="col">
+                                        <input type="number" id="buyForm"/>
+                                    </div>
+                                </div>
+                                <input type="submit" id="submit-form-buy" style="display: none"/>
                             </form>
                         </div>
+                    </div>
+                    <div class="line"></div>
+                    <div class="modal-footer d-flex flex-column justify-content-center border-0">
+                        <label for="submit-form-buy" tabindex="0" class="btn btn-outline-primary py-2 px-4">SUBMIT TRANSACTION</label>
                     </div>
                 </fieldset>
                 <fieldset class="show" id="tab021">
@@ -257,8 +272,13 @@
                                         <option>Product 3</option>
                                         <option>Product 4</option>
                                     </select></div>
+                                <input type="submit" id="submit-form-sell" style="display: none"/>
                             </form>
                         </div>
+                    </div>
+                    <div class="line"></div>
+                    <div class="modal-footer d-flex flex-column justify-content-center border-0">
+                        <label for="submit-form-sell" tabindex="0" class="btn btn-outline-primary py-2 px-4">SUBMIT TRANSACTION</label>
                     </div>
                 </fieldset>
                 <fieldset id="tab031">
@@ -289,8 +309,10 @@
                                                                      placeholder="Enter College Name"
                                                                      class="form-control"></div>
                             <div class="form-group row pb-2 px-3">
-                                <div class="col-6"><input type="text" placeholder="Percentage"
-                                                          class="form-control"></div>
+                                <div class="col-6">
+                                    <input type="text" placeholder="Percentage"
+                                           class="form-control">
+                                </div>
                                 <div class="col-6"><input type="text" placeholder="Grade" class="form-control">
                                 </div>
                             </div>
@@ -336,11 +358,7 @@
                     </div>
                 </fieldset>
             </div>
-            <div class="line"></div>
-            <div class="modal-footer d-flex flex-column justify-content-center border-0">
-                <p class="text-muted">Can't find what you're looking for?</p>
-                <button type="button" class="btn btn-primary">Contact Support Team</button>
-            </div>
+
         </div>
     </div>
 </div>
