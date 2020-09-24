@@ -1,5 +1,6 @@
 package com.example.cryptocurrencywallet.controller;
 
+import com.example.cryptocurrencywallet.dto.UserRegistrationDTO;
 import com.example.cryptocurrencywallet.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -24,9 +25,21 @@ public class AccountDetailsController {
 
     }
 
+    @GetMapping
+    public String showUpdateForm(Model model){
+        model.addAttribute("user", new UserRegistrationDTO());
+        return "update";
+    }
+
     @GetMapping(value = "/accountDetails")
     public String getAccountDetailsPage() {
         return "accountDetails";
+    }
+
+    @PutMapping(value = "/updateAccount")
+    public String updateUserAccount(@ModelAttribute("user") UserRegistrationDTO registrationDto) {
+        userService.save(registrationDto);
+        return "redirect:/accountDetails";
     }
 
 }

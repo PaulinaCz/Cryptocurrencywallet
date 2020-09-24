@@ -10,4 +10,6 @@ public interface UserService {
     User save(UserRegistrationDTO registrationDTO);
 
     User getLoggedUser();
+
+    User updateUser(UserRegistrationDTO registrationDTO);
 }

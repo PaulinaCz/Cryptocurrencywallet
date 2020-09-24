@@ -68,7 +68,14 @@
                             <li th:text="'My account balance: ' + ${loggedUserBalance}">My account balance</li>
                             <li th:text="'My coins: ' + ${loggedUserCurrencies}">My coins</li>
                         </ul>
+
+                        <ul class="navbar-nav mr-auto">
+                            <li class="nav-item active">
+                                <a class="nav-link" th:href="@{'/updateAccount'}">Update details</a>
+                            </li>
+                        </ul>
                     </div>
+
                 </div>
                 <div class="tab-pane fade" id="list-profile" role="tabpanel" aria-labelledby="list-profile-list">
                     <div class="card-body">
