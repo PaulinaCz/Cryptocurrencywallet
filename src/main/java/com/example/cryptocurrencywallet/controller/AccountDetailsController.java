@@ -39,7 +39,7 @@ public class AccountDetailsController {
     @PutMapping(value = "/updateAccount")
     public String updateUserAccount(@ModelAttribute("user") UserRegistrationDTO registrationDto) {
         userService.save(registrationDto);
-        return "redirect:/accountDetails";
+        return "accountDetails";
     }
 
 }
