@@ -1,11 +1,11 @@
 package com.example.cryptocurrencywallet.model;
 
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
+import org.hibernate.annotations.NotFound;
+import org.hibernate.annotations.NotFoundAction;
 
 import javax.persistence.*;
+import java.math.BigDecimal;
 import java.util.Set;
 
 @NoArgsConstructor
@@ -31,6 +31,7 @@ public class User {
 
     @OneToOne(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
     @JoinColumn(name = "wallet_id", nullable = false)
+    @NotFound(action = NotFoundAction.IGNORE)
     private Wallet wallet;
 
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
@@ -40,13 +41,15 @@ public class User {
     private Set<Role> roles;
 
     /*      MAPPING FOR UserRegistrationDto     */
-    public User(String firstName, String lastName, String email, String password, Set<Role> roles, Wallet wallet) {
+    public User(String firstName, String lastName, String email, String password, Set<Role> roles) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.password = password;
         this.roles = roles;
-        this.wallet = wallet;
+        this.wallet = new Wallet(new BigDecimal(10000), this);
+//        System.out.println(wallet.getBalanceUSD()+" <<<---- BALANCE");
+//        System.out.println(wallet.getWalletId()+" <<<---- WALLET ID");
     }
 
     /*      MAPPING FOR MyUserDetails     */
@@ -59,8 +62,20 @@ public class User {
         this.password = user.getPassword();
     }
 
-
-
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", username='" + username + '\'' +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                ", active=" + active +
+                ", wallet=" + wallet +
+                ", roles=" + roles +
+                '}';
+    }
 }
 
 

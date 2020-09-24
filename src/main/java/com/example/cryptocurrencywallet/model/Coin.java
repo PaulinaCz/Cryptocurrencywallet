@@ -10,7 +10,7 @@ import java.math.BigDecimal;
 @Setter
 @Entity
 @Table(name = "coin")
-//@AllArgsConstructor
+@AllArgsConstructor
 @NoArgsConstructor
 public class Coin {
 
