@@ -80,6 +80,7 @@
                 <tr>
                     <th scope="col">Rank</th>
                     <th scope="col">Name</th>
+                    <th scope="col"></th>
                     <th scope="col">Price</th>
                     <th scope="col">Market Cap</th>
                     <th scope="col">Volume (24h)</th>
@@ -89,17 +90,18 @@
                 <tbody id="quotationRow">
                 <tr th:each="rate : ${cryptoCoinDetails}" class="active">
                     <td th:text="${rate.rank}">"</td>
-                    <td th:text="${rate.name}">
+                    <td th:text="${rate.name}">"</td>
+                    <td th:src="@{rate.logoUrl}">
                         <div class="row">
-                            <div class="justify-content-between">
-                                <img align="left" alt="coin graphic"
-                                     src="https://s3.us-east-2.amazonaws.com/nomics-api/static/images/currencies/btc.svg"
-                                     th:src="@{rate.logoUrl}"
-                                     class="rounded-circle "
-                                     width="16" height="16"/>
+                            <div class="table-cell">
+
+                                <!--<img align="left" alt="coin graphic"
+                                src="https://s3.us-east-2.amazonaws.com/nomics-api/static/images/currencies/btc.svg"-->
+                                <a class="link link--crypto link--with-icon">
+                                    <img src="https://s3.us-east-2.amazonaws.com/nomics-api/static/images/currencies/btc.svg" alt=""
+                                         class="rounded-circle "
+                                         width="16" height="16"/></a>
                             </div>
-                        </div>
-                    </td>
 
                     <td th:text="${rate.price}">"</td>
                     <td th:text="${rate.marketCap}">"</td>
