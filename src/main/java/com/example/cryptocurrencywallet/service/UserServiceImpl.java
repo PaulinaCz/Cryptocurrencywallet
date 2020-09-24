@@ -7,6 +7,7 @@ import com.example.cryptocurrencywallet.model.User;
 //import com.example.cryptocurrencywallet.model.Wallet;
 import com.example.cryptocurrencywallet.model.Wallet;
 import com.example.cryptocurrencywallet.repository.UserRepository;
+import com.example.cryptocurrencywallet.repository.WalletRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -20,13 +21,15 @@ import java.util.Set;
 public class UserServiceImpl implements UserService {
 
     private final UserRepository userRepository;
+    private final WalletRepository walletRepository;
 
     @Autowired
     private BCryptPasswordEncoder passwordEncoder;
 
     @Autowired
-    public UserServiceImpl(UserRepository userRepository) {
+    public UserServiceImpl(UserRepository userRepository, WalletRepository walletRepository) {
         this.userRepository = userRepository;
+        this.walletRepository = walletRepository;
     }
 
 
@@ -37,8 +40,8 @@ public class UserServiceImpl implements UserService {
                 userRegistrationDTO.getEmail(),
                 passwordEncoder.encode(userRegistrationDTO.getPassword()),
                 Set.of(new Role("ROLE_USER"))
-                , new Wallet(new BigDecimal(10000))
         );
+
         return userRepository.save(user);
     }
 

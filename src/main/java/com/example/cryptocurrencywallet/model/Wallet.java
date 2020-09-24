@@ -3,12 +3,11 @@ package com.example.cryptocurrencywallet.model;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
 
 @Entity
 @Getter
@@ -18,14 +17,9 @@ import java.util.UUID;
 public class Wallet{
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    @GeneratedValue(generator = "UUID")
-    @GenericGenerator(
-            name = "UUID",
-            strategy = "org.hibernate.id.UUIDGenerator"
-    )
-
-    private UUID walletId;
+    private Long walletId;
 
     @Column(name = "balance")
     private BigDecimal balanceUSD;
@@ -45,7 +39,10 @@ public class Wallet{
     @JoinColumn(name = "wallet_id")
     private List<TransactionHistory> transactionHistories;
 
-    public Wallet(BigDecimal balanceUSD) {
+    public Wallet(BigDecimal balanceUSD, User user) {
         this.balanceUSD = balanceUSD;
+        this.myCoins = new ArrayList<>();
+        this.transactionHistories = new ArrayList<>();
+        this.user = user;
     }
 }

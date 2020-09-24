@@ -5,9 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 
 
 @Controller
@@ -18,17 +16,16 @@ public class AccountDetailsController {
     UserService userService;
 
     @ModelAttribute
-    public void saveLoggedUserDetails(Model model){
+    public void saveLoggedUserDetails(Model model) {
         model.addAttribute("loggedUser", userService.getLoggedUser());
         model.addAttribute("loggedUserBalance", userService.getLoggedUser().getWallet().getBalanceUSD());
         model.addAttribute("loggedUserCurrencies", userService.getLoggedUser().getWallet().getMyCoins());
         model.addAttribute("loggedUserTransactionHistory", userService.getLoggedUser().getWallet().getTransactionHistories());
 
-
     }
 
-    @RequestMapping(value = "/accountDetails", method = RequestMethod.GET)
-    public String getAccountDetailsPage(){
+    @GetMapping(value = "/accountDetails")
+    public String getAccountDetailsPage() {
         return "accountDetails";
     }
 

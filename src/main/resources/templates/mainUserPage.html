@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Main Page User View</title>
@@ -20,56 +20,29 @@
 
 <!--    NAVBAR      -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-    <a class="navbar-brand" href="#">Main Page User View</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
-            aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+    <a class="navbar-brand" th:href="@{'/'}">CryptocurrencyWallet</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="navbarNavDropdown">
-        <ul class="navbar-nav">
+
+    <div class="collapse navbar-collapse" id="navbarColor02">
+        <ul class="navbar-nav mr-auto">
+
             <li class="nav-item active">
                 <a class="nav-link" th:href="@{'/'}">Home <span class="sr-only">(current)</span></a>
             </li>
+            <li class="nav-item active"><a class="nav-link">|</a></li>
             <li class="nav-item active">
                 <a class="nav-link" th:href="@{'/accountDetails'}">Account details</a>
             </li>
-            <!--            <li class="nav-item">
-                            <a class="nav-link" href="#">Pricing</a>
-                        </li>-->
-            <!--            <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Dropdown link
-                            </a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                <a class="dropdown-item" href="#">Action</a>
-                                <a class="dropdown-item" href="#">Another action</a>
-                                <a class="dropdown-item" href="#">Something else here</a>
-                            </div>
-                        </li>-->
         </ul>
         <form class="form-inline">
-            <!--            <ul class="navbar-nav mr-auto">
-                            <li class="nav-item active">
-                                <a class="nav-link" th:href="@{'/usersRanking'}">Users ranking</a>
-                            </li>
-                            <li class="nav-item active"><a class="nav-link"  th:text="'Balance: ' + ${#numbers.formatDecimal(loggedUserBalance, 1, 'WHITESPACE',2, 'COMMA')} + ' PLN'">Balance: [nominal]</a></li>
-                            <li class="nav-item active"><a class="nav-link"  th:text="'Blocked: ' + ${#numbers.formatDecimal(loggedUserBlockedAmount, 1, 'WHITESPACE', 2, 'COMMA')} + ' PLN'">Blocked: [nominal]</a></li>
-                            <li class="nav-item active"><a class="nav-link"  th:text="'Hello ' + ${loggedUser}+'!'">Welcome: [username]</a></li>
-
-                                   class="btn btn-outline-light my-2 my-sm-0"
-                        </ul>-->
-            <div class="col ">
-                <a th:href="@{'/logout'}" class="btn btn-outline-light my-2 my-sm-0">Log out</a>
-                <button type="button" data-toggle="modal" data-target="#myModal" class="btn btn-outline-light py-2 px-4">
-                    Trade
-                </button>
-            </div>
+            <a th:href="@{'/logout'}" class="btn btn-outline-light my-2 my-sm-0">Log out</a>
         </form>
     </div>
 </nav>
 
 <!--        CURRENCY VALUE      -->
-<!--<div id="main-content" class="container" th:attr="data-decisionTime=${decisionTime}">-->
 <div id="main-content" class="container">
     <div class="row">
         <div class="col-md-12">
@@ -230,7 +203,8 @@
                                         <option selected disabled>Select Currency</option>
                                         <option th:each="coin : ${cryptoCoinDetails}" th:value="${coin.rank}" th:text="${coin.name}"></option>
                                     </select>
-                                    <input type="text"
+                                    <input type="text">
+                                </div>
                             </form>
                         </div>
                     </div>
@@ -349,3 +323,4 @@
 <script src="app.js"></script>
 </body>
 </html>
+

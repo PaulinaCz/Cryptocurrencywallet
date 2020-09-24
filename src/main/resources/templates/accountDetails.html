@@ -34,7 +34,8 @@
         </ul>
         <form class="form-inline">
             <ul class="navbar-nav mr-auto">
-                <li class="nav-item active"><a class="nav-link"  th:text="'Hello ' + ${loggedUser.username}+'!'">Welcome: [username]</a></li>
+                <li class="nav-item active"><a class="nav-link" th:text="'Hello ' + ${loggedUser.getFirstName()}+'!'">Welcome:
+                    [getFirstName]</a></li>
             </ul>
             <a th:href="@{'/logout'}" class="btn btn-outline-light my-2 my-sm-0">Log out</a>
         </form>
@@ -61,38 +62,41 @@
                         <h3 class="card-title">Account details</h3>
                         <p class="card-text">
                         <ul>
-                            <li th:text="'User name: ' + ${loggedUser.username}">User name</li>
+                            <li th:text="'Name: ' + ${loggedUser.firstName}">User first name</li>
+                            <li th:text="'Last name: ' + ${loggedUser.lastName}">User last name</li>
                             <li th:text="'Email: ' + ${loggedUser.email}">Email</li>
                             <li th:text="'My account balance: ' + ${loggedUserBalance}">My account balance</li>
                             <li th:text="'My coins: ' + ${loggedUserCurrencies}">My coins</li>
                         </ul>
                     </div>
                 </div>
-        <div class="tab-pane fade" id="list-profile" role="tabpanel" aria-labelledby="list-profile-list">
-            <div class="card-body">
-                <h3 class="card-title">Transactions summary</h3>
-                <p class="card-text">
-                <ul>
-                    <li th:text="'All transactions: ' + ${loggedUserTransactionHistory}">All transactions</li>
-                </ul>
-            </div>
-        </div>
-        <div class="tab-pane fade" id="list-messages" role="tabpanel" aria-labelledby="list-messages-list">
-            <div class="card-body">
-                <h3 class="card-title">ABOUT CryptoCurrencyWallet</h3>
-                <p class="card-text">The <b>CryptoCurrencyWallet Platform</b> is a final project showing our Java skills.</p>
-                <p class="card-text">Platform allows you to check current cryptocurrency exchange rate and execute
-                    demonstration trades on crypto currencies market.</p>
-                <p class="card-text"><b>Core functionality:</b>
-                <ul>
-                    <li>Add functionality here</li>
-                </ul>
-                <p><a href="https://github.com/ProjektGrupowyJavalon3" class="card-text">GitHub: <b>https://github.com/ProjektGrupowyJavalon3</b></a>
-            </div>
+                <div class="tab-pane fade" id="list-profile" role="tabpanel" aria-labelledby="list-profile-list">
+                    <div class="card-body">
+                        <h3 class="card-title">Transactions summary</h3>
+                        <p class="card-text">
+                        <ul>
+                            <li th:text="'All transactions: ' + ${loggedUserTransactionHistory}">All transactions</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="list-messages" role="tabpanel" aria-labelledby="list-messages-list">
+                    <div class="card-body">
+                        <h3 class="card-title">ABOUT CryptoCurrencyWallet</h3>
+                        <p class="card-text">The <b>CryptoCurrencyWallet Platform</b> is a final project showing our
+                            Java skills.</p>
+                        <p class="card-text">Platform allows you to check current cryptocurrency exchange rate and
+                            execute
+                            demonstration trades on crypto currencies market.</p>
+                        <p class="card-text"><b>Core functionality:</b>
+                        <ul>
+                            <li>Add functionality here</li>
+                        </ul>
+                        <p><a href="https://github.com/ProjektGrupowyJavalon3" class="card-text">GitHub: <b>https://github.com/ProjektGrupowyJavalon3</b></a>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-</div>
 </div>
 
 </body>

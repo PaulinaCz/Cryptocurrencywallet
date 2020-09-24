@@ -1,11 +1,11 @@
 package com.example.cryptocurrencywallet.model;
 
-import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.math.BigDecimal;
 import java.util.Set;
 
 @NoArgsConstructor
@@ -40,13 +40,13 @@ public class User {
     private Set<Role> roles;
 
     /*      MAPPING FOR UserRegistrationDto     */
-    public User(String firstName, String lastName, String email, String password, Set<Role> roles, Wallet wallet) {
+    public User(String firstName, String lastName, String email, String password, Set<Role> roles) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.password = password;
         this.roles = roles;
-        this.wallet = wallet;
+        this.wallet = new Wallet(new BigDecimal(10000), this);
     }
 
     /*      MAPPING FOR MyUserDetails     */
