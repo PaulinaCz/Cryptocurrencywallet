@@ -69,6 +69,8 @@
     </div>
 </nav>
 
+
+<!--src="https://s3.us-east-2.amazonaws.com/nomics-api/static/images/currencies/btc.svg"-->
 <!--        CURRENCY VALUE      -->
 <!--<div id="main-content" class="container" th:attr="data-decisionTime=${decisionTime}">-->
 <div id="main-content" class="container">
@@ -79,7 +81,9 @@
                 <thead>
                 <tr>
                     <th scope="col">Rank</th>
-                    <th scope="col"></th>
+
+                    <th scope="col" width="1%"></th>
+
                     <th scope="col">Name</th>
                     <th scope="col">Price</th>
                     <th scope="col">Market Cap</th>
@@ -94,15 +98,15 @@
                     <td>
                         <img alt="coin graphic"
                              th:src="@{${rate.logoUrl}}"
-                             class="rounded-circle "
-                             width="32px" height="32px" src=""/>
-                    </td>
 
-                    <td th:text="${rate.name}">"</td>
-                    <td th:text="${rate.price}">"</td>
-                    <td th:text="${rate.marketCap}">"</td>
-                    <td th:text="${rate._1d.volume}">"</td>
-                    <td th:text="${rate.circulatingSupply}">"</td>
+                             class="rounded-circle" width="32px" height="32px"/>
+                    </td>
+                    <td th:text="${rate.name}"></td>
+                    <td>$<span th:text="${#numbers.formatDecimal(rate.price, 0, 'COMMA', 4, 'POINT')}">10.00</span></td>
+                    <td><span th:text="${#numbers.formatDecimal(rate.marketCap, 0, 'COMMA', 2, 'POINT')}">10.00</span></td>
+                    <td><span th:text="${#numbers.formatDecimal(rate._1d.volume, 0, 'COMMA', 2, 'POINT')}">10.00</span></td>
+                    <td><span th:text="${#numbers.formatDecimal(rate.circulatingSupply, 0, 'COMMA', 2, 'POINT')}">10.00</span></td>
+
                 </tr>
                 </tbody>
             </table>
@@ -218,6 +222,7 @@
             </div>
             <div class="line"></div>
             <div class="modal-body p-0">
+                <input type="hidden" th:value="${loggedUserBalance}" id="user-transaction-balance"/>
                 <fieldset id="tab011">
                     <div class="bg-light">
                         <div class="">
@@ -227,7 +232,7 @@
                             <form action="post" class="justify-content-center">
                                 <div class="form-group row justify-content-center ">
                                     <div class="col-7">
-                                        <select name="account" class="form-control" id="buyForm">
+                                        <select name="account" class="form-control">
                                             <option selected disabled>Select Currency</option>
                                             <option th:each="coin : ${cryptoCoinDetails}" th:value="${coin.price}"
                                                     th:text="${coin.name}" id="coin-price"></option>
@@ -245,7 +250,9 @@
                     </div>
                     <div class="line"></div>
                     <div class="modal-footer d-flex flex-column justify-content-center border-0">
-                        <label for="submit-form-buy" tabindex="0" class="btn btn-outline-primary py-2 px-4">SUBMIT
+
+                        <label for="submit-form-buy" onclick="buyTradeWithValidation()" tabindex="0"
+                               class="btn btn-outline-primary py-2 px-4">SUBMIT
                             TRANSACTION</label>
                     </div>
                 </fieldset>

@@ -1,6 +1,6 @@
-$(document).ready(function(){
+$(document).ready(function () {
 
-    $(".tabs").click(function(){
+    $(".tabs").click(function () {
 
         $(".tabs").removeClass("active");
         $(".tabs h6").removeClass("font-weight-bold");
@@ -18,7 +18,7 @@ $(document).ready(function(){
         $(next_fs).addClass("show");
 
         current_fs.animate({}, {
-            step: function() {
+            step: function () {
                 current_fs.css({
                     'display': 'none',
                     'position': 'relative'
@@ -32,5 +32,29 @@ $(document).ready(function(){
 });
 
 document.getElementById("homeButton").onclick = function () {
-location.href = "/logout";
+    location.href = "/logout";
 };
+
+function buyTradeWithValidation() {
+    if (document.getElementById("buyForm").value *
+        document.getElementById("coin-price").value >
+        document.getElementById("user-transaction-balance").value) ;
+    alert("You do not have enough money to proceed with this transaction. "
+        + " Your balance is: " + document.getElementById("user-transaction-balance").value);
+}
+
+// var numToFormat = document.getElementsByClassName("number-formatter");
+// numToFormat.addEventListener('cli')
+
+function numberFormatter(num) {
+    this.value = getFormattedNumber(num);
+}
+
+function getFormattedNumber(num) {
+    if (num == "-") {
+        return "";
+    }
+    var n = Number(num);
+    var value = n.toLocaleString("en");
+    return value;
+}

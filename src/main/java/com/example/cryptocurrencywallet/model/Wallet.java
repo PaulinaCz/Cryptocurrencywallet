@@ -3,29 +3,32 @@ package com.example.cryptocurrencywallet.model;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
 
 @Entity
 @Getter
 @Setter
 @NoArgsConstructor
 @Table(name = "wallet")
-public class Wallet{
+public class Wallet {
 
-    @Id
-    @Column(name = "id")
+    /*@Id
     @GeneratedValue(generator = "UUID")
     @GenericGenerator(
             name = "UUID",
             strategy = "org.hibernate.id.UUIDGenerator"
     )
+    @Column(name = "id", updatable = false, nullable = false)
+    private UUID walletId;*/
 
-    private UUID walletId;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id", updatable = false, nullable = false)
+    private int walletId;
 
     @Column(name = "balance")
     private BigDecimal balanceUSD;
@@ -34,9 +37,6 @@ public class Wallet{
             cascade = CascadeType.ALL)
     private User user;
 
-    /*
-    *
-    * */
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name = "wallet_id")
     private List<Coin> myCoins;
@@ -45,7 +45,19 @@ public class Wallet{
     @JoinColumn(name = "wallet_id")
     private List<TransactionHistory> transactionHistories;
 
-    public Wallet(BigDecimal balanceUSD) {
+    public Wallet(BigDecimal balanceUSD, User user) {
         this.balanceUSD = balanceUSD;
+        this.myCoins = new ArrayList<>();
+        this.transactionHistories = new ArrayList<>();
+        this.user = user;
+        System.out.println("><><<><><><< " + walletId);
+    }
+
+    @Override
+    public String toString() {
+        return "Wallet{" +
+                "walletId=" + walletId +
+                ", balanceUSD=" + balanceUSD +
+                '}';
     }
 }
