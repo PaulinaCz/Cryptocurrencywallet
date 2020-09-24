@@ -44,8 +44,6 @@ public class MainPageController {
         return "mainAdminPage";
 
     }
-
-private get
 }
 
 
