@@ -17,7 +17,7 @@
 <body>
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-    <a class="navbar-brand" th:href="@{'/'}">Forex trading platform</a>
+    <a class="navbar-brand" th:href="@{'/'}">CryptoCurrency platform</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02"
             aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -28,21 +28,70 @@
             <li class="nav-item active">
                 <a class="nav-link" th:href="@{'/'}">Home <span class="sr-only">(current)</span></a>
             </li>
-<!--            <li class="nav-item dropdown active">
-                <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">
-                    Transactions
-                </a>
-                <div class="dropdown-menu">
-                    <a class="dropdown-item" th:href="@{'/opentransactions'}">Open transactions</a>
-                    <a class="dropdown-item" th:href="@{'/closedtransactions'}">Closed transactions</a>
-                </div>
-            </li>-->
             <li class="nav-item active">
                 <a class="nav-link" th:href="@{'/accountDetails'}">Account details</a>
             </li>
         </ul>
+        <form class="form-inline">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active"><a class="nav-link"  th:text="'Hello ' + ${loggedUser.username}+'!'">Welcome: [username]</a></li>
+            </ul>
+            <a th:href="@{'/logout'}" class="btn btn-outline-light my-2 my-sm-0">Log out</a>
+        </form>
     </div>
 </nav>
+
+<div id="main-content" class="container">
+    <hr>
+    <div class="row">
+        <div class="col-4">
+            <div class="list-group" id="list-tab" role="tablist">
+                <a class="list-group-item list-group-item-action active" id="list-home-list" data-toggle="list"
+                   href="#list-home" role="tab" aria-controls="home">Account details</a>
+                <a class="list-group-item list-group-item-action" id="list-profile-list" data-toggle="list"
+                   href="#list-profile" role="tab" aria-controls="profile">Transactions summary</a>
+                <a class="list-group-item list-group-item-action" id="list-messages-list" data-toggle="list"
+                   href="#list-messages" role="tab" aria-controls="messages">ABOUT CryptoCurrencyWallet</a>
+            </div>
+        </div>
+        <div class="col-8">
+            <div class="tab-content" id="nav-tabContent">
+                <div class="tab-pane fade show active" id="list-home" role="tabpanel" aria-labelledby="list-home-list">
+                    <div class="card-body">
+                        <h3 class="card-title">Account details</h3>
+                        <p class="card-text">
+                        <ul>
+                            <li th:text="'User name: ' + ${loggedUser.username}">User name</li>
+                            <li th:text="'Email: ' + ${loggedUser.email}">Email</li>
+                        </ul>
+                    </div>
+                </div>
+        <div class="tab-pane fade" id="list-profile" role="tabpanel" aria-labelledby="list-profile-list">
+            <div class="card-body">
+                <h3 class="card-title">Transactions summary</h3>
+                <p class="card-text">
+                <ul>
+                    <li th:text="'All transactions: ' + ${loggedUserTransactionHistory}">All transactions</li>
+                </ul>
+            </div>
+        </div>
+        <div class="tab-pane fade" id="list-messages" role="tabpanel" aria-labelledby="list-messages-list">
+            <div class="card-body">
+                <h3 class="card-title">ABOUT CryptoCurrencyWallet</h3>
+                <p class="card-text">The <b>CryptoCurrencyWallet Platform</b> is a final project showing our Java skills.</p>
+                <p class="card-text">Platform allows you to check current cryptocurrency exchange rate and execute
+                    demonstration trades on crypto currencies market.</p>
+                <p class="card-text"><b>Core functionality:</b>
+                <ul>
+                    <li>Add functionality here</li>
+                </ul>
+                <p><a href="https://github.com/mlipski00/ForeignExchangePlatform" class="card-text">GitHub: <b>https://github.com/ProjektGrupowyJavalon3</b></a>
+            </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
 
 </body>
 </html>
