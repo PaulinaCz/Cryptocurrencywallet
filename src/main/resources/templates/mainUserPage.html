@@ -81,7 +81,9 @@
                 <thead>
                 <tr>
                     <th scope="col">Rank</th>
+
                     <th scope="col" width="1%"></th>
+
                     <th scope="col">Name</th>
                     <th scope="col">Price</th>
                     <th scope="col">Market Cap</th>
@@ -96,6 +98,7 @@
                     <td>
                         <img alt="coin graphic"
                              th:src="@{${rate.logoUrl}}"
+
                              class="rounded-circle" width="32px" height="32px"/>
                     </td>
                     <td th:text="${rate.name}"></td>
@@ -103,6 +106,7 @@
                     <td><span th:text="${#numbers.formatDecimal(rate.marketCap, 0, 'COMMA', 2, 'POINT')}">10.00</span></td>
                     <td><span th:text="${#numbers.formatDecimal(rate._1d.volume, 0, 'COMMA', 2, 'POINT')}">10.00</span></td>
                     <td><span th:text="${#numbers.formatDecimal(rate.circulatingSupply, 0, 'COMMA', 2, 'POINT')}">10.00</span></td>
+
                 </tr>
                 </tbody>
             </table>
@@ -246,6 +250,7 @@
                     </div>
                     <div class="line"></div>
                     <div class="modal-footer d-flex flex-column justify-content-center border-0">
+
                         <label for="submit-form-buy" onclick="buyTradeWithValidation()" tabindex="0"
                                class="btn btn-outline-primary py-2 px-4">SUBMIT
                             TRANSACTION</label>
