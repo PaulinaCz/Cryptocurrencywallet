@@ -31,10 +31,6 @@ $(document).ready(function () {
     });
 });
 
-document.getElementById("homeButton").onclick = function () {
-    location.href = "/logout";
-};
-
 function buyTradeWithValidation() {
 
     if ((document.getElementById("buyForm").value *
