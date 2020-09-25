@@ -36,16 +36,24 @@
             <form th:action="@{/update}" method="post" th:object="${user}">
 
                 <label for="firstName">First name:</label><br>
-                <input type="text" input id="firstName" class="form-control" th:field="*{firstName}"><br>
+                <input type="text" input id="firstName" class="form-control" th:field="*{firstName}"
+                       pattern="[A-Za-z]{3,}"
+                       title="Name must consist at least 3 letters"
+                       required autofocus="autofocus"/><br>
 
                 <label for="surname">Last name:</label><br>
-                <input type="text" id="surname" class="form-control" th:field="*{lastName}"><br><br>
+                <input type="text" id="surname" class="form-control" th:field="*{lastName}"
+                       pattern="[A-Za-z]{3,}"
+                       title="Surname must consist at least 3 letters"
+                       required autofocus="autofocus"/><br><br>
 
                 <label for="email">Email:</label><br>
-                <input type="text" id="email" class="form-control" th:field="*{email}"><br><br>
+                <input type="text" id="email" class="form-control" type="email" th:field="*{email}"><br><br>
 
                 <label for="password">Password:</label><br>
-                <input type="password" id="password" class="form-control" th:field="*{password}"><br><br>
+                <input type="password" id="password" class="form-control" th:field="*{password}"
+                       pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"
+                       required autofocus="autofocus"><br><br>
 
                 <div class="form-group ">
                     <div class="row">
