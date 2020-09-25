@@ -54,7 +54,7 @@
                         </ul>-->
             <div class="col ">
                 <button type="button" data-toggle="modal" data-target="#myModal"
-                        class="btn btn-outline-light py-2 px-4">
+                        class="btn btn-outline-light py-2 px-4" onclick="showCurrentDetails()" >
                     Trade
                 </button>
             </div>
@@ -211,10 +211,10 @@
         <div class="modal-content">
             <div class="modal-header justify-content-center">
                 <div class="row">
-                    <div class="tabs" id="tab01">
+                    <div class="tabs" id="tab01" onclick="showCurrentDetails()">
                         <h6 class="text-muted">BUY</h6>
                     </div>
-                    <div class="tabs active" id="tab02">
+                    <div class="tabs active" id="tab02" onclick="showCurrentDetails()">
                         <h6 class="font-weight-bold">SELL</h6>
                     </div>
                 </div>
@@ -224,35 +224,34 @@
                 <input type="hidden" th:value="${loggedUserBalance}" id="user-transaction-balance"/>
                 <fieldset id="tab011">
                     <div class="bg-light">
-                        <div class="">
-                            <h5 class="text-center mb-4 mt-0 pt-4">BUY</h5>
+                        <div id="output">
+                            <p id="output-value" class="text-center mb-4 mt-0 pt-4">$</p>
                         </div>
                         <div class="">
-                            <form action="post" class="justify-content-center">
+                            <div class="justify-content-center">
                                 <div class="form-group row justify-content-center ">
                                     <div class="col-7">
-                                        <select name="account" class="form-control">
+                                        <select name="account" class="form-control" id="coin-price">
                                             <option selected disabled>Select Currency</option>
                                             <option th:each="coin : ${cryptoCoinDetails}" th:value="${coin.price}"
-                                                    th:text="${coin.name}" id="coin-price"></option>
+                                                    th:text="${coin.name}" id="nameTag"  onclick="showCurrentDetails()"></option>
                                         </select>
                                     </div>
                                 </div>
                                 <div class="form-group row justify-content-center">
-                                    <div class="col">
-                                        <input type="number" id="buyForm"/>
+                                    <div class="col" id="theForm">
+                                        <input type="text" id="buyForm" onclick="showCurrentDetails()"/>
                                     </div>
                                 </div>
-                                <input type="submit" id="submit-form-buy" style="display: none"/>
-                            </form>
+                            </div>
                         </div>
                     </div>
                     <div class="line"></div>
                     <div class="modal-footer d-flex flex-column justify-content-center border-0">
 
-                        <label for="submit-form-buy" onclick="buyTradeWithValidation()" tabindex="0"
+                        <button onclick="buyTradeWithValidation()" tabindex="0"
                                class="btn btn-outline-primary py-2 px-4">SUBMIT
-                            TRANSACTION</label>
+                            TRANSACTION</button>
                     </div>
                 </fieldset>
                 <fieldset class="show" id="tab021">
@@ -369,7 +368,24 @@
     </div>
 </div>
 
+<div class="modal fade" id="tradeResultModal" role="dialog" data-keyboard="false" data-backdrop="static">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-body">
+                <p>Transaction summary:</p>
+                <span id="tradeResultTRX"></span>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal" onclick="reloadPage()">Close
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
 
 <script src="app.js"></script>
+<script src="tradeAjax.js"></script>
 </body>
 </html>
