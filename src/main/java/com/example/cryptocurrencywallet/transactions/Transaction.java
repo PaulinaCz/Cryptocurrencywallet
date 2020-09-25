@@ -1,5 +1,6 @@
 package com.example.cryptocurrencywallet.transactions;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -20,7 +21,7 @@ public class Transaction {
 
     private long id;
 
-    private String instrument;
+    private String name;
 
     @CreationTimestamp
     private Date tradeDateTime;
@@ -32,7 +33,7 @@ public class Transaction {
     private boolean isClosed;
 
     private Date closedDateTime;
-
+    @JsonFormat(shape = JsonFormat.Shape.STRING)
     private double price;
 
     private double closedPrice;
@@ -58,7 +59,7 @@ public class Transaction {
     public String toString() {
         return "Transaction{" +
                 "id" + id +
-                ", instrument='" + instrument + '\'' +
+                ", instrument='" + name + '\'' +
                 ", tradeDateTime=" + tradeDateTime +
                 ", amount=" + amount +
                 ", amountGBP=" + amountGBP +

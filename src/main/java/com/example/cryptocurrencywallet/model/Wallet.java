@@ -48,7 +48,7 @@ public class Wallet {
     public Wallet(BigDecimal balanceUSD, User user) {
         this.balanceUSD = balanceUSD;
         this.myCoins = new ArrayList<>();
-        this.transactionHistories = new ArrayList<>();
+//        this.transactionHistories = new ArrayList<>();
         this.user = user;
         System.out.println("><><<><><><< " + walletId);
     }

@@ -36,19 +36,24 @@ document.getElementById("homeButton").onclick = function () {
 };
 
 function buyTradeWithValidation() {
-    if (document.getElementById("buyForm").value *
-        document.getElementById("coin-price").value >
-        document.getElementById("user-transaction-balance").value) ;
-    alert("You do not have enough money to proceed with this transaction. "
-        + " Your balance is: " + document.getElementById("user-transaction-balance").value);
-}
 
+    if ((document.getElementById("buyForm").value *
+        document.getElementById("coin-price").value) >
+        document.getElementById("user-transaction-balance").value) {
+        alert("You do not have enough funds to proceed with this transaction. "
+            + "\nYour balance is: " + document.getElementById("user-transaction-balance").value);
+    }
+    buyTrade();
+}
+function showCurrentDetails(){
+    console.log(document.getElementById("buyForm").value + " <<< user input");
+    console.log(document.getElementById("coin-price").value+ " <<< coin price");
+    console.log(document.getElementById("user-transaction-balance").value + " <<< user balance");
+}
 // var numToFormat = document.getElementsByClassName("number-formatter");
 // numToFormat.addEventListener('cli')
 
-function numberFormatter(num) {
-    this.value = getFormattedNumber(num);
-}
+
 
 function getFormattedNumber(num) {
     if (num == "-") {
@@ -58,3 +63,51 @@ function getFormattedNumber(num) {
     var value = n.toLocaleString("en");
     return value;
 }
+function reverseNumberFormat(num) {
+    return Number(num.replace(/,/g, ""));
+}
+
+function getSelectedCoinName() {
+    var sel = document.getElementById("coin-price");
+    return sel.options[sel.selectedIndex].text;
+}
+
+function printOutput(num) {
+    if (num == "") {
+        document.getElementById("output-value").innerText = num;
+    } else {
+        document.getElementById("output-value").innerText = getFormattedNumber(num);
+    }
+}
+
+var numOne = document.getElementById("buyForm");
+var numTwo = document.getElementById("coin-price");
+var sum = document.getElementById("output-value");
+
+numOne.addEventListener("input", add);
+numTwo.addEventListener("input", add);
+
+function add(){
+    var one = numOne.value;
+    var two = numTwo.value;
+    if (!isNaN((one*two))){
+        sum.innerText ='$'+ one*two;
+    } else {
+        sum.innerText = "Enter number!"
+    }
+}
+// var number = document.getElementById("buyForm");
+// number.addEventListener("input", function(ev){
+//     console.log(ev.type, ev.target);
+//     let target = ev.currentTarget;
+//     let tag = target.tagName;
+//     let char = ev.char || ev.charCode || ev.which;
+//     let s = String.fromCharCode(char);
+//     printOutput(s);
+// })
+
+/*
+var output = getOutput();
+if (output != NaN){
+    output = output+this.id;
+    printOutput(output);*/

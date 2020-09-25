@@ -9,6 +9,7 @@ import java.math.BigDecimal;
 @Getter
 @Setter
 @Entity
+@ToString
 @Table(name = "coin")
 @AllArgsConstructor
 @NoArgsConstructor
@@ -18,6 +19,8 @@ public class Coin {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private long id;
+    @Column(name = "name")
+    private String coinName;
     @Column(name = "logo_url")
     private String logoUrl;
     @Column(name = "amount")
