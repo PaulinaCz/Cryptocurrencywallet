@@ -32,7 +32,7 @@ public class UpdateAccountDetailsController {
         User updatedUser = userService.getLoggedUser();
 
         userService.update(updatedUser, registrationDTO);
-        return "mainUserPage";
+        return "redirect:/user";
 
     }
 
