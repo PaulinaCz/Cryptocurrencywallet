@@ -5,7 +5,6 @@ import com.example.cryptocurrencywallet.model.MyUserDetails;
 import com.example.cryptocurrencywallet.model.Role;
 import com.example.cryptocurrencywallet.model.User;
 import com.example.cryptocurrencywallet.repository.UserRepository;
-import com.example.cryptocurrencywallet.repository.WalletRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -18,15 +17,13 @@ import java.util.*;
 public class UserServiceImpl implements UserService {
 
     private final UserRepository userRepository;
-    private final WalletRepository walletRepository;
 
     @Autowired
     private BCryptPasswordEncoder passwordEncoder;
 
     @Autowired
-    public UserServiceImpl(UserRepository userRepository, WalletRepository walletRepository) {
+    public UserServiceImpl(UserRepository userRepository) {
         this.userRepository = userRepository;
-        this.walletRepository = walletRepository;
     }
 
 
@@ -49,6 +46,20 @@ public class UserServiceImpl implements UserService {
         return userOptional.orElseGet(User::new);
 //    }        return userRepository.findByEmail(userEmail)
 //                .orElseThrow(() -> new IllegalArgumentException("User doesn't exist:  " + userEmail));
+    }
+
+    @Override
+    public void update(User user, UserRegistrationDTO registrationDTO) {
+
+        User updatedUser = userRepository.findById(user.getId()).get();
+
+        updatedUser.setFirstName(registrationDTO.getFirstName());
+        updatedUser.setLastName(registrationDTO.getLastName());
+        updatedUser.setEmail(registrationDTO.getEmail());
+        updatedUser.setPassword(passwordEncoder.encode(registrationDTO.getPassword()));
+
+        userRepository.save(updatedUser);
+
     }
 
 }

@@ -1,4 +1,4 @@
-package com.example.cryptocurrencywallet.mapper;
+/*package com.example.cryptocurrencywallet.mapper;
 
 
 import com.example.cryptocurrencywallet.dto.UserRegistrationDTO;
@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 
-/*
 @Service
 public class UserToUserRegistrationDTO {
 
@@ -18,8 +17,8 @@ public class UserToUserRegistrationDTO {
         }else{
             User user = optionalUser.get();
             UserRegistrationDTO userRegistrationDTO = new UserRegistrationDTO();
-            userRegistrationDTO.setFirst_name(user.getFirstName());
-            userRegistrationDTO.setSurname(user.getSurname());
+            userRegistrationDTO.setFirstName(user.getFirstName());
+            userRegistrationDTO.setLastName(user.getLastName());
             userRegistrationDTO.setEmail(user.getEmail());
             userRegistrationDTO.setPassword(user.getPassword());
 
@@ -28,5 +27,4 @@ public class UserToUserRegistrationDTO {
 
     }
 
-}
-*/
+}*/

@@ -13,17 +13,17 @@ import org.springframework.web.bind.annotation.*;
 public class AccountDetailsController {
 
     @Autowired
-    UserService userService;
+    private UserService userService;
+
 
     @ModelAttribute
     public void saveLoggedUserDetails(Model model) {
-        model.addAttribute("loggedUser", userService.getLoggedUser());
+        model.addAttribute("user", userService.getLoggedUser());
         model.addAttribute("loggedUserBalance", userService.getLoggedUser().getWallet().getBalanceUSD());
         model.addAttribute("loggedUserCurrencies", userService.getLoggedUser().getWallet().getMyCoins());
         model.addAttribute("loggedUserTransactionHistory", userService.getLoggedUser().getWallet().getTransactionHistories());
 
     }
-
     @GetMapping(value = "/accountDetails")
     public String getAccountDetailsPage() {
         return "accountDetails";
