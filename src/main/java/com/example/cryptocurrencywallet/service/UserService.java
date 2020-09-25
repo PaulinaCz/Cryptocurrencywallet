@@ -11,5 +11,5 @@ public interface UserService {
 
     User getLoggedUser();
 
-    User updateUser(UserRegistrationDTO registrationDTO);
+    void update(User updatedUser, UserRegistrationDTO registrationDTO);
 }

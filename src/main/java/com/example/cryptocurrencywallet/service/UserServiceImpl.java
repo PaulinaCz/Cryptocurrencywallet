@@ -5,7 +5,6 @@ import com.example.cryptocurrencywallet.model.MyUserDetails;
 import com.example.cryptocurrencywallet.model.Role;
 import com.example.cryptocurrencywallet.model.User;
 import com.example.cryptocurrencywallet.repository.UserRepository;
-import com.example.cryptocurrencywallet.repository.WalletRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -50,14 +49,17 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User updateUser(UserRegistrationDTO registrationDTO) {
-        User updatedUser = getLoggedUser();
+    public void update(User user, UserRegistrationDTO registrationDTO) {
+
+        User updatedUser = userRepository.findById(user.getId()).get();
+
         updatedUser.setFirstName(registrationDTO.getFirstName());
         updatedUser.setLastName(registrationDTO.getLastName());
         updatedUser.setEmail(registrationDTO.getEmail());
         updatedUser.setPassword(passwordEncoder.encode(registrationDTO.getPassword()));
 
-      return userRepository.save(updatedUser);
+        userRepository.save(updatedUser);
+
     }
 
 }
