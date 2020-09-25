@@ -60,8 +60,8 @@
             </div>
             <form class="form-inline">
                 <ul class="navbar-nav mr-auto">
-                    <li class="nav-item active"><a class="nav-link" th:text="'Hello ' + ${user.firstName}+'!'">Welcome:
-                        [firstName]</a></li>
+                    <li class="nav-item active"><a class="nav-link" th:text="'Hello ' + ${user.getFirstName()}+'!'">Welcome:
+                        [getFirstName]</a></li>
                 </ul>
                 <a th:href="@{'/logout'}" class="btn btn-outline-light my-2 my-sm-0">Log out</a>
             </form>

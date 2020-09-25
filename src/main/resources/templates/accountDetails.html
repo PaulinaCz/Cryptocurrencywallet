@@ -28,7 +28,7 @@
         </ul>
         <form class="form-inline">
             <ul class="navbar-nav mr-auto">
-                <li class="nav-item active"><a class="nav-link" th:text="'Hello ' + ${loggedUser.getFirstName()}+'!'">Welcome:
+                <li class="nav-item active"><a class="nav-link" th:text="'Hello ' + ${user.getFirstName()}+'!'">Welcome:
                     [getFirstName]</a></li>
             </ul>
             <a th:href="@{'/logout'}" class="btn btn-outline-light my-2 my-sm-0">Log out</a>
@@ -56,9 +56,9 @@
                         <h3 class="card-title">Account details</h3>
                         <p class="card-text">
                         <ul>
-                            <li th:text="'Name: ' + ${loggedUser.firstName}">User first name</li>
-                            <li th:text="'Last name: ' + ${loggedUser.lastName}">User last name</li>
-                            <li th:text="'Email: ' + ${loggedUser.email}">Email</li>
+                            <li th:text="'Name: ' + ${user.firstName}">User first name</li>
+                            <li th:text="'Last name: ' + ${user.lastName}">User last name</li>
+                            <li th:text="'Email: ' + ${user.email}">Email</li>
                             <li th:text="'My account balance: ' + ${loggedUserBalance}">My account balance</li>
                             <li th:text="'My coins: ' + ${loggedUserCurrencies}">My coins</li>
                         </ul>

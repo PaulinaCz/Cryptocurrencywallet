@@ -15,6 +15,7 @@ public class UpdateAccountDetailsController {
 
     private UserService userService;
 
+    @Autowired
     public UpdateAccountDetailsController(UserService userService) {
         this.userService = userService;
     }
