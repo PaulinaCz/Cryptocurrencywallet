@@ -37,6 +37,10 @@ public class Wallet {
             cascade = CascadeType.ALL)
     private User user;
 
+
+    /*
+    *  TODO: Make it Map<String,Coin> instead of List
+    * */
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name = "wallet_id")
     private List<Coin> myCoins;

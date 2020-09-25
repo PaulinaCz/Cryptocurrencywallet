@@ -24,13 +24,18 @@ public class TransactionHistory {
     @Column(name = "id")
     private long id;
     @Column(name = "date_of_transaction")
-    private LocalDateTime dateOfTransaction = LocalDateTime.now();
-    @OneToOne(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
+    private LocalDateTime dateOfTransaction;
+    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "transactionHistory_id")
     private Transaction transactionDetails;
-    @Column(name = "amount")
-    private BigDecimal amount;
-    @Column(name = "buy_or_sale")
-    @Enumerated(value = EnumType.STRING)
-    private BuySell buySell;
+//    @Column(name = "amount")
+//    private BigDecimal amount;
+//    @Column(name = "buy_or_sale")
+//    @Enumerated(value = EnumType.STRING)
+//    private BuySell buySell;
+
+    public TransactionHistory(Transaction transaction) {
+        this.dateOfTransaction = LocalDateTime.now();
+        this.transactionDetails = transaction;
+    }
 }

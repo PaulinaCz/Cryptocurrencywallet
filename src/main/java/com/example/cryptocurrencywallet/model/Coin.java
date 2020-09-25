@@ -36,4 +36,8 @@ public class Coin {
             CascadeType.DETACH})
     @JoinColumn(name = "coin_id")
     private CryptoCurrency cryptoCurrency;*/
+
+    public Coin(String coinName, BigDecimal amount, BigDecimal price) {
+
+    }
 }

@@ -7,6 +7,7 @@ import lombok.Setter;
 import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
+import java.math.BigDecimal;
 import java.util.Date;
 
 @Entity
@@ -25,24 +26,22 @@ public class Transaction {
 
     @CreationTimestamp
     private Date tradeDateTime;
+    @JsonFormat(shape = JsonFormat.Shape.STRING)
+    private BigDecimal amount;
 
-    private double amount;
-
-    private double amountGBP;
+    private BigDecimal amountGBP;
 
     private boolean isClosed;
 
     private Date closedDateTime;
     @JsonFormat(shape = JsonFormat.Shape.STRING)
-    private double price;
+    private BigDecimal price;
 
     private double closedPrice;
 
     private BuySell buySell;
 
     private boolean isExecuted;
-
-    private String executionFailReason;
 
 /*    @JsonIgnore
     @ManyToOne(cascade = {CascadeType.PERSIST,
@@ -53,7 +52,15 @@ public class Transaction {
 
     private User user;*/
 
-    private double profit;
+    public BigDecimal getTotalPriceForTransaction(){
+        if (amount == null || amount.compareTo(BigDecimal.ZERO) < 0){
+            throw new IllegalArgumentException("Wrong amount: " + amount);
+        }
+        if (price == null || price.compareTo(BigDecimal.ZERO) < 0){
+            throw new IllegalArgumentException("Wrong price: " + price);
+        }
+        return price.multiply(amount);
+    }
 
     @Override
     public String toString() {
@@ -69,8 +76,6 @@ public class Transaction {
                 ", closedPrice=" + closedPrice +
                 ", buySell="+ buySell+
                 ", isExecuted=" + isExecuted +
-                ", executionFailReason=" + executionFailReason + '\'' +
-                ", profit=" + profit +
                 '}';
 
     }
