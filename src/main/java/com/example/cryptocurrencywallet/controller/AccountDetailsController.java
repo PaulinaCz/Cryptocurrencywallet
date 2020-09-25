@@ -13,7 +13,8 @@ import org.springframework.web.bind.annotation.*;
 public class AccountDetailsController {
 
     @Autowired
-    UserService userService;
+    private UserService userService;
+
 
     @ModelAttribute
     public void saveLoggedUserDetails(Model model) {
