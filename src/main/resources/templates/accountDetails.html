@@ -60,11 +60,25 @@
                             <li th:text="'Last name: ' + ${user.lastName}">User last name</li>
                             <li th:text="'Email: ' + ${user.email}">Email</li>
                             <li th:text="'My account balance: ' + ${loggedUserBalance}">My account balance</li>
-                            <li th:text="'My coins: ' + ${loggedUserCurrencies}">My coins</li>
-                        <tr th:each="coin: ${loggedUserCurrencies}">
-                            <td th:text="${coin.getCoinName()}" />
-                            <td th:text="${coin.getAmount()}" />
-                        </tr>
+                        <li th:text="'My coins: '" >My coins
+                        </li>
+                        <table frame="below">
+                            <tr>
+                                <th>CoinType</th>
+                                <th>Coins amount</th>
+                                <th>Current coins value</th>
+                            </tr>
+                            <tbody id="coins" th:each="coin: ${loggedUserCurrencies}">
+                            <tr >
+                                <td th:text="${coin.getCoinName()}" />
+                                <td th:text="${coin.getAmount()}" />
+                                <td th:text="'$' + ${coin.getPrice() * coin.getAmount()}" />
+                            </tr>
+                            </tbody>
+
+                        </table>
+
+
                         </ul>
 
                         <ul class="navbar-nav mr-auto">
