@@ -12,4 +12,6 @@ public interface UserService {
     User getLoggedUser();
 
     void update(User updatedUser, UserRegistrationDTO registrationDTO);
+
+    boolean validUserEmail(String email);
 }

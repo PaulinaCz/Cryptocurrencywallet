@@ -7,6 +7,11 @@
           integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous"/>
 </head>
 <body>
+<style>
+    .error {
+        color: red;
+    }
+</style>
 <!--    NAVIGATION BAR (HEADER)     -->
 
 <nav class="navbar navbar-dark bg-dark">
@@ -32,29 +37,33 @@
                     <label class="col-form-label" for="firstName">
                         First Name
                     </label>
-                    <input id="firstName" class="form-control" th:field="*{firstName}" required autofocus="autofocus"/>
+                    <input id="firstName" class="form-control" th:field="*{firstName}"
+                           required="required" autofocus="autofocus"/>
+                    <p class="error" th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}">Incorrect First Name</p>
                 </div>
 
                 <div class="form-group">
                     <label class="col-form-label" for="surname">
                         Surname
                     </label>
-                    <input id="surname" class="form-control" th:field="*{lastName}" required autofocus="autofocus"/>
+                    <input id="surname" class="form-control" th:field="*{lastName}" required="required">
+                    <p class="error" th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}">Incorrect Last Name</p>
                 </div>
 
                 <div class="form-group">
                     <label class="col-form-label" for="email">
                         Email
                     </label>
-                    <input id="email" class="form-control" th:field="*{email}" required autofocus="autofocus"/>
+                    <input id="email" class="form-control" type="email" th:field="*{email}" required="required" />
+                    <p class="error" th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Incorrect email</p>
                 </div>
 
                 <div class="form-group">
                     <label class="control-label" for="password">
                         Password
                     </label>
-                    <input id="password" class="form-control" type="password" th:field="*{password}" required
-                           autofocus="autofocus"/>
+                    <input id="password" class="form-control" type="password" th:field="*{password}" required="required"/>
+                    <p class="error" th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Incorrect password</p>
                 </div>
 
                 <div class="form-group">
