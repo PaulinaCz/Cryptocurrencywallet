@@ -13,7 +13,7 @@ function buyTrade() {
     buyTrade.name = getSelectedCoinName();
     buyTrade.price = document.getElementById("coin-price").value;
     buyTrade.amount = document.getElementById("buyForm").value;
-    console.log(buyTrade.coinName + " -- JSON coinName");
+    console.log(buyTrade.name + " -- JSON coinName");
     console.log(buyTrade.price + " -- JSON price");
     console.log(buyTrade.amount + " -- JSON amount");
     $.ajax({
