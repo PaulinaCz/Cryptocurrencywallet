@@ -1,10 +1,14 @@
 package com.example.cryptocurrencywallet.model;
 
+import com.example.cryptocurrencywallet.validator.UniqueEmail;
+import com.example.cryptocurrencywallet.validator.ValidationGroupUniqueEmail;
 import lombok.*;
 import org.hibernate.annotations.NotFound;
 import org.hibernate.annotations.NotFoundAction;
 
 import javax.persistence.*;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 import java.math.BigDecimal;
 import java.util.Set;
 
@@ -21,11 +25,21 @@ public class User {
     private Long id;
     @Column(name = "user_name")
     private String username;
+
+
+    @Size(min = 1, message = "First name can not be empty")
     @Column(name = "first_name")
     private String firstName;
+
+    @Size(min = 1, message = "Last name can not be empty")
     @Column(name = "surname")
     private String lastName;
+
+    @Pattern(regexp = "[A-Za-z0-9._%-+]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}", message = "type correct email")
+    @UniqueEmail(groups = ValidationGroupUniqueEmail.class)
     private String email;
+
+    @Size(min = 6,  message = "password must be at least 6 characters")
     private String password;
     private boolean active;
 

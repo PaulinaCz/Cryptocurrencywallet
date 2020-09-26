@@ -62,4 +62,22 @@ public class UserServiceImpl implements UserService {
 
     }
 
+    @Override
+    public boolean validUserEmail(String email) {
+        try {
+            List<User> userList = userRepository.findAll();
+            if (userList.isEmpty()) {
+                return true;
+            }
+            for (User user : userList) {
+                if (user.getEmail().equals(email)) {
+                    return false;
+                }
+            }
+        } catch (Exception e) {
+            e.getMessage();
+        }
+        return true;
+    }
+
 }
