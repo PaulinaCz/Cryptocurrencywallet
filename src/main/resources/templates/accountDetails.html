@@ -61,6 +61,10 @@
                             <li th:text="'Email: ' + ${user.email}">Email</li>
                             <li th:text="'My account balance: ' + ${loggedUserBalance}">My account balance</li>
                             <li th:text="'My coins: ' + ${loggedUserCurrencies}">My coins</li>
+                        <tr th:each="coin: ${loggedUserCurrencies}">
+                            <td th:text="${coin.getCoinName()}" />
+                            <td th:text="${coin.getAmount()}" />
+                        </tr>
                         </ul>
 
                         <ul class="navbar-nav mr-auto">
