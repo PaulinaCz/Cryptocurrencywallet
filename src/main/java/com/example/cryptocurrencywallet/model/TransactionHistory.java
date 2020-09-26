@@ -11,6 +11,7 @@ import org.hibernate.annotations.CreationTimestamp;
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.Date;
 
 
 @Entity
@@ -23,8 +24,9 @@ public class TransactionHistory {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private long id;
+    @CreationTimestamp
     @Column(name = "date_of_transaction")
-    private LocalDateTime dateOfTransaction;
+    private Date dateOfTransaction;
     @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "transactionHistory_id")
     private Transaction transactionDetails;
@@ -35,7 +37,6 @@ public class TransactionHistory {
 //    private BuySell buySell;
 
     public TransactionHistory(Transaction transaction) {
-        this.dateOfTransaction = LocalDateTime.now();
         this.transactionDetails = transaction;
     }
 }
