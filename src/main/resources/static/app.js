@@ -38,9 +38,9 @@ function buyTradeWithValidation() {
         document.getElementById("user-transaction-balance").value) {
         alert("You do not have enough funds to proceed with this transaction. "
             + "\nYour balance is: " + document.getElementById("user-transaction-balance").value);
-    }else {
-        buyTrade();
     }
+        buyTrade();
+
 }
 function showCurrentDetails(){
     console.log(document.getElementById("buyForm").value + " <<< user input");

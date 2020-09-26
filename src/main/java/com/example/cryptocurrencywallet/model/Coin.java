@@ -38,6 +38,8 @@ public class Coin {
     private CryptoCurrency cryptoCurrency;*/
 
     public Coin(String coinName, BigDecimal amount, BigDecimal price) {
-
+        this.coinName = coinName;
+        this.amount = amount;
+        this.price = price;
     }
 }
