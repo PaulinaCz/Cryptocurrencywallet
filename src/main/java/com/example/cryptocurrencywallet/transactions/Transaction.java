@@ -31,14 +31,10 @@ public class Transaction {
 
     private BigDecimal amountGBP;
 
-    private boolean isClosed;
-
-    private Date closedDateTime;
     @JsonFormat(shape = JsonFormat.Shape.STRING)
     private BigDecimal price;
 
-    private double closedPrice;
-
+    @Enumerated(value = EnumType.STRING)
     private BuySell buySell;
 
     private boolean isExecuted;
@@ -70,10 +66,7 @@ public class Transaction {
                 ", tradeDateTime=" + tradeDateTime +
                 ", amount=" + amount +
                 ", amountGBP=" + amountGBP +
-                ", isClosed="+ isClosed+
-                ", closedDateTime=" + closedDateTime +
                 ", price=" + price +
-                ", closedPrice=" + closedPrice +
                 ", buySell="+ buySell+
                 ", isExecuted=" + isExecuted +
                 '}';
