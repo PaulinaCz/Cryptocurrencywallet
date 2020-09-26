@@ -29,9 +29,9 @@ public class TradeRestController {
 
     @PostMapping(value = "/sell", produces = "application/json", consumes = "application/json")
     @ResponseBody
-    public Transaction sellTrade(@RequestBody Transaction coin) {
-        System.out.println(coin + " <<< SELL");
-        return processTransactionRequest(coin, BuySell.SELL);
+    public Transaction sellTrade(@RequestBody Transaction transaction) {
+        System.out.println(transaction + " <<< SELL");
+        return processTransactionRequest(transaction, BuySell.SELL);
     }
 
     private Transaction processTransactionRequest(Transaction transaction, BuySell buySell) {

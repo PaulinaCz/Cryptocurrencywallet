@@ -66,7 +66,7 @@ public class Transaction {
     public String toString() {
         return "Transaction{" +
                 "id" + id +
-                ", instrument='" + name + '\'' +
+                ", name='" + name + '\'' +
                 ", tradeDateTime=" + tradeDateTime +
                 ", amount=" + amount +
                 ", amountGBP=" + amountGBP +

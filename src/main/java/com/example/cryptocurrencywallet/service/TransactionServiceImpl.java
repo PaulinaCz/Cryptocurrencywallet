@@ -32,7 +32,10 @@ public class TransactionServiceImpl implements TransactionService {
          * TODO: is SET will be better than LIST?
          * */
         List<TransactionHistory> userTransactions = loggedUserWallet.getTransactionHistories();
+        System.out.println(userTransactions.size());
         List<Coin> userCoinsInWallet = loggedUserWallet.getMyCoins();
+        System.out.println(userCoinsInWallet.size());
+        System.out.println(transaction + " <<< Transaction inside processTranscation method");
 
         Coin newCoin = new Coin(transaction.getName(),transaction.getAmount(),transaction.getPrice());
 
