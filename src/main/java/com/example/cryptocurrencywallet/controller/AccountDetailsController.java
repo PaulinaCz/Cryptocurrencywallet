@@ -15,7 +15,6 @@ public class AccountDetailsController {
     @Autowired
     private UserService userService;
 
-
     @ModelAttribute
     public void saveLoggedUserDetails(Model model) {
         model.addAttribute("user", userService.getLoggedUser());
@@ -24,6 +23,7 @@ public class AccountDetailsController {
         model.addAttribute("loggedUserTransactionHistory", userService.getLoggedUser().getWallet().getTransactionHistories());
 
     }
+
     @GetMapping(value = "/accountDetails")
     public String getAccountDetailsPage() {
         return "accountDetails";
