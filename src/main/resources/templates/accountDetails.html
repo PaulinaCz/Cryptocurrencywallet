@@ -72,7 +72,6 @@
                             <tr >
                                 <td th:text="${coin.getCoinName()}" />
                                 <td th:text="${coin.getAmount()}" />
-                                <td th:text="'$' + ${coin.getPrice() * coin.getAmount()}" />
                             </tr>
                             </tbody>
 
@@ -94,7 +93,20 @@
                         <h3 class="card-title">Transactions summary</h3>
                         <p class="card-text">
                         <ul>
-                            <li th:text="'All transactions: ' + ${loggedUserTransactionHistory}">All transactions</li>
+                            <li th:text="'My transactions: '" >All transactions</li>
+                        <table frame="below">
+                            <tr>
+                                <th>Transaction Date</th>
+                                <th>Transaction Details</th>
+                            </tr>
+                            <tbody id="transactions" th:each="transaction : ${loggedUserTransactionHistory}">
+                            <tr>
+                                <td th:text="${transaction.getDateOfTransaction()}"/>
+                                <td th:text="${transaction.getTransactionDetails()}"/>
+                            </tr>
+                            </tbody>
+                        </table>
+
                         </ul>
                     </div>
                 </div>
