@@ -38,14 +38,30 @@ function buyTradeWithValidation() {
         document.getElementById("user-transaction-balance").value) {
         alert("You do not have enough funds to proceed with this transaction. "
             + "\nYour balance is: " + document.getElementById("user-transaction-balance").value);
-    }
-        buyTrade();
+    }else {
 
+        buyTrade();
+    }
 }
 function showCurrentDetails(){
     console.log(document.getElementById("buyForm").value + " <<< user input");
     console.log(document.getElementById("coin-price").value+ " <<< coin price");
     console.log(document.getElementById("user-transaction-balance").value + " <<< user balance");
+}
+
+function sellTradeWithValidation() {
+
+    if ((document.getElementById("buyForm-sell").value >
+        document.getElementById("coin-price-sell").value)) {
+        alert("You do not have enough coins to proceed with this transaction. "
+            + "\nYour balance is: " + document.getElementById("coin-price-sell").value);
+    }
+    sellTrade();
+}
+
+function showCurrentDetailsSell(){
+    console.log(document.getElementById("buyForm-sell").value + " <<< user input");
+    console.log(document.getElementById("testTag").value+ " <<< user number of coins");
 }
 // var numToFormat = document.getElementsByClassName("number-formatter");
 // numToFormat.addEventListener('cli')
@@ -66,6 +82,10 @@ function reverseNumberFormat(num) {
 
 function getSelectedCoinName() {
     var sel = document.getElementById("coin-price");
+    return sel.options[sel.selectedIndex].text;
+}
+function getSelectedCoinNameSell() {
+    var sel = document.getElementById("coin-price-sell");
     return sel.options[sel.selectedIndex].text;
 }
 
@@ -93,6 +113,9 @@ function add(){
         sum.innerText = "Enter number!"
     }
 }
+
+
+
 // var number = document.getElementById("buyForm");
 // number.addEventListener("input", function(ev){
 //     console.log(ev.type, ev.target);

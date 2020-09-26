@@ -6,5 +6,5 @@ import com.example.cryptocurrencywallet.transactions.Transaction;
 
 public interface TransactionService {
 
-    Transaction processTransaction(Transaction transaction, Wallet loggedUserWallet);
+    User processTransaction(Transaction transaction, Wallet loggedUserWallet);
 }

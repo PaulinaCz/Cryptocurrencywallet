@@ -2,6 +2,7 @@ package com.example.cryptocurrencywallet.service;
 
 import com.example.cryptocurrencywallet.model.Coin;
 import com.example.cryptocurrencywallet.model.TransactionHistory;
+import com.example.cryptocurrencywallet.model.User;
 import com.example.cryptocurrencywallet.model.Wallet;
 import com.example.cryptocurrencywallet.repository.UserRepository;
 import com.example.cryptocurrencywallet.retriveCoin.model.CryptoCurrency;
@@ -30,23 +31,23 @@ public class TransactionServiceImpl implements TransactionService {
     * */
 
     @Override
-    public Transaction processTransaction(Transaction transaction, Wallet loggedUserWallet) {
+    public User processTransaction(Transaction transaction, Wallet loggedUserWallet) {
         /*
          * TODO: is SET will be better than LIST?
          * */
         List<TransactionHistory> userTransactions = loggedUserWallet.getTransactionHistories();
-        System.out.println(userTransactions.size());
+//        System.out.println(userTransactions.size());
         List<Coin> userCoinsInWallet = loggedUserWallet.getMyCoins();
-        System.out.println(userCoinsInWallet.size());
-        System.out.println(transaction + " <<< Transaction inside processTransaction method");
+//        System.out.println(userCoinsInWallet.size());
+//        System.out.println(transaction + " <<< Transaction inside processTransaction method");
 
         Coin newCoin = new Coin(transaction.getName(),transaction.getAmount(),transaction.getPrice());
 
-        System.out.println("inside processTransaction()!");
-        System.out.println(newCoin);
+//        System.out.println("inside processTransaction()!");
+//        System.out.println(newCoin);
 
         if (isEnoughFunds(transaction, loggedUserWallet)) {
-            System.out.println("BEGINNING - isEnoughFunds");
+//            System.out.println("BEGINNING - isEnoughFunds");
             transaction.setExecuted(true);
             transaction.setAmountGBP(transaction.getTotalPriceForTransaction());
             /*
@@ -54,22 +55,22 @@ public class TransactionServiceImpl implements TransactionService {
              * */
             loggedUserWallet.setBalanceUSD(loggedUserWallet.getBalanceUSD().subtract(transaction.getAmountGBP()));
             userTransactions.add(new TransactionHistory(transaction));
-            System.out.println("BEGINNING - isEnoughFunds ---> if else");
+//            System.out.println("BEGINNING - isEnoughFunds ---> if else");
             if (isNewCoin(userCoinsInWallet, newCoin)){
-                System.out.println("INSIDE IF");
+//                System.out.println("INSIDE IF");
                 userCoinsInWallet.add(newCoin);
             }else {
-                System.out.println("INSIDE ELSE");
+//                System.out.println("INSIDE ELSE");
                 BigDecimal newBalance = findAndUpdateCoinBalance(userCoinsInWallet,newCoin);
-                System.out.println(newBalance + " updated balance!");
+//                System.out.println(newBalance + " updated balance!");
 
                 System.out.println(loggedUserWallet);
             }
-            System.out.println("END - isEnoughFunds");
-            userCoinsInWallet.forEach(System.out::println);
-            userRepository.save(loggedUserWallet.getUser());
+//            System.out.println("END - isEnoughFunds");
+//            userCoinsInWallet.forEach(System.out::println);
+
         }
-        return transaction;
+        return userRepository.save(loggedUserWallet.getUser());
     }
 
     private BigDecimal findAndUpdateCoinBalance(List<Coin> userCoinsInWallet, Coin newCoin) {
@@ -90,9 +91,9 @@ public class TransactionServiceImpl implements TransactionService {
     }
 
     private boolean isEnoughFunds(Transaction transaction, Wallet loggedUserWallet) {
-        System.out.println("Iside isEnoughFunds!! ");
-        System.out.println(loggedUserWallet.getBalanceUSD().subtract(transaction.getTotalPriceForTransaction()));
-        System.out.println(loggedUserWallet.getBalanceUSD().subtract(transaction.getTotalPriceForTransaction()).compareTo(BigDecimal.ZERO) >= 0);
+//        System.out.println("Inside isEnoughFunds!! ");
+//        System.out.println(loggedUserWallet.getBalanceUSD().subtract(transaction.getTotalPriceForTransaction()));
+//        System.out.println(loggedUserWallet.getBalanceUSD().subtract(transaction.getTotalPriceForTransaction()).compareTo(BigDecimal.ZERO) >= 0);
         return loggedUserWallet.getBalanceUSD().subtract(transaction.getTotalPriceForTransaction()).compareTo(BigDecimal.ZERO) >= 0;
     }
 }

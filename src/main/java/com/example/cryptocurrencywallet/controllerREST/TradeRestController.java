@@ -8,6 +8,7 @@ import com.example.cryptocurrencywallet.service.UserService;
 import com.example.cryptocurrencywallet.transactions.BuySell;
 import com.example.cryptocurrencywallet.transactions.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -22,22 +23,22 @@ public class TradeRestController {
 
     @RequestMapping(value = "/buy", method = RequestMethod.POST, produces = "application/json", consumes = "application/json")
     @ResponseBody
-    public Transaction buyTrade(@RequestBody Transaction transaction) {
-        System.out.println(transaction + " <<< BUY");
+    public User buyTrade(@RequestBody Transaction transaction) {
+//        System.out.println(transaction + " <<< BUY");
         return processTransactionRequest(transaction, BuySell.BUY);
     }
 
     @PostMapping(value = "/sell", produces = "application/json", consumes = "application/json")
     @ResponseBody
-    public Transaction sellTrade(@RequestBody Transaction transaction) {
-        System.out.println(transaction + " <<< SELL");
+    public User sellTrade(@RequestBody Transaction transaction) {
+//        System.out.println(transaction + " <<< SELL");
         return processTransactionRequest(transaction, BuySell.SELL);
     }
 
-    private Transaction processTransactionRequest(Transaction transaction, BuySell buySell) {
-        System.out.println(transaction + " ==== " + buySell);
+    private User processTransactionRequest(Transaction transaction, BuySell buySell) {
+//        System.out.println(transaction + " ==== " + buySell);
         Wallet loggedUserWallet = userService.getLoggedUser().getWallet();
-        System.out.println("DONNE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+//        System.out.println("DONNE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
         System.out.println(loggedUserWallet);
 
         transaction.setBuySell(buySell);

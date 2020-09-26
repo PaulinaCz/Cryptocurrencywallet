@@ -42,29 +42,29 @@
                             </div>
                         </li>-->
         </ul>
-            <!--            <ul class="navbar-nav mr-auto">
-                            <li class="nav-item active">
-                                <a class="nav-link" th:href="@{'/usersRanking'}">Users ranking</a>
-                            </li>
-                            <li class="nav-item active"><a class="nav-link"  th:text="'Balance: ' + ${#numbers.formatDecimal(loggedUserBalance, 1, 'WHITESPACE',2, 'COMMA')} + ' PLN'">Balance: [nominal]</a></li>
-                            <li class="nav-item active"><a class="nav-link"  th:text="'Blocked: ' + ${#numbers.formatDecimal(loggedUserBlockedAmount, 1, 'WHITESPACE', 2, 'COMMA')} + ' PLN'">Blocked: [nominal]</a></li>
-                            <li class="nav-item active"><a class="nav-link"  th:text="'Hello ' + ${loggedUser}+'!'">Welcome: [username]</a></li>
+        <!--            <ul class="navbar-nav mr-auto">
+                        <li class="nav-item active">
+                            <a class="nav-link" th:href="@{'/usersRanking'}">Users ranking</a>
+                        </li>
+                        <li class="nav-item active"><a class="nav-link"  th:text="'Balance: ' + ${#numbers.formatDecimal(loggedUserBalance, 1, 'WHITESPACE',2, 'COMMA')} + ' PLN'">Balance: [nominal]</a></li>
+                        <li class="nav-item active"><a class="nav-link"  th:text="'Blocked: ' + ${#numbers.formatDecimal(loggedUserBlockedAmount, 1, 'WHITESPACE', 2, 'COMMA')} + ' PLN'">Blocked: [nominal]</a></li>
+                        <li class="nav-item active"><a class="nav-link"  th:text="'Hello ' + ${loggedUser}+'!'">Welcome: [username]</a></li>
 
-                                   class="btn btn-outline-light my-2 my-sm-0"
-                        </ul>-->
-            <div class="col ">
-                <button type="button" data-toggle="modal" data-target="#myModal"
-                        class="btn btn-outline-light py-2 px-4" onclick="showCurrentDetails()" >
-                    Trade
-                </button>
-            </div>
-            <form class="form-inline">
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item active"><a class="nav-link" th:text="'Hello ' + ${user.getFirstName()}+'!'">Welcome:
-                        [getFirstName]</a></li>
-                </ul>
-                <a th:href="@{'/logout'}" class="btn btn-outline-light my-2 my-sm-0">Log out</a>
-            </form>
+                               class="btn btn-outline-light my-2 my-sm-0"
+                    </ul>-->
+        <div class="col ">
+            <button type="button" data-toggle="modal" data-target="#myModal"
+                    class="btn btn-outline-light py-2 px-4" onclick="showCurrentDetails()">
+                Trade
+            </button>
+        </div>
+        <form class="form-inline">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active"><a class="nav-link" th:text="'Hello ' + ${user.getFirstName()}+'!'">Welcome:
+                    [getFirstName]</a></li>
+            </ul>
+            <a th:href="@{'/logout'}" class="btn btn-outline-light my-2 my-sm-0">Log out</a>
+        </form>
     </div>
 </nav>
 
@@ -102,9 +102,13 @@
                     </td>
                     <td th:text="${rate.name}"></td>
                     <td>$<span th:text="${#numbers.formatDecimal(rate.price, 0, 'COMMA', 4, 'POINT')}">10.00</span></td>
-                    <td><span th:text="${#numbers.formatDecimal(rate.marketCap, 0, 'COMMA', 2, 'POINT')}">10.00</span></td>
-                    <td><span th:text="${#numbers.formatDecimal(rate._1d.volume, 0, 'COMMA', 2, 'POINT')}">10.00</span></td>
-                    <td><span th:text="${#numbers.formatDecimal(rate.circulatingSupply, 0, 'COMMA', 2, 'POINT')}">10.00</span></td>
+                    <td><span th:text="${#numbers.formatDecimal(rate.marketCap, 0, 'COMMA', 2, 'POINT')}">10.00</span>
+                    </td>
+                    <td><span th:text="${#numbers.formatDecimal(rate._1d.volume, 0, 'COMMA', 2, 'POINT')}">10.00</span>
+                    </td>
+                    <td><span
+                            th:text="${#numbers.formatDecimal(rate.circulatingSupply, 0, 'COMMA', 2, 'POINT')}">10.00</span>
+                    </td>
 
                 </tr>
                 </tbody>
@@ -234,7 +238,9 @@
                                         <select name="account" class="form-control" id="coin-price">
                                             <option selected disabled>Select Currency</option>
                                             <option th:each="coin : ${cryptoCoinDetails}" th:value="${coin.price}"
-                                                    th:text="${coin.name}" id="nameTag"  onclick="showCurrentDetails()"></option>
+                                                    th:text="${coin.name}" id="nameTag" onclick="showCurrentDetails()">
+
+                                            </option>
                                         </select>
                                     </div>
                                 </div>
@@ -250,40 +256,47 @@
                     <div class="modal-footer d-flex flex-column justify-content-center border-0">
 
                         <button onclick="buyTradeWithValidation()" tabindex="0"
-                               class="btn btn-outline-primary py-2 px-4">SUBMIT
-                            TRANSACTION</button>
+                                class="btn btn-outline-primary py-2 px-4">SUBMIT
+                            TRANSACTION
+                        </button>
                     </div>
                 </fieldset>
                 <fieldset class="show" id="tab021">
                     <div class="bg-light">
-                        <div class="">
-                            <h5 class="text-center mb-4 mt-0 pt-4">SELL</h5>
+                        <div id="output-sell">
+                            <p id="output-value-sell" class="text-center mb-4 mt-0 pt-4">$</p>
                         </div>
                         <div class="">
-                            <form action="" class="form-inline justify-content-center">
-                                <div class="form-group pb-5 px-3">
-                                    <select name="account" class="form-control">
-                                        <option selected disabled>Select Currency</option>
-                                        <option>Product 1</option>
-                                        <option>Product 2</option>
-                                        <option>Product 3</option>
-                                        <option>Product 4</option>
-                                    </select>
-                                    <select name="account" class="form-control">
-                                        <option selected disabled>Deposit to:</option>
-                                        <option>Product 1</option>
-                                        <option>Product 2</option>
-                                        <option>Product 3</option>
-                                        <option>Product 4</option>
-                                    </select></div>
-                                <input type="submit" id="submit-form-sell" style="display: none"/>
-                            </form>
+                            <div class="justify-content-center">
+                                <div class="form-group row justify-content-center ">
+                                    <div class="col-7">
+                                        <select name="account"  class="form-control"
+                                                id="coin-amount-sell">
+                                            <option selected disabled>Select Currency</option>
+                                            <option th:each="coin : ${loggedUserCoins}"
+                                                    th:value="${coin.amount}"
+                                                    th:text="${coin.coinName}" id="nameTag-sell"
+                                                    onclick="showCurrentDetailsSell()">
+                                                <input type="hidden" th:field="{coin.amount}" id="testTag" />
+                                            </option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group row justify-content-center">
+                                    <div class="col" id="theForm-sell">
+                                        <input type="text" id="buyForm-sell" onclick="showCurrentDetailsSell()"/>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div class="line"></div>
                     <div class="modal-footer d-flex flex-column justify-content-center border-0">
-                        <label for="submit-form-sell" tabindex="0" class="btn btn-outline-primary py-2 px-4">SUBMIT
-                            TRANSACTION</label>
+
+                        <button onclick="sellTradeWithValidation()" tabindex="0"
+                                class="btn btn-outline-primary py-2 px-4">SUBMIT
+                            TRANSACTION
+                        </button>
                     </div>
                 </fieldset>
                 <fieldset id="tab031">
@@ -383,7 +396,6 @@
         </div>
     </div>
 </div>
-
 
 <script src="app.js"></script>
 <script src="tradeAjax.js"></script>

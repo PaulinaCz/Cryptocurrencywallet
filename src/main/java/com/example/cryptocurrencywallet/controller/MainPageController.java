@@ -41,6 +41,7 @@ public class MainPageController {
         model.addAttribute("cryptoCoinDetails", listOfCrypto);
         model.addAttribute("user", loggedUser);
         model.addAttribute("loggedUserBalance",loggedUser.getWallet().getBalanceUSD());
+        model.addAttribute("loggedUserCoins",loggedUser.getWallet().getMyCoins());
         return "mainUserPage";
     }
 
