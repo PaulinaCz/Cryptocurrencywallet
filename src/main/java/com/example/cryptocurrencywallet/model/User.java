@@ -1,14 +1,10 @@
 package com.example.cryptocurrencywallet.model;
 
-import com.example.cryptocurrencywallet.validator.UniqueEmail;
-import com.example.cryptocurrencywallet.validator.ValidationGroupUniqueEmail;
 import lombok.*;
 import org.hibernate.annotations.NotFound;
 import org.hibernate.annotations.NotFoundAction;
 
 import javax.persistence.*;
-import javax.validation.constraints.Pattern;
-import javax.validation.constraints.Size;
 import java.math.BigDecimal;
 import java.util.Set;
 
@@ -16,7 +12,8 @@ import java.util.Set;
 @Getter
 @Setter
 @Entity
-@Table(name = "user", uniqueConstraints = @UniqueConstraint(columnNames = "email"))
+//@Table(name = "user", uniqueConstraints = @UniqueConstraint(columnNames = "email"))
+@Table(name = "user")
 public class User {
 
     @Id
@@ -26,21 +23,20 @@ public class User {
     @Column(name = "user_name")
     private String username;
 
-
-    @Size(min = 1, message = "First name can not be empty")
     @Column(name = "first_name")
     private String firstName;
 
-    @Size(min = 1, message = "Last name can not be empty")
-    @Column(name = "surname")
+    @Column(name = "last_name")
     private String lastName;
 
-    @Pattern(regexp = "[A-Za-z0-9._%-+]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}", message = "type correct email")
-    @UniqueEmail(groups = ValidationGroupUniqueEmail.class)
+    @Column(name = "email")
     private String email;
 
-    @Size(min = 6,  message = "password must be at least 6 characters")
+    @Column(name = "password")
     private String password;
+
+    private String repeatPassword;
+
     private boolean active;
 
     @OneToOne(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
@@ -62,8 +58,6 @@ public class User {
         this.password = password;
         this.roles = roles;
         this.wallet = new Wallet(new BigDecimal(10000), this);
-//        System.out.println(wallet.getBalanceUSD()+" <<<---- BALANCE");
-//        System.out.println(wallet.getWalletId()+" <<<---- WALLET ID");
     }
 
     /*      MAPPING FOR MyUserDetails     */

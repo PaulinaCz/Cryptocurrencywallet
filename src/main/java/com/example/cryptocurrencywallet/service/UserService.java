@@ -4,6 +4,8 @@ import com.example.cryptocurrencywallet.dto.UserRegistrationDTO;
 import com.example.cryptocurrencywallet.model.User;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 
 @Service
 public interface UserService {
@@ -12,6 +14,4 @@ public interface UserService {
     User getLoggedUser();
 
     void update(User updatedUser, UserRegistrationDTO registrationDTO);
-
-    boolean validUserEmail(String email);
 }
