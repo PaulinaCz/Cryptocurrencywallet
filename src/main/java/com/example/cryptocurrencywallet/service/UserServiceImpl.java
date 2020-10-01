@@ -33,6 +33,7 @@ public class UserServiceImpl implements UserService {
                 userRegistrationDTO.getLastName(),
                 userRegistrationDTO.getEmail(),
                 passwordEncoder.encode(userRegistrationDTO.getPassword()),
+//                passwordEncoder.encode(userRegistrationDTO.getRepeatPassword()),
                 Set.of(new Role("ROLE_USER"))
         );
         return userRepository.save(user);
@@ -59,25 +60,5 @@ public class UserServiceImpl implements UserService {
         updatedUser.setPassword(passwordEncoder.encode(registrationDTO.getPassword()));
 
         userRepository.save(updatedUser);
-
     }
-
-    @Override
-    public boolean validUserEmail(String email) {
-        try {
-            List<User> userList = userRepository.findAll();
-            if (userList.isEmpty()) {
-                return true;
-            }
-            for (User user : userList) {
-                if (user.getEmail().equals(email)) {
-                    return false;
-                }
-            }
-        } catch (Exception e) {
-            e.getMessage();
-        }
-        return true;
-    }
-
 }

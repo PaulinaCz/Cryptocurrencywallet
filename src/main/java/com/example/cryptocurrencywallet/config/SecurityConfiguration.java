@@ -39,7 +39,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     }
 
     @Override
-    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+    protected void configure(AuthenticationManagerBuilder auth){
         auth.authenticationProvider(authenticationProvider());
     }
 
@@ -49,55 +49,38 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
      *  Combine these enums with Spring Security -->>> AmigosCode project
      * */
 
+    /*
+     * TODO: Disable default validation by Spring. When all forms are empty in registration form,
+     *  it should display custom error message from RegistrationValidator.class.
+     *  For instance, if all of the fields are empty it should, display message:
+     *  "All fields must be completed."
+     * */
+
     @Override
     protected void configure(HttpSecurity httpSecurity) throws Exception {
         httpSecurity
                 .csrf()
                 .disable()
-                .authorizeRequests ().antMatchers (
-                "/registration**","/js/**","/css/**","/img/**")
-                .permitAll ()
+                .authorizeRequests().antMatchers(
+                "/registration**", "/js/**", "/css/**", "/img/**")
+                .permitAll()
                 .antMatchers("/user/**").hasAnyAuthority("ROLE_USER")
                 .antMatchers("/admin/**").hasAnyAuthority("ROLE_ADMIN")
-                .anyRequest ().authenticated ()
-                .and ()
-                // form login
-                .formLogin ()
-                .loginPage ("/login")
-//                .loginProcessingUrl("/login")
-                .successHandler(successHandler)
-//                .successHandler(myAuthenticationSuccessHandler())
-                .permitAll ()
-                .and ()
-                // form logout
-                .logout ()
-                .invalidateHttpSession (true)
-                .clearAuthentication (true)
-                .logoutRequestMatcher (new AntPathRequestMatcher ("/logout"))
-                .logoutSuccessUrl ("/login?logout")
-                .permitAll ();
-    }
-
-/*    @Override
-    protected void configure(HttpSecurity http) throws Exception {
-        http
-                .authorizeRequests().antMatchers(
-                "/registration**", // << -- provide access to different URL
-                "/js/**",
-                "/css/**",
-                "/img/**")
-                .permitAll()
                 .anyRequest().authenticated()
                 .and()
+                // form login
                 .formLogin()
-                .loginPage("/login") // << -- Access to custom login page
+                .loginPage("/login")
+                .successHandler(successHandler)
                 .permitAll()
                 .and()
+                // form logout
                 .logout()
                 .invalidateHttpSession(true)
-                .clearAuthentication(true)
+//                .clearAuthentication(true)
                 .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
-                .logoutSuccessUrl("/login?logout") // << -- Access to custom logout page
+                .logoutSuccessUrl("/login?logout")
                 .permitAll();
-    }*/
+    }
+
 }
