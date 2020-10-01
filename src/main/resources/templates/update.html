@@ -8,11 +8,12 @@
 </head>
 <body>
 <style>
-    .error {
-        color: red;
+    header{
+        background-color: lightskyblue;
+        color: white;
     }
 </style>
-<!--    NAVIGATION BAR (HEADER)     -->
+    NAVIGATION BAR (HEADER)
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
     <div class="collapse navbar-collapse" id="navbarColor02">
@@ -29,13 +30,15 @@
         </form>
     </div>
 </nav>
-<nav class="navbar navbar-dark bg-dark">
-    <a class="navbar-brand">
-        Update Your Details
-    </a>
-</nav>
 <div class="container">
-    <div class="row justify-content-md-center">
+    <div class="navbar-nav mr-auto">
+        <header>
+            <h2 class="modal-dialog-centered justify-content-md-center">Update Your Details</h2>
+        </header>
+    </div>
+</div><br>
+<div class="container">
+    <div class="row justify-content-md-center color-swatch">
         <div class="col">
 
             <form th:action="@{/update}" method="post" th:object="${user}">
@@ -47,7 +50,7 @@
 
 
                 <div th:if="${error} != null" class="alert alert-danger">
-                    <span th:text="${error}"></span>
+                    <span th:text="${error}"></span><br>
                 </div>
 
                 <div class="form-group">
@@ -55,14 +58,21 @@
                         First Name
                     </label>
                     <input id="firstName" class="form-control" th:field="*{firstName}"
-                           required="required" autofocus="autofocus"/>
+                           autofocus="autofocus"/>
                 </div>
 
                 <div class="form-group">
                     <label class="col-form-label" for="lastName">
                         Last Name
                     </label>
-                    <input id="lastName" class="form-control" th:field="*{lastName}" required="required">
+                    <input id="lastName" class="form-control" th:field="*{lastName}">
+                </div>
+
+                <div class="form-group">
+                    <label class="col-form-label" for="email">
+                        Email
+                    </label>
+                    <input id="email" class="form-control" th:field="*{email}">
                 </div>
 
                 <div class="form-group">
@@ -70,16 +80,15 @@
                         Password
                     </label>
                     <input id="password" class="form-control" type="password" th:field="*{password}"
-                           required="required"/>
+                    />
                 </div>
                 <div class="form-group">
                     <label class="control-label" for="repeatPassword">
                         Password Confirmation
                     </label>
                     <input id="repeatPassword" class="form-control" type="password" th:field="*{repeatPassword}"
-                           required="required"/>
+                    />
                 </div>
-
 
 
                 <div class="form-group ">
