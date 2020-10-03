@@ -89,6 +89,7 @@ function getSelectedCoinNameSell() {
     return sel.options[sel.selectedIndex].text;
 }
 
+
 function printOutput(num) {
     if (num == "") {
         document.getElementById("output-value").innerText = num;
@@ -97,9 +98,12 @@ function printOutput(num) {
     }
 }
 
+
+
 var numOne = document.getElementById("buyForm");
 var numTwo = document.getElementById("coin-price");
 var sum = document.getElementById("output-value");
+var balance = document.getElementById("balance-after-transaction-value");
 
 numOne.addEventListener("input", add);
 numTwo.addEventListener("input", add);
@@ -107,8 +111,10 @@ numTwo.addEventListener("input", add);
 function add(){
     var one = numOne.value;
     var two = numTwo.value;
+    var myBalance = document.getElementById("user-transaction-balance").value;
     if (!isNaN((one*two))){
-        sum.innerText ='$'+ one*two;
+        sum.innerText ='Current transaction value $'+ one*two;
+        balance.innerText = 'Your balance after transaction $' + (myBalance - (one*two));
     } else {
         sum.innerText = "Enter number!"
     }

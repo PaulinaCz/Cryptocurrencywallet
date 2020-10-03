@@ -231,6 +231,9 @@
                         <div id="output">
                             <p id="output-value" class="text-center mb-4 mt-0 pt-4">$</p>
                         </div>
+                        <div id="balance-after-transaction">
+                            <p id="balance-after-transaction-value"  class="text-center mb-4 mt-0 pt-4">$</p>
+                        </div>
                         <div class="">
                             <div class="justify-content-center">
                                 <div class="form-group row justify-content-center ">
@@ -256,11 +259,11 @@
                     <div class="modal-footer d-flex flex-column justify-content-center border-0">
 
                         <head>
-                            <script type = "text/javascript">
+                            <script type="text/javascript">
                                 <!--
                                 function getConfirmation() {
                                     let confirmTrade = confirm("Do you want to proceed transaction ?");
-                                    if( confirmTrade === true ) {
+                                    if (confirmTrade === true) {
                                         buyTradeWithValidation();
                                         return true;
                                     } else {
@@ -268,6 +271,7 @@
                                         return false;
                                     }
                                 }
+
                                 //-->
                             </script>
                         </head>
@@ -287,14 +291,14 @@
                             <div class="justify-content-center">
                                 <div class="form-group row justify-content-center ">
                                     <div class="col-7">
-                                        <select name="account"  class="form-control"
+                                        <select name="account" class="form-control"
                                                 id="coin-amount-sell">
                                             <option selected disabled>Select Currency</option>
                                             <option th:each="coin : ${loggedUserCoins}"
                                                     th:value="${coin.amount}"
                                                     th:text="${coin.coinName}" id="nameTag-sell"
                                                     onclick="showCurrentDetailsSell()">
-                                                <input type="hidden" th:field="{coin.amount}" id="testTag" />
+                                                <input type="hidden" th:field="{coin.amount}" id="testTag"/>
                                             </option>
                                         </select>
                                     </div>
