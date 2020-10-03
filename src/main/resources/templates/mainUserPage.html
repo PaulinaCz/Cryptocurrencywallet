@@ -255,7 +255,24 @@
                     <div class="line"></div>
                     <div class="modal-footer d-flex flex-column justify-content-center border-0">
 
-                        <button onclick="buyTradeWithValidation()" tabindex="0"
+                        <head>
+                            <script type = "text/javascript">
+                                <!--
+                                function getConfirmation() {
+                                    let confirmTrade = confirm("Do you want to proceed transaction ?");
+                                    if( confirmTrade === true ) {
+                                        buyTradeWithValidation();
+                                        return true;
+                                    } else {
+                                        alert("Transaction cancelled!");
+                                        return false;
+                                    }
+                                }
+                                //-->
+                            </script>
+                        </head>
+
+                        <button onclick="getConfirmation()" tabindex="0"
                                 class="btn btn-outline-primary py-2 px-4">SUBMIT
                             TRANSACTION
                         </button>
