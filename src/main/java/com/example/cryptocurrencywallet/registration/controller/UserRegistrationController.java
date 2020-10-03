@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 import static com.example.cryptocurrencywallet.CommonTools.haveError;
 
-/*
+/**
  * The @RestController annotation in Spring MVC is nothing but a combination of @Controller and @ResponseBody annotation.
  * It was added into Spring 4.0 to make the development of REST-full Web Services in Spring framework easier.
  * If you are familiar with the REST web services you know that the fundamental difference between a web application
@@ -19,7 +19,7 @@ import static com.example.cryptocurrencywallet.CommonTools.haveError;
  * most of the REST clients are programs.
  * */
 @Controller
-@RequestMapping("/registration")
+@RequestMapping
 public class UserRegistrationController {
 
     private UserService userService;
@@ -31,13 +31,13 @@ public class UserRegistrationController {
         this.userService = userService;
     }
 
-    @GetMapping
+    @GetMapping("/registration")
     public String showRegistrationForm(Model model) {
         model.addAttribute("userForm", new UserRegistrationDTO());
         return "registration";
     }
 
-    @PostMapping
+    @PostMapping("/registration")
     public String registerUserAccount(@ModelAttribute("userForm") UserRegistrationDTO userForm, Model model) {
         model = registrationManager.registerUser(userForm, model);
         if (haveError(model)){

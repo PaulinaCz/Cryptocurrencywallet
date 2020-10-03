@@ -51,8 +51,3 @@ public class AppHttpRequests {
 
     }
 }
-//<dependency>
-//<groupId>com.google.code.gson</groupId>
-//<artifactId>gson</artifactId>
-//</dependency>
-//
