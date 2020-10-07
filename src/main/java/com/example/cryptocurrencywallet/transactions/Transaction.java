@@ -24,6 +24,8 @@ public class Transaction {
 
     private String name;
 
+    private String symbol;
+
     @CreationTimestamp
     private Date tradeDateTime;
     @JsonFormat(shape = JsonFormat.Shape.STRING)

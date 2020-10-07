@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:td="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Cryptocurrency wallet - account details</title>
@@ -12,12 +12,26 @@
     <!-- Latest compiled JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
+    <script type="text/javascript" id="calculate">
+
+        function getValue(coinName, coinAmount) {
+            var coinsAndValues = document.getElementById("user-coins-current-values");
+
+            var price = coinsAndValues.get(coinName).value;
+            var valueResult = price * coinAmount;
+
+            document.write(valueResult.toString());
+        }
+
+
+    </script>
+
     <meta charset="UTF-8">
 </head>
 <body>
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-        <div class="collapse navbar-collapse" id="navbarColor02">
+    <div class="collapse navbar-collapse" id="navbarColor02">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
                 <a class="nav-link" th:href="@{'/user'}">Home <span class="sr-only">(current)</span></a>
@@ -53,6 +67,7 @@
             <div class="tab-content" id="nav-tabContent">
                 <div class="tab-pane fade show active" id="list-home" role="tabpanel" aria-labelledby="list-home-list">
                     <div class="card-body">
+                        <input type="hidden" th:value="${loggedUserCoinsCurrentValue}" id="user-coins-current-values"/>
                         <h3 class="card-title">Account details</h3>
                         <p class="card-text">
                         <ul>
@@ -60,22 +75,24 @@
                             <li th:text="'Last name: ' + ${user.lastName}">User last name</li>
                             <li th:text="'Email: ' + ${user.email}">Email</li>
                             <li th:text="'My account balance: ' + ${loggedUserBalance}">My account balance</li>
-                        <li th:text="'My coins: '" >My coins
-                        </li>
-                        <table frame="below">
-                            <tr>
-                                <th>CoinType</th>
-                                <th>Coins amount</th>
-<!--                                <th>Current coins value</th>-->
-                            </tr>
-                            <tbody id="coins" th:each="coin: ${loggedUserCurrencies}">
-                            <tr >
-                                <td th:text="${coin.getCoinName()}" />
-                                <td th:text="${coin.getAmount()}" />
-                            </tr>
-                            </tbody>
+                            <li th:text="'My coins: '">My coins
+                            </li>
+                            <table frame="below">
+                                <tr>
+                                    <th width="50%">CoinType</th>
+                                    <th width="25%">Coins amount</th>
+                                    <th width="25%">Current coins value</th>
+                                </tr>
+                                <tbody id="coins" th:each="coin: ${loggedUserCurrencies}">
+                                <tr>
+                                    <td id="cName" th:text="${coin.getCoinName()}"/>
+                                    <td id="cAmount" th:text="${coin.getAmount()}"/>
+                                    <td id="cValue" th:with="name = ${coin.getSymbol()}, amount=${coin.getAmount()}"
+                                        onload="getValue(name, amount)"/>
+                                </tr>
+                                </tbody>
 
-                        </table>
+                            </table>
 
 
                         </ul>
@@ -93,23 +110,23 @@
                         <h3 class="card-title">Transactions summary</h3>
                         <p class="card-text">
                         <ul>
-                            <li th:text="'My transactions: '" >All transactions</li>
-                        <table frame="below">
-                            <tr>
-                                <th width="35%">Transaction Date   </th>
-                                <th width="15%">Type   </th>
-                                <th width="25%">Amount   </th>
-                                <th width="25%">Currency Price   </th>
-                            </tr>
-                            <tbody id="transactions" th:each="transaction : ${loggedUserTransactionHistory}">
-                            <tr>
-                                <td th:text="${#dates.format(transaction.getDateOfTransaction(), 'dd-MMM-yyyy')}"/>
-                                <td th:text="${transaction.getTransactionDetails().getBuySell()}"/>
-                                <td th:text="${transaction.getTransactionDetails().getAmount()}"/>
-                                <td th:text="${transaction.getTransactionDetails().getPrice()}"/>
-                            </tr>
-                            </tbody>
-                        </table>
+                            <li th:text="'My transactions: '">All transactions</li>
+                            <table frame="below">
+                                <tr>
+                                    <th width="35%">Transaction Date</th>
+                                    <th width="15%">Type</th>
+                                    <th width="25%">Amount</th>
+                                    <th width="25%">Currency Price</th>
+                                </tr>
+                                <tbody id="transactions" th:each="transaction : ${loggedUserTransactionHistory}">
+                                <tr>
+                                    <td th:text="${#dates.format(transaction.getDateOfTransaction(), 'dd-MMM-yyyy')}"/>
+                                    <td th:text="${transaction.getTransactionDetails().getBuySell()}"/>
+                                    <td th:text="${transaction.getTransactionDetails().getAmount()}"/>
+                                    <td th:text="${transaction.getTransactionDetails().getPrice()}"/>
+                                </tr>
+                                </tbody>
+                            </table>
 
                         </ul>
                     </div>
@@ -126,7 +143,9 @@
                         <ul>
                             <li>Main page with most current cryptocurrency exchange rates.</li>
                             <li>Register your user account and get $10000 for a start!</li>
-                            <li>Login to your account. Check your balance, currencies you own and all transaction history.</li>
+                            <li>Login to your account. Check your balance, currencies you own and all transaction
+                                history.
+                            </li>
                             <li>Buy and Sell currencies</li>
                             <li>And may more to come...</li>
                         </ul>

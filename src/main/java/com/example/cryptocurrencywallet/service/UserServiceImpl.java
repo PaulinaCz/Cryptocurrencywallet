@@ -1,29 +1,34 @@
 package com.example.cryptocurrencywallet.service;
 
 import com.example.cryptocurrencywallet.dto.UserRegistrationDTO;
+import com.example.cryptocurrencywallet.model.Coin;
 import com.example.cryptocurrencywallet.model.MyUserDetails;
 import com.example.cryptocurrencywallet.model.Role;
 import com.example.cryptocurrencywallet.model.User;
 import com.example.cryptocurrencywallet.repository.UserRepository;
+import com.example.cryptocurrencywallet.retriveCoin.AppHttpRequests;
+import com.example.cryptocurrencywallet.retriveCoin.model.CryptoCurrency;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.io.IOException;
+import java.math.BigDecimal;
 import java.util.*;
+import java.util.stream.Collectors;
 
 @Service
 public class UserServiceImpl implements UserService {
 
     private final UserRepository userRepository;
-
-    @Autowired
     private BCryptPasswordEncoder passwordEncoder;
 
     @Autowired
-    public UserServiceImpl(UserRepository userRepository) {
+    public UserServiceImpl(UserRepository userRepository, BCryptPasswordEncoder passwordEncoder) {
         this.userRepository = userRepository;
+        this.passwordEncoder = passwordEncoder;
     }
 
 
@@ -60,5 +65,20 @@ public class UserServiceImpl implements UserService {
         updatedUser.setPassword(passwordEncoder.encode(registrationDTO.getPassword()));
 
         userRepository.save(updatedUser);
+    }
+
+    @Override
+    public Map<String, BigDecimal> userCurrentCoinValue(User loggedUser) throws IOException, InterruptedException {
+        List<String> mappedSymbols = loggedUser.getWallet().getMyCoins()
+                .stream()
+                .map(Coin::getSymbol)
+                .collect(Collectors.toList());
+
+        String names = String.join(", ", mappedSymbols);
+
+        List<CryptoCurrency> myCryptoCurrencies = AppHttpRequests.requestCoin(names);
+
+        return myCryptoCurrencies.stream()
+                .collect(Collectors.toMap(CryptoCurrency::getSymbol, CryptoCurrency::getPrice, (c1, c2) -> c2));
     }
 }
