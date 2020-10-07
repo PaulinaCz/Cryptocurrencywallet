@@ -14,13 +14,16 @@
 
     <script type="text/javascript" id="calculate">
 
-        function getValue(coinName, coinAmount) {
-            var coinsAndValues = document.getElementById("user-coins-current-values");
+        var coinsAndValues = document.getElementById("user-coins-current-values");
 
-            var price = coinsAndValues.get(coinName).value;
-            var valueResult = price * coinAmount;
+        function getValue() {
 
-            document.write(valueResult.toString());
+            var price = coinsAndValues.get(document.getElementById("coinSymbol")).value;
+            var amount = document.getElementById("coinAmount").value;
+            var result = price * amount;
+
+            document.getElementById("result").innerHTML = result.toString();
+
         }
 
 
@@ -28,7 +31,7 @@
 
     <meta charset="UTF-8">
 </head>
-<body>
+<body onload="getValue()">
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
     <div class="collapse navbar-collapse" id="navbarColor02">
@@ -70,29 +73,29 @@
                         <input type="hidden" th:value="${loggedUserCoinsCurrentValue}" id="user-coins-current-values"/>
                         <h3 class="card-title">Account details</h3>
                         <p class="card-text">
-                        <ul>
-                            <li th:text="'Name: ' + ${user.firstName}">User first name</li>
-                            <li th:text="'Last name: ' + ${user.lastName}">User last name</li>
-                            <li th:text="'Email: ' + ${user.email}">Email</li>
-                            <li th:text="'My account balance: ' + ${loggedUserBalance}">My account balance</li>
-                            <li th:text="'My coins: '">My coins
-                            </li>
-                            <table frame="below">
-                                <tr>
-                                    <th width="50%">CoinType</th>
-                                    <th width="25%">Coins amount</th>
-                                    <th width="25%">Current coins value</th>
-                                </tr>
-                                <tbody id="coins" th:each="coin: ${loggedUserCurrencies}">
-                                <tr>
-                                    <td id="cName" th:text="${coin.getCoinName()}"/>
-                                    <td id="cAmount" th:text="${coin.getAmount()}"/>
-                                    <td id="cValue" th:with="name = ${coin.getSymbol()}, amount=${coin.getAmount()}"
-                                        onload="getValue(name, amount)"/>
-                                </tr>
-                                </tbody>
+                            <ul>
+                                <li th:text="'Name: ' + ${user.firstName}">User first name</li>
+                                <li th:text="'Last name: ' + ${user.lastName}">User last name</li>
+                                <li th:text="'Email: ' + ${user.email}">Email</li>
+                                <li th:text="'My account balance: ' + ${loggedUserBalance}">My account balance</li>
+                                <li th:text="'My coins: '">My coins
+                                </li>
+                                <table frame="below">
+                                    <tr>
+                                        <th width="50%">CoinType</th>
+                                        <th width="25%">Coins amount</th>
+                                        <th width="25%">Current coins value</th>
+                                    </tr>
+                                    <tbody id="coins" th:each="coin: ${loggedUserCurrencies}">
+                                    <tr>
+                                        <td id="coinName" th:text="${coin.getCoinName()}"/>
+                                        <td id="coinAmount" th:text="${coin.getAmount()}"/>
+                                        <td id="result" th:with="coinSymbol=${coin.getSymbol()}"/>
 
-                            </table>
+                        </tr>
+                        </tbody>
+
+                        </table>
 
 
                         </ul>
