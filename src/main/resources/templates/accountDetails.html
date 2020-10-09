@@ -18,9 +18,10 @@
 
         function getValue() {
 
-            var price = coinsAndValues.get(document.getElementById("coinSymbol")).value;
+            var coinSymbol = document.getElementById("coinSymbol").value;
+            var price = coinsAndValues.get(coinSymbol).value;
             var amount = document.getElementById("coinAmount").value;
-            var result = price * amount;
+            var result = BigInt(price * amount);
 
             document.getElementById("result").innerHTML = result.toString();
 
