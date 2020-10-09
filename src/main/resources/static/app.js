@@ -72,8 +72,8 @@ function getFormattedNumber(num) {
     if (num == "-") {
         return "";
     }
-    var n = Number(num);
-    var value = n.toLocaleString("en");
+    let n = Number(num);
+    let value = n.toLocaleString("en");
     return value;
 }
 function reverseNumberFormat(num) {
@@ -81,12 +81,20 @@ function reverseNumberFormat(num) {
 }
 
 function getSelectedCoinName() {
-    var sel = document.getElementById("coin-price");
+    let sel = document.getElementById("coin-price");
     return sel.options[sel.selectedIndex].text;
 }
 function getSelectedCoinNameSell() {
-    var sel = document.getElementById("coin-price-sell");
+    let sel = document.getElementById("coin-price-sell");
     return sel.options[sel.selectedIndex].text;
+}
+
+let numbersQuotationForm = document.getElementById("number-format");
+
+numbersQuotationForm.addEventListener("online", formatNumber);
+function formatNumber(){
+
+    printOutput(numbersQuotationForm);
 }
 
 function printOutput(num) {
@@ -97,20 +105,39 @@ function printOutput(num) {
     }
 }
 
-var numOne = document.getElementById("buyForm");
-var numTwo = document.getElementById("coin-price");
-var sum = document.getElementById("output-value");
+let numOne = document.getElementById("buyForm");
+let numTwo = document.getElementById("coin-price");
+let sum = document.getElementById("output-value");
+let actualBalance = document.getElementById("user-transaction-balance").value;
+let balance = document.getElementById("balance-after-transaction-value");
+
+sum.innerText = 'Current transaction value $0';
+balance.innerText = "Your balance after transaction $" + getFormattedNumber(actualBalance);
 
 numOne.addEventListener("input", add);
 numTwo.addEventListener("input", add);
 
 function add(){
-    var one = numOne.value;
-    var two = numTwo.value;
+    let one = numOne.value;
+    let two = numTwo.value;
+    let myBalance = document.getElementById("user-transaction-balance").value;
+
     if (!isNaN((one*two))){
-        sum.innerText ='$'+ one*two;
+        sum.innerText ='Current transaction value $'+ getFormattedNumber(one*two);
+        balance.innerText = 'Your balance after transaction $' + getFormattedNumber(myBalance - (one*two));
     } else {
         sum.innerText = "Enter number!"
+    }
+}
+
+function getConfirmation() {
+    let confirmTrade = confirm("Do you want to proceed transaction ?");
+    if (confirmTrade === true) {
+        buyTradeWithValidation();
+        return true;
+    } else {
+        alert("Transaction cancelled!");
+        return false;
     }
 }
 
