@@ -18,6 +18,7 @@
 
         function getValue() {
 
+            var table = document.getElementById("coins");
             var coinSymbol = document.getElementById("coinSymbol").value;
             var price = coinsAndValues.get(coinSymbol).value;
             var amount = document.getElementById("coinAmount").value;
@@ -91,7 +92,7 @@
                                     <tr>
                                         <td id="coinName" th:text="${coin.getCoinName()}"/>
                                         <td id="coinAmount" th:text="${coin.getAmount()}"/>
-                                        <td id="result" th:with="coinSymbol=${coin.getSymbol()}"/>
+                                        <td th:with="coinSymbol=${coin.getSymbol()}" th:text="result"/>
 
                         </tr>
                         </tbody>
