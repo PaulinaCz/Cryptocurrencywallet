@@ -2,26 +2,15 @@ package com.example.cryptocurrencywallet.controller;
 
 
 import com.example.cryptocurrencywallet.model.MyUserDetails;
-import com.example.cryptocurrencywallet.retriveCoin.model.CryptoCurrency;
 import com.example.cryptocurrencywallet.service.CryptoCoinDetails;
 import com.example.cryptocurrencywallet.service.UserService;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
-import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
-import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.servlet.MockMvc;
-
-import java.util.List;
-
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.*;
-import static org.hamcrest.core.IsNot.not;
 
 /**
  * @SpringBootTest is the general test annotation. It loads whole app and enables all auto-configuration.
@@ -34,9 +23,8 @@ import static org.hamcrest.core.IsNot.not;
  */
 
 @ExtendWith(MockitoExtension.class)
-@WebMvcTest(MainPageController.class)
-//@MockitoSettings(strictness = Strictness.LENIENT)
-//@SpringBootTest
+@SpringBootTest
+@AutoConfigureMockMvc
 public class MainPageControllerTest {
 
     @Autowired
@@ -50,6 +38,7 @@ public class MainPageControllerTest {
 
     @MockBean
     private MyUserDetails userDetails;
+
 
 
 }

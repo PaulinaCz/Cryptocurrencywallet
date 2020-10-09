@@ -41,6 +41,7 @@ public class Wallet {
     /*
     *  TODO: Make it Map<String,Coin> instead of List
     * */
+
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name = "wallet_id")
     private List<Coin> myCoins;
@@ -52,9 +53,8 @@ public class Wallet {
     public Wallet(BigDecimal balanceUSD, User user) {
         this.balanceUSD = balanceUSD;
         this.myCoins = new ArrayList<>();
-//        this.transactionHistories = new ArrayList<>();
+        this.transactionHistories = new ArrayList<>();
         this.user = user;
-        System.out.println("><><<><><><< " + walletId);
     }
 
     @Override

@@ -7,7 +7,6 @@
           integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous"/>
     <!-- CSS -->
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="modal.css">
     <!-- jQuery library -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <!-- Popper JS -->
@@ -81,7 +80,7 @@
                 <tr>
                     <th scope="col">Rank</th>
 
-                    <th scope="col" width="1%"></th>
+                    <th scope="col" style = "width :1%"></th>
 
                     <th scope="col">Name</th>
                     <th scope="col">Price</th>
@@ -226,6 +225,7 @@
             <div class="line"></div>
             <div class="modal-body p-0">
                 <input type="hidden" th:value="${loggedUserBalance}" id="user-transaction-balance"/>
+                <!--            BUY MODAL       -->
                 <fieldset id="tab011">
                     <div class="bg-light">
                         <div id="output">
@@ -261,6 +261,7 @@
                         </button>
                     </div>
                 </fieldset>
+                <!--            SELL MODAL       -->
                 <fieldset class="show" id="tab021">
                     <div class="bg-light">
                         <div id="output-sell">

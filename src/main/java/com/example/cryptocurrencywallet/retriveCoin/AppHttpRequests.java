@@ -34,7 +34,7 @@ public class AppHttpRequests {
         List<CryptoCurrency> temp = gson.fromJson(response.body(), new TypeToken<List<CryptoCurrency>>() {
         }.getType());
 
-        temp.forEach(System.out::println);
+//        temp.forEach(System.out::println);
 
         return temp;
     }

@@ -15,7 +15,7 @@ import java.util.List;
 public class RegistrationValidator {
 
 
-    private UserRepository userRepository;
+    private final UserRepository userRepository;
 
     @Autowired
     public RegistrationValidator(UserRepository userRepository) {
@@ -33,7 +33,7 @@ public class RegistrationValidator {
         return model;
     }
 
-    Model validateEmail(UserRegistrationDTO userForm, Model model) {
+    public Model validateEmail(UserRegistrationDTO userForm, Model model) {
         if (!isEmailAddressFormatCorrect(userForm.getEmail())) {
             model.addAttribute("error", "Invalid e-mail address format.");
         }
@@ -43,7 +43,7 @@ public class RegistrationValidator {
         return model;
     }
 
-    Model validatePassword(UserRegistrationDTO userForm, Model model) {
+    public Model validatePassword(UserRegistrationDTO userForm, Model model) {
         if ((userForm.getPassword().length() < 6 || userForm.getPassword().length() > 32)) {
             model.addAttribute("error", "Password must have at least 6 and less than 32 characters long.");
         }

@@ -1,19 +1,21 @@
 package com.example.cryptocurrencywallet.controllerREST;
 
-import com.example.cryptocurrencywallet.model.Coin;
 import com.example.cryptocurrencywallet.model.User;
 import com.example.cryptocurrencywallet.model.Wallet;
 import com.example.cryptocurrencywallet.service.TransactionService;
 import com.example.cryptocurrencywallet.service.UserService;
 import com.example.cryptocurrencywallet.transactions.BuySell;
 import com.example.cryptocurrencywallet.transactions.Transaction;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/user/transaction")
 public class TradeRestController {
+
+    private static final Logger LOGGER = LoggerFactory.getLogger(TradeRestController.class);
 
     @Autowired
     private UserService userService;
@@ -21,10 +23,10 @@ public class TradeRestController {
     @Autowired
     private TransactionService transactionService;
 
-    @RequestMapping(value = "/buy", method = RequestMethod.POST, produces = "application/json", consumes = "application/json")
+    @PostMapping(value = "/buy", produces = "application/json", consumes = "application/json")
     @ResponseBody
     public User buyTrade(@RequestBody Transaction transaction) {
-//        System.out.println(transaction + " <<< BUY");
+        LOGGER.info(transaction + " inside buyTrade() method");
         return processTransactionRequest(transaction, BuySell.BUY);
     }
 
@@ -36,11 +38,10 @@ public class TradeRestController {
     }
 
     private User processTransactionRequest(Transaction transaction, BuySell buySell) {
-//        System.out.println(transaction + " ==== " + buySell);
+        LOGGER.info(transaction + "transaction - inside processTransactionRequest() method");
+        LOGGER.info(buySell + "buySell inside - processTransactionRequest() method");
         Wallet loggedUserWallet = userService.getLoggedUser().getWallet();
-//        System.out.println("DONNE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-        System.out.println(loggedUserWallet);
-
+        LOGGER.info(loggedUserWallet + "wallet of logged user - inside processTransactionRequest() method");
         transaction.setBuySell(buySell);
         transactionService.processTransaction(transaction, loggedUserWallet);
         return null;
