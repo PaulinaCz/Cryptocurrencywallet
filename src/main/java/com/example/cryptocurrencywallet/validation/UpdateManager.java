@@ -24,7 +24,7 @@ public class UpdateManager {
         if (haveError(model)) {
             return model;
         }
-
+        model = validator.validateEmail(userForm, model);
         model = validator.validatePassword(userForm, model);
 
         return model;
