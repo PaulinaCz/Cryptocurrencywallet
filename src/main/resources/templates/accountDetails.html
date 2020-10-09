@@ -14,47 +14,55 @@
 
     <script type="text/javascript">
 
-        // var coinsAndValues = document.getElementById("user-coins-current-values");
+        const coinValues = document.getElementById("coins-current-values");
+        let name = document.getElementById("coinName").value;
+        let amount = document.getElementById("coinAmount").value;
+
+        window.onload = () => getValue(name, amount);
+
+        function getValue(name, amount) {
+            const result = document.getElementById("result");
+            // result = c.price * amount;
+            result.innerHTML = 'a';
+        }
+
+
+        // var table = document.getElementById("coins");
+        // var coinSymbol = document.getElementById("coinSymbol").value;
+        // var price = coinsAndValues.get(coinSymbol).value;
+        // var amount = document.getElementById("coinAmount").value;
+        // var result = BigInt(price * amount);
         //
-        // function getValue() {
+        // document.getElementById("result").innerHTML = result.toString();
+
         //
-        //     var table = document.getElementById("coins");
-        //     var coinSymbol = document.getElementById("coinSymbol").value;
-        //     var price = coinsAndValues.get(coinSymbol).value;
-        //     var amount = document.getElementById("coinAmount").value;
-        //     var result = BigInt(price * amount);
+        // let sortDirection = false;
+        // let userDetails = document.getElementById("user-coins").value;
+        // let coinDetails = document.getElementById("coins-current-values").value;
         //
-        //     document.getElementById("result").innerHTML = result.toString();
+        // window.onload = () => {
+        //     loadTableData(userDetails, coinDetails);
+        // };
+        //
+        //
+        // function loadTableData(userDetails, coinDetails) {
+        //
+        //     const tableBody = document.getElementById("table-content");
+        //     let dataHtml = '';
+        //     for(let c of coinDetails) {
+        //         for (let coin of userDetails) {
+        //             if (coin.name === c.name) {
+        //                 dataHtml += `<tr>
+        //         <td>${coin.name}</td>
+        //         <td>${coin.amount}</td>
+        //         <td>${coin.amount}*${c.price}</td>
+        //         </tr>`;
+        //             }
+        //             tableBody.innerHTML = dataHtml;
+        //         }
+        //     }
         //
         // }
-
-        let sortDirection = false;
-        let userDetails = document.getElementById("user-coins").value;
-        let coinDetails = document.getElementById("coins-current-values").value;
-
-        window.onload = () => {
-            loadTableData(userDetails, coinDetails);
-        };
-
-
-        function loadTableData(userDetails, coinDetails) {
-
-            const tableBody = document.getElementById("table-content");
-            let dataHtml = '';
-            for(let c of coinDetails) {
-                for (let coin of userDetails) {
-                    if (coin.name === c.name) {
-                        dataHtml += `<tr>
-                <td>${coin.name}</td>
-                <td>${coin.amount}</td>
-                <td>${coin.amount}*${c.price}</td>
-                </tr>`;
-                    }
-                    tableBody.innerHTML = dataHtml;
-                }
-            }
-
-        }
 
     </script>
 
@@ -103,41 +111,41 @@
                         <input type="hidden" th:value="${loggedUserCurrencies}" id="user-coins"/>
                         <h3 class="card-title">Account details</h3>
                         <p class="card-text">
-                            <ul>
-                                <li th:text="'Name: ' + ${user.firstName}">User first name</li>
-                                <li th:text="'Last name: ' + ${user.lastName}">User last name</li>
-                                <li th:text="'Email: ' + ${user.email}">Email</li>
-                                <li th:text="'My account balance: ' + ${loggedUserBalance}">My account balance</li>
-                                <li th:text="'My coins: '">My coins
-                                </li>
-<!--                                <table frame="below">-->
-<!--                                    <tr>-->
-<!--                                        <th width="50%">CoinType</th>-->
-<!--                                        <th width="25%">Coins amount</th>-->
-<!--                                        <th width="25%">Current coins value</th>-->
-<!--                                    </tr>-->
-<!--                                    <tbody id="coins" th:each="coin: ${loggedUserCurrencies}">-->
-<!--                                    <tr>-->
-<!--                                        <td id="coinName" th:text="${coin.getCoinName()}"/>-->
-<!--                                        <td id="coinAmount" th:text="${coin.getAmount()}"/>-->
-<!--                                        <td th:with="coinSymbol=${coin.getSymbol()}" th:text="result"/>-->
+                        <ul>
+                            <li th:text="'Name: ' + ${user.firstName}">User first name</li>
+                            <li th:text="'Last name: ' + ${user.lastName}">User last name</li>
+                            <li th:text="'Email: ' + ${user.email}">Email</li>
+                            <li th:text="'My account balance: ' + ${loggedUserBalance}">My account balance</li>
+                            <li th:text="'My coins: '">My coins
+                            </li>
+                            <table frame="below">
+                                <tr>
+                                    <th width="50%">CoinType</th>
+                                    <th width="25%">Coins amount</th>
+                                    <th width="25%">Current coins value</th>
+                                </tr>
+                                <tbody id="coins" th:each="coin: ${loggedUserCurrencies}">
+                                <tr>
+                                    <td id="coinName" th:text="${coin.getCoinName()}"/>
+                                    <td id="coinAmount" th:text="${coin.getAmount()}"/>
+                                    <td id="result"/>
+                                </tr>
 
-<!--                        </tr>-->
-<!--                        </tbody>-->
+                                </tbody>
 
-<!--                        </table>-->
+                            </table>
 
-                        <table>
-                            <thead>
-                            <tr>
-                                <th width="50%">CoinType</th>
-                                <th width="25%">Coins amount</th>
-                                <th width="25%">Current coins value</th>
-                            </tr>
-                            </thead>
+                            <!--                        <table>-->
+                            <!--                            <thead>-->
+                            <!--                            <tr>-->
+                            <!--                                <th width="50%">CoinType</th>-->
+                            <!--                                <th width="25%">Coins amount</th>-->
+                            <!--                                <th width="25%">Current coins value</th>-->
+                            <!--                            </tr>-->
+                            <!--                            </thead>-->
 
-                            <tbody id="table-content"></tbody>
-                        </table>
+                            <!--                            <tbody id="table-content"></tbody>-->
+                            <!--                        </table>-->
 
                         </ul>
 
