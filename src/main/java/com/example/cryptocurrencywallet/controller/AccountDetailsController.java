@@ -31,12 +31,16 @@ public class AccountDetailsController {
     }
 
     @ModelAttribute
-    public void saveLoggedUserDetails(Model model) throws IOException, InterruptedException {
+    public void saveLoggedUserDetails(Model model) {
+        List<CryptoCurrency> listOfCrypto = coinDetails.getListOfCryptoCurrencies("BTC,ETH,USDT,XRP,BCH,DOT,LINK,BNB,CRO,LTC");
+
         model.addAttribute("user", userService.getLoggedUser());
         model.addAttribute("loggedUserBalance", userService.getLoggedUser().getWallet().getBalanceUSD());
         model.addAttribute("loggedUserCurrencies", userService.getLoggedUser().getWallet().getMyCoins());
         model.addAttribute("loggedUserTransactionHistory", userService.getLoggedUser().getWallet().getTransactionHistories());
-        model.addAttribute("loggedUserCoinsCurrentValue", userService.userCurrentCoinValue(userService.getLoggedUser()));
+
+        model.addAttribute("cryptoCoinDetails", listOfCrypto);
+        //model.addAttribute("loggedUserCoinsCurrentValue", userService.userCurrentCoinValue(userService.getLoggedUser()));
 
     }
 
