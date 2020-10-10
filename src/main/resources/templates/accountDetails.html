@@ -12,59 +12,6 @@
     <!-- Latest compiled JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
-    <script type="text/javascript">
-
-        const coinValues = document.getElementById("coins-current-values");
-        let name = document.getElementById("coinName").value;
-        let amount = document.getElementById("coinAmount").value;
-
-        window.onload = () => getValue(name, amount);
-
-        function getValue(name, amount) {
-            const result = document.getElementById("result");
-            // result = c.price * amount;
-            result.innerHTML = 'a';
-        }
-
-
-        // var table = document.getElementById("coins");
-        // var coinSymbol = document.getElementById("coinSymbol").value;
-        // var price = coinsAndValues.get(coinSymbol).value;
-        // var amount = document.getElementById("coinAmount").value;
-        // var result = BigInt(price * amount);
-        //
-        // document.getElementById("result").innerHTML = result.toString();
-
-        //
-        // let sortDirection = false;
-        // let userDetails = document.getElementById("user-coins").value;
-        // let coinDetails = document.getElementById("coins-current-values").value;
-        //
-        // window.onload = () => {
-        //     loadTableData(userDetails, coinDetails);
-        // };
-        //
-        //
-        // function loadTableData(userDetails, coinDetails) {
-        //
-        //     const tableBody = document.getElementById("table-content");
-        //     let dataHtml = '';
-        //     for(let c of coinDetails) {
-        //         for (let coin of userDetails) {
-        //             if (coin.name === c.name) {
-        //                 dataHtml += `<tr>
-        //         <td>${coin.name}</td>
-        //         <td>${coin.amount}</td>
-        //         <td>${coin.amount}*${c.price}</td>
-        //         </tr>`;
-        //             }
-        //             tableBody.innerHTML = dataHtml;
-        //         }
-        //     }
-        //
-        // }
-
-    </script>
 
     <meta charset="UTF-8">
 </head>
@@ -128,24 +75,37 @@
                                 <tr>
                                     <td id="coinName" th:text="${coin.getCoinName()}"/>
                                     <td id="coinAmount" th:text="${coin.getAmount()}"/>
-                                    <td id="result"/>
+                                    <td id="result"></td>
+                        <script>
+
+                            const coinValues = document.getElementById("coins-current-values");
+                            let coinName = document.getElementById("coinName").value;
+                            let coinAmount = document.getElementById("coinAmount").value;
+
+                            //wywoluje metode na starcie, nie wyswietlajac zadnych wartosci na stronie glownej
+                            //TODO znalezc sposob wywolania metody
+                            window.onload = () => getValue(coinName, coinAmount);
+
+                            function getValue(coinName, coinAmount) {
+
+
+                                let result = document.getElementById("result");
+
+                                for(let n of coinValues.getAttribute("name")){
+                                    let valueResult = coinValues.getAttribute("price");
+                                    if(n === coinName){
+                                        result.innerHTML = (valueResult*coinAmount).toString();
+                                    }
+                                }
+
+                            }
+
+                        </script>
                                 </tr>
 
                                 </tbody>
 
                             </table>
-
-                            <!--                        <table>-->
-                            <!--                            <thead>-->
-                            <!--                            <tr>-->
-                            <!--                                <th width="50%">CoinType</th>-->
-                            <!--                                <th width="25%">Coins amount</th>-->
-                            <!--                                <th width="25%">Current coins value</th>-->
-                            <!--                            </tr>-->
-                            <!--                            </thead>-->
-
-                            <!--                            <tbody id="table-content"></tbody>-->
-                            <!--                        </table>-->
 
                         </ul>
 
