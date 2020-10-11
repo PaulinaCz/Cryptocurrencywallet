@@ -44,6 +44,8 @@
             <div class="list-group" id="list-tab" role="tablist">
                 <a class="list-group-item list-group-item-action active" id="list-home-list" data-toggle="list"
                    href="#list-home" role="tab" aria-controls="home">Account details</a>
+                <a class="list-group-item list-group-item-action" id="list-summary-list" data-toggle="list"
+                   href="#list-summary" role="tab" aria-controls="summary">My account summary</a>
                 <a class="list-group-item list-group-item-action" id="list-profile-list" data-toggle="list"
                    href="#list-profile" role="tab" aria-controls="profile">Transactions summary</a>
                 <a class="list-group-item list-group-item-action" id="list-messages-list" data-toggle="list"
@@ -54,58 +56,12 @@
             <div class="tab-content" id="nav-tabContent">
                 <div class="tab-pane fade show active" id="list-home" role="tabpanel" aria-labelledby="list-home-list">
                     <div class="card-body">
-                        <input type="hidden" th:value="${cryptoCoinDetails}" id="coins-current-values"/>
-                        <input type="hidden" th:value="${loggedUserCurrencies}" id="user-coins"/>
                         <h3 class="card-title">Account details</h3>
                         <p class="card-text">
                         <ul>
                             <li th:text="'Name: ' + ${user.firstName}">User first name</li>
                             <li th:text="'Last name: ' + ${user.lastName}">User last name</li>
                             <li th:text="'Email: ' + ${user.email}">Email</li>
-                            <li th:text="'My account balance: ' + ${loggedUserBalance}">My account balance</li>
-                            <li th:text="'My coins: '">My coins
-                            </li>
-                            <table frame="below">
-                                <tr>
-                                    <th width="50%">CoinType</th>
-                                    <th width="25%">Coins amount</th>
-                                    <th width="25%">Current coins value</th>
-                                </tr>
-                                <tbody id="coins" th:each="coin: ${loggedUserCurrencies}">
-                                <tr>
-                                    <td id="coinName" th:text="${coin.getCoinName()}"/>
-                                    <td id="coinAmount" th:text="${coin.getAmount()}"/>
-                                    <td id="result"></td>
-                        <script>
-
-                            const coinValues = document.getElementById("coins-current-values");
-                            let coinName = document.getElementById("coinName").value;
-                            let coinAmount = document.getElementById("coinAmount").value;
-
-                            //wywoluje metode na starcie, nie wyswietlajac zadnych wartosci na stronie glownej
-                            //TODO znalezc sposob wywolania metody
-                            window.onload = () => getValue(coinName, coinAmount);
-
-                            function getValue(coinName, coinAmount) {
-
-
-                                let result = document.getElementById("result");
-
-                                for(let n of coinValues.getAttribute("name")){
-                                    let valueResult = coinValues.getAttribute("price");
-                                    if(n === coinName){
-                                        result.innerHTML = (valueResult*coinAmount).toString();
-                                    }
-                                }
-
-                            }
-
-                        </script>
-                                </tr>
-
-                                </tbody>
-
-                            </table>
 
                         </ul>
 
@@ -115,7 +71,36 @@
                             </li>
                         </ul>
                     </div>
+                </div>
+                <div class="tab-pane fade" id="list-summary" role="tabpanel"
+                     aria-labelledby="list-summary-list">
+                    <div class="card-body">
+                        <input type="hidden" th:value="${cryptoCoinDetails}" id="coins-current-values"/>
+                        <h3 class="card-title">My account summary</h3>
+                        <p class="card-text">
+                        <ul>
+                            <li th:text="'My account: '">Account Summary</li>
+                            <table frame="below">
+                                <tr>
+                                    <th width="50%">CoinType</th>
+                                    <th width="25%">Coins amount</th>
+                                    <th width="25%">Current coins value</th>
+                                </tr>
 
+<!--                                TODO: build table in js script-->
+
+<!--                                <tbody id="coins" th:each="coin: ${loggedUserCurrencies}">-->
+<!--                                <tr>-->
+<!--                                    <td id="coinName" th:text="${coin.getCoinName()}"/>-->
+<!--                                    <td id="coinAmount" th:text="${coin.getAmount()}"/>-->
+<!--                                    <td></td>-->
+<!--                                </tr>-->
+<!--                                </tbody>-->
+
+                            </table>
+
+                        </ul>
+                    </div>
                 </div>
                 <div class="tab-pane fade" id="list-profile" role="tabpanel" aria-labelledby="list-profile-list">
                     <div class="card-body">
