@@ -41,7 +41,7 @@ public class TransactionServiceImpl implements TransactionService {
 //        System.out.println(userCoinsInWallet.size());
 //        System.out.println(transaction + " <<< Transaction inside processTransaction method");
 
-        Coin newCoin = new Coin(transaction.getName(), transaction.getSymbol(), transaction.getAmount(),transaction.getPrice());
+        Coin newCoin = new Coin(transaction.getName(), transaction.getAmount(),transaction.getPrice());
 
 //        System.out.println("inside processTransaction()!");
 //        System.out.println(newCoin);

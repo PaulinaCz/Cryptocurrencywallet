@@ -20,8 +20,6 @@ public class Coin {
     private long id;
     @Column(name = "name")
     private String coinName;
-    @Column(name = "symbol")
-    private String symbol;
     @Column(name = "logo_url")
     private String logoUrl;
     @Column(name = "amount")
@@ -38,9 +36,8 @@ public class Coin {
     @JoinColumn(name = "coin_id")
     private CryptoCurrency cryptoCurrency;*/
 
-    public Coin(String coinName, String symbol, BigDecimal amount, BigDecimal price) {
+    public Coin(String coinName, BigDecimal amount, BigDecimal price) {
         this.coinName = coinName;
-        this.symbol = symbol;
         this.amount = amount;
         this.price = price;
     }

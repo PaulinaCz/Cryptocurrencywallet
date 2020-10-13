@@ -1,6 +1,5 @@
 package com.example.cryptocurrencywallet.controller;
 
-import com.example.cryptocurrencywallet.model.Coin;
 import com.example.cryptocurrencywallet.retriveCoin.model.CryptoCurrency;
 import com.example.cryptocurrencywallet.service.CryptoCoinDetails;
 import com.example.cryptocurrencywallet.service.UserService;
@@ -9,12 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.io.IOException;
-import java.math.BigDecimal;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
-import java.util.stream.Collectors;
 
 
 @Controller
@@ -38,9 +32,7 @@ public class AccountDetailsController {
         model.addAttribute("loggedUserBalance", userService.getLoggedUser().getWallet().getBalanceUSD());
         model.addAttribute("loggedUserCurrencies", userService.getLoggedUser().getWallet().getMyCoins());
         model.addAttribute("loggedUserTransactionHistory", userService.getLoggedUser().getWallet().getTransactionHistories());
-
         model.addAttribute("cryptoCoinDetails", listOfCrypto);
-        //model.addAttribute("loggedUserCoinsCurrentValue", userService.userCurrentCoinValue(userService.getLoggedUser()));
 
     }
 
