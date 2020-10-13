@@ -94,7 +94,8 @@
                                         <div th:if="${coin.getCoinName()} == ${value.getName()}">
                                             <td id="coinName" th:text="${coin.getCoinName()}"/>
                                             <td id="coinAmount" th:text="${coin.getAmount()}"/>
-                                            <td id="coinValue" th:text="${coin.getAmount() * value.getPrice()}"></td>
+                                            <td th:with="result=${coin.getAmount() * value.getPrice()}">
+                                                <span th:text="'$' + ${#numbers.formatDecimal(result, 0, 'COMMA', 2, 'POINT')}">$0.00</span></td>
                                         </div>
                                         </tbody>
                                     </tr>
