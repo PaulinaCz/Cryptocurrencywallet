@@ -113,17 +113,19 @@
                             <p th:text="'My transactions: '">All transactions</p>
                             <table frame="below">
                                 <tr>
-                                    <th width="35%">Transaction Date</th>
+                                    <th width="30%">Transaction Date</th>
                                     <th width="15%">Type</th>
-                                    <th width="25%">Amount</th>
-                                    <th width="25%">Currency Price</th>
+                                    <th width="15%">Currency</th>
+                                    <th width="20%">Amount</th>
+                                    <th width="20%">Currency Price</th>
                                 </tr>
                                 <tbody id="transactions" th:each="transaction : ${loggedUserTransactionHistory}">
                                 <tr>
                                     <td th:text="${#dates.format(transaction.getDateOfTransaction(), 'dd-MMM-yyyy')}"/>
                                     <td th:text="${transaction.getTransactionDetails().getBuySell()}"/>
+                                    <td th:text="${transaction.getTransactionDetails().getName()}"/>
                                     <td th:text="${transaction.getTransactionDetails().getAmount()}"/>
-                                    <td th:text="${transaction.getTransactionDetails().getPrice()}"/>
+                                    <td th:text="'$' + ${transaction.getTransactionDetails().getPrice()}"/>
                                 </tr>
                                 </tbody>
                             </table>

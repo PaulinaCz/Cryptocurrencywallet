@@ -89,14 +89,6 @@ function getSelectedCoinNameSell() {
     return sel.options[sel.selectedIndex].text;
 }
 
-let numbersQuotationForm = document.getElementById("number-format");
-
-numbersQuotationForm.addEventListener("online", formatNumber);
-function formatNumber(){
-
-    printOutput(numbersQuotationForm);
-}
-
 function printOutput(num) {
     if (num == "") {
         document.getElementById("output-value").innerText = num;
