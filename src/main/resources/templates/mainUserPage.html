@@ -68,8 +68,8 @@
                 </thead>
                 <tbody id="quotationRow">
 
-                <tr th:each="rate : ${cryptoCoinDetails}" class="active">
-                    <td th:text="${rate.rank}">"</td>
+                <tr th:each="rate, iterator : ${cryptoCoinDetails}" class="active">
+                    <td th:text="${iterator.count}">"</td>
                     <td>
                         <img alt="coin graphic"
                              th:src="@{${rate.logoUrl}}"
@@ -77,7 +77,7 @@
                              class="rounded-circle" width="32px" height="32px"/>
                     </td>
                     <td th:text="${rate.name}"></td>
-                    <td>$<span th:text="${rate.price}<1 ? ${#numbers.formatDecimal(rate.price, 1, 'COMMA', 6, 'POINT')}
+                    <td id="blue">$<span th:text="${rate.price}<1 ? ${#numbers.formatDecimal(rate.price, 1, 'COMMA', 6, 'POINT')}
                                                         : ${#numbers.formatDecimal(rate.price, 1, 'COMMA', 2, 'POINT')}">10.00</span></td>
                     <td><span th:text="${#numbers.formatDecimal(rate.marketCap, 0, 'COMMA', 2, 'POINT')}">10.00</span>
                     </td>
