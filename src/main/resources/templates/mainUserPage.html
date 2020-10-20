@@ -58,7 +58,7 @@
                 <thead>
                 <tr>
                     <th scope="col">Rank</th>
-                    <th scope="col" style="width :1%"></th>
+                    <th scope="col"></th>
                     <th scope="col">Name</th>
                     <th scope="col">Price</th>
                     <th scope="col">Market Cap</th>
@@ -77,14 +77,14 @@
                              class="rounded-circle" width="32px" height="32px"/>
                     </td>
                     <td th:text="${rate.name}"></td>
-                    <td id="blue">$<span th:text="${rate.price}<1 ? ${#numbers.formatDecimal(rate.price, 1, 'COMMA', 6, 'POINT')}
+                    <td class="blue">$<span th:text="${rate.price}<1 ? ${#numbers.formatDecimal(rate.price, 1, 'COMMA', 6, 'POINT')}
                                                         : ${#numbers.formatDecimal(rate.price, 1, 'COMMA', 2, 'POINT')}">10.00</span></td>
-                    <td><span th:text="${#numbers.formatDecimal(rate.marketCap, 0, 'COMMA', 2, 'POINT')}">10.00</span>
+                    <td>$<span th:text="${#numbers.formatDecimal(rate.marketCap, 0, 'COMMA', 2, 'POINT')}">10.00</span>
                     </td>
-                    <td><span th:text="${#numbers.formatDecimal(rate._1d.volume, 0, 'COMMA', 2, 'POINT')}">10.00</span>
+                    <td class="blue">$<span th:text="${#numbers.formatDecimal(rate._1d.volume, 0, 'COMMA', 2, 'POINT')}">10.00</span>
                     </td>
                     <td><span
-                            th:text="${#numbers.formatDecimal(rate.circulatingSupply, 0, 'COMMA', 2, 'POINT')}">10.00</span>
+                            th:text="${#numbers.formatDecimal(rate.circulatingSupply, 0, 'COMMA', 2, 'POINT')} + ' ' + ${rate.symbol}">10.00</span>
                     </td>
 
                 </tr>

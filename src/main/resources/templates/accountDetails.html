@@ -132,7 +132,8 @@
                                         <td id="coinName" th:text="${coin.getCoinName()}"/>
                                         <td id="coinAmount" th:text="${coin.getAmount()}"/>
                                         <td th:with="result=${coin.getAmount() * value.getPrice()}">
-                                            <span th:text="'$' + ${#numbers.formatDecimal(result, 0, 'COMMA', 2, 'POINT')}">$0.00</span>
+                                            <span th:text="${result}<1 ? '$' + ${#numbers.formatDecimal(result, 1, 'COMMA', 6, 'POINT')}
+                                                        : '$' + ${#numbers.formatDecimal(result, 0, 'COMMA', 2, 'POINT')}">$0.00</span>
                                         </td>
                                     </div>
                                     </tbody>
@@ -163,7 +164,8 @@
                                 <td th:text="${transaction.getTransactionDetails().getBuySell()}"/>
                                 <td th:text="${transaction.getTransactionDetails().getName()}"/>
                                 <td th:text="${transaction.getTransactionDetails().getAmount()}"/>
-                                <td th:text="'$' + ${transaction.getTransactionDetails().getPrice()}"/>
+                                <td th:text="${transaction.getTransactionDetails().getPrice()}<1 ? '$' + ${#numbers.formatDecimal(transaction.getTransactionDetails().getPrice(), 1, 'COMMA', 6, 'POINT')}
+                                                        : '$' + ${#numbers.formatDecimal(transaction.getTransactionDetails().getPrice(), 0, 'COMMA', 2, 'POINT')}"/>
                                 <td th:text="'$' + ${transaction.getTransactionDetails().getAmount()} * ${transaction.getTransactionDetails().getPrice()}"/>
                             </tr>
                             </tbody>
