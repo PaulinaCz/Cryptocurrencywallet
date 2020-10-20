@@ -19,7 +19,6 @@ public class Transaction {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "transaction_id") //no data connection for transaction_id YET!
-
     private long id;
 
     private String name;
@@ -29,7 +28,7 @@ public class Transaction {
     @JsonFormat(shape = JsonFormat.Shape.STRING)
     private BigDecimal amount;
 
-    private BigDecimal amountGBP;
+    private BigDecimal amountUSD;
 
     @JsonFormat(shape = JsonFormat.Shape.STRING)
     private BigDecimal price;
@@ -52,7 +51,7 @@ public class Transaction {
         if (amount == null || amount.compareTo(BigDecimal.ZERO) < 0){
             throw new IllegalArgumentException("Wrong amount: " + amount);
         }
-        if (price == null || price.compareTo(BigDecimal.ZERO) < 0){
+        if (price == null || price.compareTo(BigDecimal.ZERO) <= 0){
             throw new IllegalArgumentException("Wrong price: " + price);
         }
         return price.multiply(amount);
@@ -65,13 +64,10 @@ public class Transaction {
                 ", name='" + name + '\'' +
                 ", tradeDateTime=" + tradeDateTime +
                 ", amount=" + amount +
-                ", amountGBP=" + amountGBP +
+                ", amountGBP=" + amountUSD +
                 ", price=" + price +
                 ", buySell="+ buySell+
                 ", isExecuted=" + isExecuted +
                 '}';
-
     }
-
-
 }
