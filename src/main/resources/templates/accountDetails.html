@@ -6,7 +6,6 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
           integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous"/>
     <!-- CSS -->
-    <link rel="stylesheet" href="modal.css">
     <link rel="stylesheet" href="style.css">
     <!-- jQuery library -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -116,6 +115,8 @@
                         <input type="hidden" th:value="${cryptoCoinDetails}" id="coins-current-values"/>
                         <h3 class="card-title">My account summary</h3>
                         <p class="card-text">
+                        <p th:text="'Balance: $' + ${user.getWallet().getBalanceUSD()}">My balance: </p>
+                        <h4 class="table-title">My coins</h4>
                         <table frame="below">
 
                             <tr>
@@ -137,7 +138,6 @@
                                     </tbody>
                                 </tr>
                             </th:block>
-
 
                         </table>
 
@@ -193,6 +193,7 @@
         </div>
     </div>
 </div>
+
 
 <!-- Modal-->
 <div id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true"
