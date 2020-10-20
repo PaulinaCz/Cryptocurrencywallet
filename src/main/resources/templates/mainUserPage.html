@@ -77,7 +77,8 @@
                              class="rounded-circle" width="32px" height="32px"/>
                     </td>
                     <td th:text="${rate.name}"></td>
-                    <td>$<span th:text="${#numbers.formatDecimal(rate.price, 0, 'COMMA', 4, 'POINT')}">10.00</span></td>
+                    <td>$<span th:text="${rate.price}<1 ? ${#numbers.formatDecimal(rate.price, 1, 'COMMA', 6, 'POINT')}
+                                                        : ${#numbers.formatDecimal(rate.price, 1, 'COMMA', 2, 'POINT')}">10.00</span></td>
                     <td><span th:text="${#numbers.formatDecimal(rate.marketCap, 0, 'COMMA', 2, 'POINT')}">10.00</span>
                     </td>
                     <td><span th:text="${#numbers.formatDecimal(rate._1d.volume, 0, 'COMMA', 2, 'POINT')}">10.00</span>
