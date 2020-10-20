@@ -304,6 +304,12 @@
     </div>
 </div>
 
+<script th:inline="javascript">
+    /*<![CDATA[*/
+    let apiCoinsList = /*[[${cryptoCoinDetails}]]*/;
+    let userCoinList = /*[[${loggedUserCurrencies}]]*/;
+    /*]]>*/
+</script>
 <script src="app.js"></script>
 <script src="tradeAjax.js"></script>
 </body>
