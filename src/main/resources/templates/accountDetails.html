@@ -18,32 +18,6 @@
 
 </head>
 <body>
-<!--<nav class="navbar navbar-expand-lg navbar-dark bg-primary">-->
-<!--    <div class="collapse navbar-collapse" id="navbarColor02">-->
-<!--        <ul class="navbar-nav mr-auto">-->
-<!--            <li class="nav-item active">-->
-<!--                <a class="nav-link" th:href="@{'/user'}">Home <span class="sr-only">(current)</span></a>-->
-<!--            </li>-->
-<!--            <li class="nav-item active">-->
-<!--                <a class="nav-link" th:href="@{'/accountDetails'}">Account details</a>-->
-<!--            </li>-->
-<!--        </ul>-->
-<!--        <div class="col ">-->
-<!--            <button type="button" data-toggle="modal" data-target="#myModal"-->
-<!--                    class="btn btn-outline-light py-2 px-4" onclick="showCurrentDetails()">-->
-<!--                Trade-->
-<!--            </button>-->
-<!--        </div>-->
-<!--        <form class="form-inline">-->
-<!--            <ul class="navbar-nav mr-auto">-->
-<!--                <li class="nav-item active"><a class="nav-link" th:text="'Hello ' + ${user.getFirstName()}+'!'">Welcome:-->
-<!--                    [getFirstName]</a></li>-->
-<!--            </ul>-->
-<!--            <a th:href="@{'/logout'}" class="btn btn-outline-light my-2 my-sm-0">Log out</a>-->
-<!--        </form>-->
-<!--    </div>-->
-<!--</nav>-->
-
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary ">
     <a class="navbar-brand" href="#"></a>
@@ -83,7 +57,7 @@
                 <a class="list-group-item list-group-item-action active" id="list-home-list" data-toggle="list"
                    href="#list-home" role="tab" aria-controls="home">Account details</a>
                 <a class="list-group-item list-group-item-action" id="list-summary-list" data-toggle="list"
-                   href="#list-summary" role="tab" aria-controls="summary">My account summary</a>
+                   href="#list-summary" role="tab" aria-controls="summary">Account summary</a>
                 <a class="list-group-item list-group-item-action" id="list-profile-list" data-toggle="list"
                    href="#list-profile" role="tab" aria-controls="profile">Transactions summary</a>
                 <a class="list-group-item list-group-item-action" id="list-messages-list" data-toggle="list"
@@ -97,7 +71,7 @@
                     <div class="card-body">
                         <h3 class="card-title">Account details</h3>
                         <p class="card-text">
-                        <ul>
+                        <ul style="font-family: 'Frank Ruhl Libre', serif; font-size: 18px;">
                             <li th:text="'Name: ' + ${user.firstName}">User first name</li>
                             <li th:text="'Last name: ' + ${user.lastName}">User last name</li>
                             <li th:text="'Email: ' + ${user.email}">Email</li>
@@ -115,10 +89,11 @@
                      aria-labelledby="list-summary-list">
                     <div class="card-body">
                         <input type="hidden" th:value="${cryptoCoinDetails}" id="coins-current-values"/>
-                        <h3 class="card-title">My account summary</h3>
+                        <h3 class="card-title">Account summary</h3>
                         <p class="card-text">
-                        <p th:text="'Balance: $' + ${user.getWallet().getBalanceUSD()}">My balance: </p>
-                        <h4 class="table-title">My coins</h4>
+                        <p style="font-family: 'Frank Ruhl Libre', serif; font-weight: bold; font-size: 18px;"
+                           th:text="'My balance:     $' + ${user.getWallet().getBalanceUSD()}">My balance: </p>
+                        <h4 class="table-title">My crypto</h4>
                         <table class="table table-hover">
 
                             <thead class="table_header">
