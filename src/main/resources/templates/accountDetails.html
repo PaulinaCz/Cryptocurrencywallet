@@ -13,6 +13,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <!-- Latest compiled JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <!--    GOOGLE FONTS-->
+    <link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@500&family=Staatliches&display=swap" rel="stylesheet">
 
 </head>
 <body>
@@ -117,14 +119,15 @@
                         <p class="card-text">
                         <p th:text="'Balance: $' + ${user.getWallet().getBalanceUSD()}">My balance: </p>
                         <h4 class="table-title">My coins</h4>
-                        <table frame="below">
+                        <table class="table table-hover">
 
+                            <thead class="table_header">
                             <tr>
                                 <th width="40%">CoinType</th>
                                 <th width="30%">Coins amount</th>
                                 <th width="30%">Current coins value</th>
                             </tr>
-
+                            </thead>
                             <th:block th:each="coin: ${loggedUserCurrencies}">
                                 <tr>
                                     <tbody id="values" th:each="value: ${cryptoCoinDetails}">
@@ -148,8 +151,8 @@
                     <div class="card-body">
                         <h3 class="card-title">Transactions summary</h3>
                         <p class="card-text">
-                        <p th:text="'My transactions: '">All transactions</p>
-                        <table frame="below">
+                        <table class="table table-hover">
+                            <thead class="table_header">
                             <tr>
                                 <th width="30%">Transaction Date and Time</th>
                                 <th width="10%">Type</th>
@@ -158,6 +161,7 @@
                                 <th width="15%">Currency Price</th>
                                 <th width="15%">Transaction Total</th>
                             </tr>
+                            </thead>
                             <tbody id="transactions" th:each="transaction : ${loggedUserTransactionHistory}">
                             <tr>
                                 <td th:text="${#dates.format(transaction.getDateOfTransaction(), 'dd-MMM-yyyy | HH:mm:ss')}"/>
