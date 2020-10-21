@@ -11,17 +11,13 @@
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary ">
     <a class="navbar-brand" href="#" th:href="@{/}">
-        Registration and Login Module
+        Login
     </a>
 </nav>
 
-<br>
-<br>
-<div class="container">
+<div class="container" id="login-page">
     <div class="row justify-content-md-center">
         <div class="col">
-
-            <h1> User Login Page </h1>
             <form th:action="@{/login}" method="post">
 
                 <!--    error message     -->
