@@ -7,16 +7,15 @@
           integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous"/>
 </head>
 <body>
-<style>
-    .error {
-        color: red;
-    }
-</style>
-<!--    NAVIGATION BAR (HEADER)     -->
+<!--    NAVIGATION BAR (HEADER)-->
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
     <div class="collapse navbar-collapse" id="navbarColor02">
-        <ul class="navbar-nav mr-auto">
+
+            <div class="header">
+                    <a class="description" style="color: azure" >Update Your Details</a>
+            </div>
+            <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
                 <a class="nav-link" th:href="@{'/user'}">Home <span class="sr-only">(current)</span></a>
             </li>
@@ -29,33 +28,60 @@
         </form>
     </div>
 </nav>
-<nav class="navbar navbar-dark bg-dark">
-    <a class="navbar-brand">
-        Update Your Details
-    </a>
-</nav>
+<br>
 <div class="container">
-    <div class="row justify-content-md-center">
+    <div class="row justify-content-md-center color-swatch">
         <div class="col">
 
             <form th:action="@{/update}" method="post" th:object="${user}">
 
-                <label for="firstName">First name:</label><br>
-                <input type="text" input id="firstName" class="form-control" th:field="*{firstName}" required="required" autofocus="autofocus"/>
-                <p class="error" th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}">Incorrect First Name</p><br>
+                <!-- success message -->
+                <div th:if="${param.success}">
+                    <div class="alert alert-info">You've successfully updated your awesome details</div>
+                </div>
 
-                <label for="surname">Last name:</label><br>
-                <input type="text" id="surname" class="form-control" th:field="*{lastName}" required="required" />
-                <p class="error" th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}">Incorrect Last Name</p>
-                <br><br>
 
-                <label for="email">Email:</label><br>
-                <input id="email" class="form-control" type="email" th:field="*{email}" required="required">
-                <p class="error" th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Incorrect email</p><br><br>
+                <div th:if="${error} != null" class="alert alert-danger">
+                    <span th:text="${error}"></span><br>
+                </div>
 
-                <label for="password">Password:</label><br>
-                <input type="password" id="password" class="form-control" th:field="*{password}" required="required">
-                <p class="error" th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Incorrect password</p><br><br>
+                <div class="form-group">
+                    <label class="col-form-label" for="firstName">
+                        First Name
+                    </label>
+                    <input id="firstName" class="form-control" th:field="*{firstName}"
+                           autofocus="autofocus"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-form-label" for="lastName">
+                        Last Name
+                    </label>
+                    <input id="lastName" class="form-control" th:field="*{lastName}">
+                </div>
+
+                <div class="form-group">
+                    <label class="col-form-label" for="email">
+                        Email
+                    </label>
+                    <input id="email" class="form-control" th:field="*{email}">
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label" for="password">
+                        Password
+                    </label>
+                    <input id="password" class="form-control" type="password" th:field="*{password}"
+                    />
+                </div>
+                <div class="form-group">
+                    <label class="control-label" for="repeatPassword">
+                        Password Confirmation
+                    </label>
+                    <input id="repeatPassword" class="form-control" type="password" th:field="*{repeatPassword}"
+                    />
+                </div>
+
 
                 <div class="form-group ">
                     <div class="row">

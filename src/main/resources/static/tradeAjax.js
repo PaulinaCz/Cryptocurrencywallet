@@ -7,12 +7,12 @@ function buyTrade() {
     const HOST_URL = getHostUrl();
     // stopInterval();
     console.log('processing buy trade');
-    var buyTrade = {};
+    let buyTrade = {};
 
 
     buyTrade.name = getSelectedCoinName();
     buyTrade.price = document.getElementById("coin-price").value;
-    buyTrade.amount = document.getElementById("buyForm").value;
+    buyTrade.amount = document.getElementById("buy-form-user-input").value;
     console.log(buyTrade.name + " -- JSON coinName");
     console.log(buyTrade.price + " -- JSON price");
     console.log(buyTrade.amount + " -- JSON amount");
@@ -53,11 +53,11 @@ function buyTrade() {
 function sellTrade() {
     const HOST_URL = getHostUrl();
     console.log('processing sell trade');
-    var sellTrade = {};
+    let sellTrade = {};
 
-    sellTrade.name = getSelectedCoinNameSell();
-    sellTrade.price = document.getElementById("coin-price-sell").value;
-    sellTrade.amount = document.getElementById("testTag").value;
+    sellTrade.name = userCoinToSell.value;
+    sellTrade.price = coinPrice;
+    sellTrade.amount =formUserInputSell.value;
     console.log(sellTrade.name + " -- JSON SELL coinName");
     console.log(sellTrade.price + " -- JSON SELL price");
     console.log(sellTrade.amount + " -- JSON SELL amount");
@@ -88,6 +88,7 @@ function sellTrade() {
     })*/.fail(function () {
         console.log('ajax failed');
     });
+    reloadPage();
 };
 function reloadPage() {
     location.reload();

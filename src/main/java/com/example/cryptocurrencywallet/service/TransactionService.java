@@ -6,5 +6,5 @@ import com.example.cryptocurrencywallet.transactions.Transaction;
 
 public interface TransactionService {
 
-    User processTransaction(Transaction transaction, Wallet loggedUserWallet);
+    User processTransaction(Transaction transaction, Wallet loggedUserWallet) throws CoinInUserWalletNotFound, InsufficientFundsException, InsufficientCoinException;
 }

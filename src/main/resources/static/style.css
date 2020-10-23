@@ -32,22 +32,15 @@
 /*    align-items: center;*/
 /*}*/
 
+
 input{
     width: 50%;
     display: block;
     margin: 15px auto;
 }
 
-/*body {*/
-/*    color: #000;*/
-/*    overflow-x: hidden;*/
-/*    height: 100%;*/
-/*    background-color: #D1C4E9;*/
-/*    background-repeat: no-repeat*/
-/*}*/
-
 .container {
-    margin: 200px auto
+    margin: 50px auto
 }
 
 fieldset {
