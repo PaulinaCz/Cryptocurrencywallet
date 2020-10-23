@@ -35,8 +35,6 @@ public class User {
     @Column(name = "password")
     private String password;
 
-    private String repeatPassword;
-
     private boolean active;
 
     @OneToOne(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
