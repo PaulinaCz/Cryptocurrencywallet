@@ -2,9 +2,14 @@
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
-    <title>Registration</title>
+    <title>Update Details</title>
+
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
           integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous"/>
+
+    <!--    GOOGLE FONTS-->
+    <link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@500&family=Staatliches&display=swap" rel="stylesheet">
+
 </head>
 <body>
 <!--    NAVIGATION BAR (HEADER)-->
@@ -34,10 +39,12 @@
         </ul>
     </div>
 </nav>
-<br>
 <div class="container">
     <div class="row justify-content-md-center color-swatch">
         <div class="col">
+
+            <h3 style="text-align: center; font-family: 'Frank Ruhl Libre', serif; padding: 5px;">
+                Update your details </h3>
 
             <form th:action="@{/update}" method="post" th:object="${user}">
 
