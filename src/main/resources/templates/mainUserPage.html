@@ -57,7 +57,6 @@
                 <h1 class="text-center">CryptoCurrencies By Market Capitalization</h1>
                 <thead>
                 <tr>
-                    <th scope="col">Rank</th>
                     <th scope="col"></th>
                     <th scope="col">Name</th>
                     <th scope="col">Price</th>
@@ -68,8 +67,7 @@
                 </thead>
                 <tbody id="quotationRow">
 
-                <tr th:each="rate, iterator : ${cryptoCoinDetails}" class="active">
-                    <td th:text="${iterator.count}">"</td>
+                <tr th:each="rate : ${cryptoCoinDetails}" class="active">
                     <td>
                         <img alt="coin graphic"
                              th:src="@{${rate.logoUrl}}"

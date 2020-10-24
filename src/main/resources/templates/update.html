@@ -28,9 +28,6 @@
             <li class="nav-item">
                 <a class="nav-link" th:href="@{'/accountDetails'}">Account details</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" data-toggle="modal" data-target="#myModal" style="cursor: pointer">Trade</a>
-            </li>
         </ul>
         <ul class="navbar-nav text-right">
             <li class="nav-item ">
@@ -70,14 +67,14 @@
                     <label class="col-form-label" for="lastName">
                         Last Name
                     </label>
-                    <input id="lastName" class="form-control" th:field="*{lastName}">
+                    <input id="lastName" class="form-control" th:field="*{lastName}" />
                 </div>
 
                 <div class="form-group">
                     <label class="col-form-label" for="email">
                         Email
                     </label>
-                    <input id="email" class="form-control" th:field="*{email}">
+                    <input id="email" class="form-control" th:field="*{email}"/>
                 </div>
 
                 <div class="form-group">
