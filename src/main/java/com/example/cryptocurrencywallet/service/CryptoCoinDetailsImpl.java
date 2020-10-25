@@ -21,7 +21,6 @@ public class CryptoCoinDetailsImpl implements CryptoCoinDetails {
     public List<CryptoCurrency> getListOfCryptoCurrencies(String coinNames) {
         List<CryptoCurrency> coinResponse = null;
         try {
-
             coinResponse = AppHttpRequests.requestCoin(coinNames);
         } catch (InterruptedException | IOException e) {
             e.printStackTrace();

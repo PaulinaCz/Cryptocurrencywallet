@@ -15,17 +15,21 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 @EnableWebSecurity
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
-    @Autowired
-    private MyUserDetailsService myUserDetailsService;
-    @Autowired
-    private CustomLoginSuccessHandler successHandler;
+    private final MyUserDetailsService myUserDetailsService;
+    private final CustomLoginSuccessHandler successHandler;
 
     @Bean
     public BCryptPasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
 
-    /*
+    @Autowired
+    public SecurityConfiguration(MyUserDetailsService myUserDetailsService, CustomLoginSuccessHandler successHandler) {
+        this.myUserDetailsService = myUserDetailsService;
+        this.successHandler = successHandler;
+    }
+
+    /**
      *  Spring's Security DaoAuthenticationProvider is a simple authentication provider that uses a
      *  Data Access Object (DAO) to retrieve user information from a relational database.
      *  It leverages a UserDetailsService (as a DAO) in order to lookup the username, password and GrantedAuthority
@@ -39,8 +43,9 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     }
 
     @Override
-    protected void configure(AuthenticationManagerBuilder auth){
-        auth.authenticationProvider(authenticationProvider());
+    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+        auth.authenticationProvider(authenticationProvider())
+        .inMemoryAuthentication().withUser("kowalski@wp.pl").password("asd123").roles("USER");
     }
 
     /*
@@ -66,7 +71,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .permitAll()
                 .antMatchers("/user/**").hasAnyAuthority("ROLE_USER")
                 .antMatchers("/admin/**").hasAnyAuthority("ROLE_ADMIN")
-                .anyRequest().authenticated()
+                .anyRequest()
+                .authenticated()
                 .and()
                 // form login
                 .formLogin()

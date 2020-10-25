@@ -24,14 +24,13 @@ public class RegistrationManager {
 
     public Model registerUser(UserRegistrationDTO userForm, Model model) {
         model = validator.validateFieldsCompletion(userForm, model);
+
         if (haveError(model)) {
             return model;
         }
 
-        userForm.setFirstName(userForm.getFirstName().trim().replaceAll(" +", " "));
-        userForm.setLastName(userForm.getFirstName().trim().replaceAll(" +", " "));
-        userForm.setPassword(userForm.getPassword().replaceAll(" ", ""));
-        userForm.setEmail(userForm.getEmail().replaceAll(" ", ""));
+        userForm.setPassword(userForm.getPassword().trim().replaceAll(" ", ""));
+        userForm.setEmail(userForm.getEmail().trim().replaceAll(" ", ""));
         model = validator.validateEmail(userForm, model);
         model = validator.validatePassword(userForm, model);
 
