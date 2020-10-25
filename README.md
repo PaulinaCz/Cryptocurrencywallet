@@ -1,32 +1,31 @@
 # Cryptocurrencywallet
-
-Aplikacja Serwis Kryptowalut
-
 Paweł / Łukasz / Paulina / Adrian
 
-
-Spring + MySQL + Thyme-leaf (Bootstrap)
-
-<h2> Główne funkcje systemu</h2>
-
-<ul>
-  <li>Strona główna</li>
-  <li>Strona Lista Krypto-walut</li>
-  <li>Historia Transakcji</li>
-  <li>Logowanie i Rejestracja Portfela</li>
-  <li>Pobieranie informacji z API</li>
-  <li>SELL - BUY</li>
-  <li>jesli wystarczy czasu - SEND - RECEIVE MONEY </li>
-  <li>Płatność (PayPall, Visa Maestro Cards?)</li>
-</ul>
+## Description
+Cryptocurrency wallet is a final project of Java software development bootcamp.
+This app fetches the exchange rates from external REST API and enable registered users to buy or sell
+cryptocurrencies.  All registered users got $10000 to start trading. 
 
 
-<h3><i>Getting started with blockchain for Java developers</i></h3>
-https://opensource.com/article/19/4/blockchain-java-developers
+### Technologies used:
+- Spring Boot with Spring Security, Hibernate, REST
+- Thymeleaf, Bootstrap
+- JavaScript, jQuery, Ajax
+- JUnit 5
+- Databases: MySLQ, H2 *(for tests)*
 
-https://medium.com/programmers-blockchain/creating-your-first-blockchain-with-java-part-2-transactions-2cdac335e0ce
+### Functionality:
+
+- Main page with current cryptocurrency exchange rates.
+- Buy/Sell transaction 
+- Security - logging and registering users
+- Updating user account details
+- Detailed history of transactions
+- Displaying user balance in USD and cryptocurrency coins
+- Separation of authorization - user and admin role.
 
 
-<i>API</i>
+##### External API for fetching data:
+https://nomics.com/
 
-https://p.nomics.com/cryptocurrency-bitcoin-api
+
