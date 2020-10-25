@@ -1,9 +1,8 @@
-package com.example.cryptocurrencywallet.registration.validation;
+package com.example.cryptocurrencywallet.service;
 
 
 import com.example.cryptocurrencywallet.UserDTOBuilder;
-import com.example.cryptocurrencywallet.dto.UserRegistrationDTO;
-import com.example.cryptocurrencywallet.model.Role;
+import com.example.cryptocurrencywallet.model.UserRegistrationDTO;
 import com.example.cryptocurrencywallet.model.User;
 import com.example.cryptocurrencywallet.repository.UserRepository;
 import org.junit.jupiter.api.BeforeEach;

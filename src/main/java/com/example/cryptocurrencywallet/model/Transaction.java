@@ -1,5 +1,6 @@
-package com.example.cryptocurrencywallet.transactions;
+package com.example.cryptocurrencywallet.model;
 
+import com.example.cryptocurrencywallet.model.BuySell;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -37,15 +38,6 @@ public class Transaction {
     private BuySell buySell;
 
     private boolean isExecuted;
-
-/*    @JsonIgnore
-    @ManyToOne(cascade = {CascadeType.PERSIST,
-            CascadeType.MERGE,
-            CascadeType.DETACH,
-            CascadeType.REFRESH},
-            fetch = FetchType.LAZY)
-
-    private User user;*/
 
     public BigDecimal getTotalPriceForTransaction(){
         if (amount == null || amount.compareTo(BigDecimal.ZERO) < 0){

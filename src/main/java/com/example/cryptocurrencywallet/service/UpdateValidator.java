@@ -1,10 +1,10 @@
-package com.example.cryptocurrencywallet.validation;
+package com.example.cryptocurrencywallet.service;
 
-import com.example.cryptocurrencywallet.dto.UserRegistrationDTO;
+import com.example.cryptocurrencywallet.model.UserRegistrationDTO;
 import com.example.cryptocurrencywallet.model.User;
 import com.example.cryptocurrencywallet.repository.UserRepository;
 import com.example.cryptocurrencywallet.service.UserService;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 import org.springframework.ui.Model;
 
@@ -12,16 +12,12 @@ import java.util.Arrays;
 import java.util.List;
 
 @Component
+@RequiredArgsConstructor
 public class UpdateValidator {
 
-    private UserRepository userRepository;
-    private UserService userService;
+    private final UserRepository userRepository;
+    private final UserService userService;
 
-    @Autowired
-    public UpdateValidator(UserRepository userRepository, UserService userService) {
-        this.userRepository = userRepository;
-        this.userService = userService;
-    }
 
     Model validatePassword(UserRegistrationDTO userForm, Model model) {
 

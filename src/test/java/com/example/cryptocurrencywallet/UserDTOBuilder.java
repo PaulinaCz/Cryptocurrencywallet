@@ -1,6 +1,6 @@
 package com.example.cryptocurrencywallet;
 
-import com.example.cryptocurrencywallet.dto.UserRegistrationDTO;
+import com.example.cryptocurrencywallet.model.UserRegistrationDTO;
 import com.example.cryptocurrencywallet.model.Role;
 import com.example.cryptocurrencywallet.model.User;
 

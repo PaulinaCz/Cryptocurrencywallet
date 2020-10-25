@@ -1,10 +1,10 @@
-package com.example.cryptocurrencywallet.controllerREST;
+package com.example.cryptocurrencywallet.controller;
 
 import com.example.cryptocurrencywallet.model.User;
 import com.example.cryptocurrencywallet.model.Wallet;
 import com.example.cryptocurrencywallet.service.*;
-import com.example.cryptocurrencywallet.transactions.BuySell;
-import com.example.cryptocurrencywallet.transactions.Transaction;
+import com.example.cryptocurrencywallet.model.BuySell;
+import com.example.cryptocurrencywallet.model.Transaction;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,10 +33,8 @@ public class TradeRestController {
     @PostMapping(value = "/sell", produces = "application/json", consumes = "application/json")
     @ResponseBody
     public User sellTrade(@RequestBody Transaction transaction) throws CoinInUserWalletNotFound, InsufficientCoinException, InsufficientFundsException {
-//        System.out.println(transaction + " <<< SELL");
         return processTransactionRequest(transaction, BuySell.SELL);
     }
-
 
     private User processTransactionRequest(Transaction transaction, BuySell buySell) throws CoinInUserWalletNotFound, InsufficientCoinException, InsufficientFundsException {
         LOGGER.info(transaction + "transaction - inside processTransactionRequest() method");

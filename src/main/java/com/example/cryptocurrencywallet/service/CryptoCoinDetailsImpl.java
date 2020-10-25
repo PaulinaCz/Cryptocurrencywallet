@@ -1,8 +1,8 @@
 package com.example.cryptocurrencywallet.service;
 
 
-import com.example.cryptocurrencywallet.retriveCoin.AppHttpRequests;
-import com.example.cryptocurrencywallet.retriveCoin.model.CryptoCurrency;
+import com.example.cryptocurrencywallet.externallApi.AppHttpRequests;
+import com.example.cryptocurrencywallet.externallApi.model.CryptoCurrency;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.stereotype.Service;

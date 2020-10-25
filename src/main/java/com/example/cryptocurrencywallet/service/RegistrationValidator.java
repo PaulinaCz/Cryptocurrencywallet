@@ -1,10 +1,9 @@
-package com.example.cryptocurrencywallet.registration.validation;
+package com.example.cryptocurrencywallet.service;
 
-import com.example.cryptocurrencywallet.dto.UserRegistrationDTO;
+import com.example.cryptocurrencywallet.model.UserRegistrationDTO;
 import com.example.cryptocurrencywallet.model.User;
 import com.example.cryptocurrencywallet.repository.UserRepository;
-import com.example.cryptocurrencywallet.service.UserService;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 import org.springframework.ui.Model;
 
@@ -12,15 +11,10 @@ import java.util.Arrays;
 import java.util.List;
 
 @Component
+@RequiredArgsConstructor
 public class RegistrationValidator {
 
-
     private final UserRepository userRepository;
-
-    @Autowired
-    public RegistrationValidator(UserRepository userRepository) {
-        this.userRepository = userRepository;
-    }
 
     public Model validateFieldsCompletion(UserRegistrationDTO userForm, Model model) {
         if (userForm.getFirstName().isBlank()
@@ -95,5 +89,4 @@ public class RegistrationValidator {
         }
         return false;
     }
-
 }

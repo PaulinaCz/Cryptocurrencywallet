@@ -29,6 +29,6 @@ public class MainPageControllerHttpRequestTest {
     @DisplayName("login() should return default message")
     public void test1() throws Exception {
         mockMvc.perform(get("http://localhost8080/login")).andDo(print()).andExpect(status().isOk())
-                .andExpect(content().string(containsString("Registration and Login App")));
+                .andExpect(content().string(containsString("CryptoCurrencyWallet Login")));
     }
 }

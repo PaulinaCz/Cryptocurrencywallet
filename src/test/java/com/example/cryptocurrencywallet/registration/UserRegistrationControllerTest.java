@@ -1,9 +1,6 @@
 package com.example.cryptocurrencywallet.registration;
 
 
-import com.example.cryptocurrencywallet.registration.controller.UserRegistrationController;
-import com.example.cryptocurrencywallet.registration.validation.RegistrationManager;
-import com.example.cryptocurrencywallet.service.UserService;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -39,15 +36,6 @@ public class UserRegistrationControllerTest {
 
     @Autowired
     private MockMvc mockMvc;
-
-    @Autowired
-    private UserRegistrationController userRegistrationController;
-
-    @Autowired
-    private RegistrationManager registrationManager;
-
-    @Autowired
-    private UserService userService;
 
     @Test
     @DisplayName("should initialize new registration form")

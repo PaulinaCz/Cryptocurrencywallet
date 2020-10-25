@@ -16,15 +16,6 @@ import java.util.List;
 @Table(name = "wallet")
 public class Wallet {
 
-    /*@Id
-    @GeneratedValue(generator = "UUID")
-    @GenericGenerator(
-            name = "UUID",
-            strategy = "org.hibernate.id.UUIDGenerator"
-    )
-    @Column(name = "id", updatable = false, nullable = false)
-    private UUID walletId;*/
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", updatable = false, nullable = false)
@@ -36,11 +27,6 @@ public class Wallet {
     @OneToOne(mappedBy = "wallet", fetch = FetchType.LAZY,
             cascade = CascadeType.ALL)
     private User user;
-
-
-    /*
-    *  TODO: Make it Map<String,Coin> instead of List
-    * */
 
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name = "wallet_id")

@@ -1,4 +1,4 @@
-package com.example.cryptocurrencywallet.dto;
+package com.example.cryptocurrencywallet.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

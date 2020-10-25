@@ -1,17 +1,12 @@
 package com.example.cryptocurrencywallet.controller;
 
-import com.example.cryptocurrencywallet.model.Coin;
 import com.example.cryptocurrencywallet.model.User;
-import com.example.cryptocurrencywallet.registration.controller.UserRegistrationController;
-import com.example.cryptocurrencywallet.repository.UserRepository;
-import com.example.cryptocurrencywallet.retriveCoin.model.CryptoCurrency;
+import com.example.cryptocurrencywallet.externallApi.model.CryptoCurrency;
 import com.example.cryptocurrencywallet.service.CryptoCoinDetails;
 import com.example.cryptocurrencywallet.service.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -56,13 +51,6 @@ public class MainPageController {
         model.addAttribute("loggedUserCoins", loggedUser.getWallet().getMyCoins());
         return VIEW_NAME_MAIN_USER_PAGE;
     }
-
-//    @PostMapping("/user/buy")
-//    public String buyCryptocurrency(@ModelAttribute("user") User user,
-//                                    @ModelAttribute("cryptocurrency") CryptoCurrency cryptoCurrency,
-//                                    @ModelAttribute("cryptoCoin") Coin coin) {
-//        return VIEW_NAME_LOGIN;
-//    }
 
     @RequestMapping("/admin")
     public String mainAdminView(Model model) {

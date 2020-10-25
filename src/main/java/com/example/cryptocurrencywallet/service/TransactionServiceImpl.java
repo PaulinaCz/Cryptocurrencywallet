@@ -5,36 +5,29 @@ import com.example.cryptocurrencywallet.model.TransactionHistory;
 import com.example.cryptocurrencywallet.model.User;
 import com.example.cryptocurrencywallet.model.Wallet;
 import com.example.cryptocurrencywallet.repository.UserRepository;
-import com.example.cryptocurrencywallet.transactions.BuySell;
-import com.example.cryptocurrencywallet.transactions.Transaction;
+import com.example.cryptocurrencywallet.model.BuySell;
+import com.example.cryptocurrencywallet.model.Transaction;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
 import java.util.List;
-/*
- * TODO How to make it correct and functional.
- *  Too long and too many thing are happening in one method.
- * */
-
 
 @Service
 @Log4j2
+@RequiredArgsConstructor
 public class TransactionServiceImpl implements TransactionService {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(TransactionServiceImpl.class);
 
-    @Autowired
-    private UserRepository userRepository;
+    private final UserRepository userRepository;
 
     @Override
     public User processTransaction(Transaction transaction, Wallet userWallet) throws CoinInUserWalletNotFound, InsufficientFundsException, InsufficientCoinException {
         LOGGER.info("  ------------- PROCESS TRANSACTION METHOD ------------ ");
-
-//         TODO: is SET will be better than LIST?
 
         List<TransactionHistory> userTransactions = userWallet.getTransactionHistories();
         LOGGER.info("Number of transactions: " + userTransactions.size());

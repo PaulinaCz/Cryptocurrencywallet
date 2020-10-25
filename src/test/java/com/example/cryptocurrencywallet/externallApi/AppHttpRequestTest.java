@@ -1,6 +1,6 @@
-package com.example.cryptocurrencywallet.retriveCoin;
+package com.example.cryptocurrencywallet.externallApi;
 
-import com.example.cryptocurrencywallet.retriveCoin.model.CryptoCurrency;
+import com.example.cryptocurrencywallet.externallApi.model.CryptoCurrency;
 import com.example.cryptocurrencywallet.service.CryptoCoinDetails;
 import com.example.cryptocurrencywallet.service.CryptoCoinDetailsImpl;
 import org.junit.jupiter.api.*;

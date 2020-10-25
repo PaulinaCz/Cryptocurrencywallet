@@ -1,8 +1,7 @@
-package com.example.cryptocurrencywallet.validation;
+package com.example.cryptocurrencywallet.service;
 
-import com.example.cryptocurrencywallet.dto.UserRegistrationDTO;
-import com.example.cryptocurrencywallet.service.UserService;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.example.cryptocurrencywallet.model.UserRegistrationDTO;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 
@@ -10,14 +9,10 @@ import static com.example.cryptocurrencywallet.CommonTools.haveError;
 
 
 @Service
+@RequiredArgsConstructor
 public class UpdateManager {
 
-    private UpdateValidator validator;
-
-    @Autowired
-    public UpdateManager(UpdateValidator validator) {
-        this.validator = validator;
-    }
+    private final UpdateValidator validator;
 
     public Model updateUser(UserRegistrationDTO userForm, Model model) {
 
@@ -29,5 +24,4 @@ public class UpdateManager {
 
         return model;
     }
-
 }

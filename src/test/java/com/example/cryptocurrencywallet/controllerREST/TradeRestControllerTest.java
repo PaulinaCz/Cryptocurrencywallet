@@ -1,6 +1,7 @@
 package com.example.cryptocurrencywallet.controllerREST;
 
 
+import com.example.cryptocurrencywallet.controller.TradeRestController;
 import com.example.cryptocurrencywallet.model.MyUserDetails;
 import com.example.cryptocurrencywallet.service.UserService;
 import org.junit.jupiter.api.extension.ExtendWith;

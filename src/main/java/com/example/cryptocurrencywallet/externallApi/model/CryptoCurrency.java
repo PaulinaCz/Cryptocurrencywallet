@@ -1,4 +1,4 @@
-package com.example.cryptocurrencywallet.retriveCoin.model;
+package com.example.cryptocurrencywallet.externallApi.model;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.google.gson.annotations.SerializedName;

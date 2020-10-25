@@ -1,6 +1,6 @@
 package com.example.cryptocurrencywallet.service;
 
-import com.example.cryptocurrencywallet.dto.UserRegistrationDTO;
+import com.example.cryptocurrencywallet.model.UserRegistrationDTO;
 import com.example.cryptocurrencywallet.model.User;
 import org.springframework.stereotype.Service;
 

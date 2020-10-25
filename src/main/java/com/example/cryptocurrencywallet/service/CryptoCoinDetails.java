@@ -1,6 +1,6 @@
 package com.example.cryptocurrencywallet.service;
 
-import com.example.cryptocurrencywallet.retriveCoin.model.CryptoCurrency;
+import com.example.cryptocurrencywallet.externallApi.model.CryptoCurrency;
 
 import java.util.List;
 

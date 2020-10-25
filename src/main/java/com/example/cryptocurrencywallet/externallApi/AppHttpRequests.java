@@ -1,6 +1,6 @@
-package com.example.cryptocurrencywallet.retriveCoin;
+package com.example.cryptocurrencywallet.externallApi;
 
-import com.example.cryptocurrencywallet.retriveCoin.model.CryptoCurrency;
+import com.example.cryptocurrencywallet.externallApi.model.CryptoCurrency;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
@@ -31,14 +31,11 @@ public class AppHttpRequests {
         // parse JSON into object
 
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
-        List<CryptoCurrency> temp = gson.fromJson(response.body(), new TypeToken<List<CryptoCurrency>>() {
+
+        return gson.fromJson(response.body(), new TypeToken<List<CryptoCurrency>>() {
         }.getType());
-
-//        temp.forEach(System.out::println);
-
-        return temp;
     }
-
+    
 
     public static void main(String[] args) {
 

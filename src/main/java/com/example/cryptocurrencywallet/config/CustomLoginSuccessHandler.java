@@ -10,7 +10,6 @@ import org.springframework.security.web.RedirectStrategy;
 import org.springframework.security.web.authentication.SimpleUrlAuthenticationSuccessHandler;
 
 import javax.servlet.FilterChain;
-import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
@@ -26,7 +25,7 @@ public class CustomLoginSuccessHandler extends SimpleUrlAuthenticationSuccessHan
     public void onAuthenticationSuccess(HttpServletRequest request,
                                         HttpServletResponse response,
                                         FilterChain chain,
-                                        Authentication authentication) throws IOException, ServletException {
+                                        Authentication authentication) throws IOException{
         handle(request, response, authentication);
         clearAuthenticationAttributes(request);
     }

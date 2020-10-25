@@ -1,6 +1,6 @@
 package com.example.cryptocurrencywallet.controller;
 
-import com.example.cryptocurrencywallet.retriveCoin.model.CryptoCurrency;
+import com.example.cryptocurrencywallet.externallApi.model.CryptoCurrency;
 import com.example.cryptocurrencywallet.service.CryptoCoinDetails;
 import com.example.cryptocurrencywallet.service.UserService;
 import org.springframework.security.access.prepost.PreAuthorize;

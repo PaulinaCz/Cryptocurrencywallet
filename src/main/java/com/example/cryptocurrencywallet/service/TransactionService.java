@@ -2,7 +2,7 @@ package com.example.cryptocurrencywallet.service;
 
 import com.example.cryptocurrencywallet.model.User;
 import com.example.cryptocurrencywallet.model.Wallet;
-import com.example.cryptocurrencywallet.transactions.Transaction;
+import com.example.cryptocurrencywallet.model.Transaction;
 
 public interface TransactionService {
 

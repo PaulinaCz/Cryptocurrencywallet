@@ -1,4 +1,4 @@
-package com.example.cryptocurrencywallet.retriveCoin.model;
+package com.example.cryptocurrencywallet.externallApi.model;
 
 import com.google.gson.annotations.SerializedName;
 import lombok.AllArgsConstructor;

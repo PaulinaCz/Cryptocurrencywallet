@@ -1,6 +1,6 @@
 package com.example.cryptocurrencywallet.service;
 
-import com.example.cryptocurrencywallet.dto.UserRegistrationDTO;
+import com.example.cryptocurrencywallet.model.UserRegistrationDTO;
 import com.example.cryptocurrencywallet.model.MyUserDetails;
 import com.example.cryptocurrencywallet.model.Role;
 import com.example.cryptocurrencywallet.model.User;
@@ -33,7 +33,6 @@ public class UserServiceImpl implements UserService {
                 userRegistrationDTO.getLastName(),
                 userRegistrationDTO.getEmail(),
                 passwordEncoder.encode(userRegistrationDTO.getPassword()),
-//                passwordEncoder.encode(userRegistrationDTO.getRepeatPassword()),
                 Set.of(new Role("ROLE_USER"))
         );
         return userRepository.save(user);
@@ -45,19 +44,22 @@ public class UserServiceImpl implements UserService {
         MyUserDetails myUserDetails = (MyUserDetails) auth.getPrincipal();
         Optional<User> userOptional = userRepository.findById(myUserDetails.getId());
         return userOptional.orElseGet(User::new);
-//    }        return userRepository.findByEmail(userEmail)
-//                .orElseThrow(() -> new IllegalArgumentException("User doesn't exist:  " + userEmail));
     }
 
     @Override
     public void update(Long userId, UserRegistrationDTO registrationDTO) {
 
-        User updatedUser = userRepository.findById(userId).get();
+        if (userRepository.findById(userId).isPresent()) {
+            User updatedUser = userRepository.findById(userId).get();
+            updatedUser.setFirstName(registrationDTO.getFirstName());
+            updatedUser.setLastName(registrationDTO.getLastName());
+            updatedUser.setPassword(passwordEncoder.encode(registrationDTO.getPassword()));
 
-        updatedUser.setFirstName(registrationDTO.getFirstName());
-        updatedUser.setLastName(registrationDTO.getLastName());
-        updatedUser.setPassword(passwordEncoder.encode(registrationDTO.getPassword()));
+            userRepository.save(updatedUser);
+        } else {
+            throw new IllegalArgumentException("user id " + userId + " was not found. ");
+        }
 
-        userRepository.save(updatedUser);
+
     }
 }
