@@ -2,26 +2,21 @@
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
-    <title>Registration and Login App</title>
+    <title>Login</title>
+    <!-- CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
           integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous"/>
 </head>
 <body>
-<!-- Navigation bar -->
-
-<nav class="navbar navbar-dark bg-dark">
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary ">
     <a class="navbar-brand" href="#" th:href="@{/}">
-        Registration and Login Module
+        CryptoCurrencyWallet Login
     </a>
 </nav>
 
-<br>
-<br>
-<div class="container">
+<div class="container" >
     <div class="row justify-content-md-center">
-        <div class="col">
-
-            <h1> User Login Page </h1>
+        <div id="login-page">
             <form th:action="@{/login}" method="post">
 
                 <!--    error message     -->

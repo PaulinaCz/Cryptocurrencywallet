@@ -1,37 +1,25 @@
-.custom-button-width {
-    width:150px;
-}
-
 .table td.fit,
 .table th.fit {
     white-space: nowrap;
     width: 1%;
 }
 
-/*.bg-modal {*/
-/*    width: 100%;*/
-/*    height: 100%;*/
-/*    background-color: rgba(0,0,0,0.7);*/
-/*    position: absolute;*/
-/*    top: 0;*/
-/*    display: flex;*/
-/*    display: none;*/
-/*    justify-content: center;*/
-/*    align-items: center;*/
-/*}*/
+.modal-content{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    margin-top: 10%;
+}
 
-/*.modal-content{*/
-/*    width: 500px;*/
-/*    height: 300px;*/
-/*    background: white;*/
-/*    border-radius: 4px;*/
-/*    text-align: center;*/
-/*    padding: 20px;*/
-/*    position: relative;*/
-/*    justify-content: center;*/
-/*    align-items: center;*/
-/*}*/
-
+.bg-light
+{
+    font-family: 'Frank Ruhl Libre', serif;
+    font-size: 15px;
+    line-height: 1em;
+}
 
 input{
     width: 50%;
@@ -84,24 +72,25 @@ a:hover {
     color: #1565C0
 }
 
-.box {
-    margin-bottom: 10px;
-    border-radius: 5px;
-    padding: 10px
-}
-
-.modal-backdrop {
-    background-color: #64B5F6
-}
-
 .line {
     background-color: #CFD8DC;
     height: 1px;
     width: 100%
 }
 
-@media screen and (max-width: 768px) {
-    .tabs h6 {
-        font-size: 12px
-    }
+.blue
+{
+    color: #2196F3;
 }
+.table_header
+{
+ text-align: center;
+    vertical-align: middle;
+    color: #646979;
+}
+.input
+{
+    border: #a0a4a5;
+    border-radius: 4px;
+}
+

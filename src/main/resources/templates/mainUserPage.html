@@ -14,11 +14,14 @@
 
     <!-- Latest compiled JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <!--    GOOGLE FONTS-->
+    <link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@500&family=Staatliches&display=swap" rel="stylesheet">
 </head>
 <body>
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary ">
-    <a class="navbar-brand" href="#">Navbar</a>
+    <a class="navbar-brand" href="#"></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
             aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -47,9 +50,6 @@
     </div>
 </nav>
 
-<!--src="https://s3.us-east-2.amazonaws.com/nomics-api/static/images/currencies/btc.svg"-->
-<!--        CURRENCY VALUE      -->
-<!--<div id="main-content" class="container" th:attr="data-decisionTime=${decisionTime}">-->
 <div id="main-content" class="container">
     <div class="row">
         <div class="col-md-12">
@@ -57,11 +57,9 @@
                 <h1 class="text-center">CryptoCurrencies By Market Capitalization</h1>
                 <thead>
                 <tr>
-                    <th scope="col">Rank</th>
 
-                    <th scope="col" style = "width :1%"></th>
-
-                    <th scope="col">Name</th>
+                    <th scope="col"></th>
+                <th scope="col">Name</th>
                     <th scope="col">Price</th>
                     <th scope="col">Market Cap</th>
                     <th scope="col">Volume (24h)</th>
@@ -71,7 +69,6 @@
                 <tbody id="quotationRow">
 
                 <tr th:each="rate : ${cryptoCoinDetails}" class="active">
-                    <td th:text="${rate.rank}">"</td>
                     <td>
                         <img alt="coin graphic"
                              th:src="@{${rate.logoUrl}}"
@@ -79,13 +76,14 @@
                              class="rounded-circle" width="32px" height="32px"/>
                     </td>
                     <td th:text="${rate.name}"></td>
-                    <td>$<span th:text="${#numbers.formatDecimal(rate.price, 0, 'COMMA', 4, 'POINT')}">10.00</span></td>
-                    <td><span th:text="${#numbers.formatDecimal(rate.marketCap, 0, 'COMMA', 2, 'POINT')}">10.00</span>
+                    <td class="blue">$<span th:text="${rate.price}<1 ? ${#numbers.formatDecimal(rate.price, 1, 'COMMA', 6, 'POINT')}
+                                                        : ${#numbers.formatDecimal(rate.price, 1, 'COMMA', 2, 'POINT')}">10.00</span></td>
+                    <td>$<span th:text="${#numbers.formatDecimal(rate.marketCap, 0, 'COMMA', 2, 'POINT')}">10.00</span>
                     </td>
-                    <td><span th:text="${#numbers.formatDecimal(rate._1d.volume, 0, 'COMMA', 2, 'POINT')}">10.00</span>
+                    <td class="blue">$<span th:text="${#numbers.formatDecimal(rate._1d.volume, 0, 'COMMA', 2, 'POINT')}">10.00</span>
                     </td>
                     <td><span
-                            th:text="${#numbers.formatDecimal(rate.circulatingSupply, 0, 'COMMA', 2, 'POINT')}">10.00</span>
+                            th:text="${#numbers.formatDecimal(rate.circulatingSupply, 0, 'COMMA', 2, 'POINT')} + ' ' + ${rate.symbol}">10.00</span>
                     </td>
 
                 </tr>
@@ -139,7 +137,7 @@
                                 </div>
                                 <div class="form-group row justify-content-center">
                                     <div class="col" id="theForm">
-                                        <input placeholder="0" type="text" id="buy-form-user-input"
+                                        <input class="input" placeholder="0" type="text" id="buy-form-user-input"
                                                onclick="showCurrentDetails()"/>
                                     </div>
                                 </div>
@@ -185,7 +183,7 @@
                                 </div>
                                 <div class="form-group row justify-content-center">
                                     <div class="col" id="theForm-sell">
-                                        <input placeholder="0" type="text" id="sell-form-user-input"
+                                        <input class="input" placeholder="0" type="text" id="sell-form-user-input"
                                                onclick="showCurrentDetailsSell()"/>
                                     </div>
                                 </div>
