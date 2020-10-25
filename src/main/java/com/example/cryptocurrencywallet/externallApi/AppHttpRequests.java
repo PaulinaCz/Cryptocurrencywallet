@@ -35,7 +35,7 @@ public class AppHttpRequests {
         return gson.fromJson(response.body(), new TypeToken<List<CryptoCurrency>>() {
         }.getType());
     }
-    
+
 
     public static void main(String[] args) {
 
